@@ -3,47 +3,119 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Website</title>
+  <title>MedixGO</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      text-align: center;
-      padding: 50px;
-    }
-    .container {
-      max-width: 800px;
-      margin: auto;
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    <center>
-<img src="16.jpg"  width="455"><br><br>
-    h1 {
-      color: #333;
-    }
-    p {
-      color: #555;
-    }
-    a {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: #4CAF50;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-    }
+    body { font-family: sans-serif; margin: 0; padding: 0; background: #fff; color: #333; }
+    header { background: #2196F3; color: #fff; padding: 1rem; text-align: center; }
+    nav { margin-top: 10px; }
+    nav select { padding: 5px; }
+    .container { padding: 2rem; max-width: 1200px; margin: auto; }
+    .section { margin-bottom: 2rem; }
+    footer { background: #2196F3; color: #fff; text-align: center; padding: 1rem; position: relative; }
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; }
+    .modal-content { background: #fff; color: #000; padding: 2rem; width: 80%; max-height: 80%; overflow-y: auto; }
+    .modal-close { float: right; cursor: pointer; }
   </style>
 </head>
 <body>
+  <header>
+    <h1>MedixGO</h1>
+    <p id="slogan">Зарабатывай, когда тебе удобно. Заботься о пациентах, а MedixGO позаботится обо всём остальном.</p>
+    <nav>
+      <label for="language">Language:</label>
+      <select id="language">
+        <option value="ru">Русский</option>
+        <option value="kz">Қазақша</option>
+        <option value="en">English</option>
+      </select>
+    </nav>
+  </header>
+  
   <div class="container">
-    <h1>Welcome to My Website!</h1>
-    <p>This is a simple free website hosted on GitHub Pages.</p>
-    <a href="#">Contact Me</a>
+    <div class="section" id="about">
+      <h2>О нас</h2>
+      <p>
+        MedixGO – это мобильное приложение, предназначенное для соединения пациентов, нуждающихся в медицинской помощи на дому (уколы, перевязки, базовые медицинские процедуры), с квалифицированным медперсоналом. Приложение предлагает удобную платформу для поиска, бронирования и оплаты услуг медперсонала, а также предоставляет возможность специалистам зарабатывать, работая в удобное для них время.
+      </p>
+    </div>
+
+    <div class="section" id="contacts">
+      <h2>Контакты</h2>
+      <p>Email: support@medixgo.kz</p>
+      <p>WhatsApp, Telegram: +7 771 643 0037</p>
+      <p>Telegram bot: <a href="https://t.me/MedixGO_bot">@MedixGO_bot</a></p>
+      <p>Instagram: <a href="https://instagram.com/medixgo.kz">medixgo.kz</a></p>
+      <form>
+        <h3>Связаться с нами</h3>
+        <input type="email" placeholder="Ваш email" required />
+        <textarea placeholder="Ваше сообщение" required></textarea>
+        <button type="submit">Отправить</button>
+      </form>
+    </div>
+
+    <div class="section" id="legal">
+      <h2>Юридическая информация</h2>
+      <p>Товарищество с ограниченной ответственностью "MedixGO"<br>Казахстан, Карагандинская область, город Караганда,<br>район имени Казыбек Би, улица Московская, дом 11, кв. 4,<br>почтовый индекс M02A1X4</p>
+      <p><a href="#" onclick="openModal('privacy')">Политика конфиденциальности</a> | <a href="#" onclick="openModal('license')">Лицензионное соглашение</a></p>
+    </div>
   </div>
+
+  <footer>
+    &copy; 2025 MedixGO
+  </footer>
+
+  <!-- Модальные окна -->
+  <div class="modal" id="privacy-modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal('privacy')">&times;</span>
+      <h2>Политика конфиденциальности</h2>
+      <p>Здесь будет текст политики конфиденциальности...</p>
+      <a href="/privacy.pdf" download>Скачать PDF</a>
+    </div>
+  </div>
+
+  <div class="modal" id="license-modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal('license')">&times;</span>
+      <h2>Лицензионное соглашение</h2>
+      <p>Здесь будет текст лицензионного соглашения...</p>
+      <a href="/license.pdf" download>Скачать PDF</a>
+    </div>
+  </div>
+
+  <script>
+    const translations = {
+      ru: {
+        slogan: "Зарабатывай, когда тебе удобно. Заботься о пациентах, а MedixGO позаботится обо всём остальном.",
+        about: "MedixGO – это мобильное приложение, предназначенное для соединения пациентов, нуждающихся в медицинской помощи на дому (уколы, перевязки, базовые медицинские процедуры), с квалифицированным медперсоналом. Приложение предлагает удобную платформу для поиска, бронирования и оплаты услуг медперсонала, а также предоставляет возможность специалистам зарабатывать, работая в удобное для них время.",
+        contacts: "Контакты",
+      },
+      kz: {
+        slogan: "Сізге ыңғайлы уақытта табыс табыңыз. Пациенттерге қамқорлық жасаңыз, ал MedixGO бәрін реттейді.",
+        about: "MedixGO – бұл үйге медициналық көмек қажет ететін пациенттерді (инъекциялар, таңғыштар, негізгі медициналық процедуралар) білікті медицина қызметкерлерімен байланыстыратын мобильді қосымша.",
+        contacts: "Байланыс",
+      },
+      en: {
+        slogan: "Earn when it's convenient for you. Care for patients, MedixGO will handle the rest.",
+        about: "MedixGO is a mobile application designed to connect patients in need of home medical assistance (injections, dressings, basic procedures) with qualified medical staff. The app offers an easy platform for booking and paying for services and allows specialists to earn income on their schedule.",
+        contacts: "Contacts",
+      },
+    };
+
+    document.getElementById('language').addEventListener('change', (e) => {
+      const lang = e.target.value;
+      document.getElementById('slogan').innerText = translations[lang].slogan;
+      document.getElementById('about').querySelector('p').innerText = translations[lang].about;
+      document.getElementById('contacts').querySelector('h2').innerText = translations[lang].contacts;
+    });
+
+    function openModal(type) {
+      document.getElementById(type + '-modal').style.display = 'flex';
+    }
+
+    function closeModal(type) {
+      document.getElementById(type + '-modal').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
