@@ -16,12 +16,12 @@
       margin: 0;
       padding: 0;
     }
-    /* Логотип */
+    /* ЛОГОТИП */
     #logo {
-      width: 70px;
-      margin: 10px 20px;
+      width: 120px; /* Увеличенная ширина */
+      height: auto;
     }
-    /* Кнопки языков */
+    /* КНОПКИ ЯЗЫКОВ */
     .language-btn {
       background: none;
       border: none;
@@ -33,43 +33,51 @@
     .language-btn.active {
       text-decoration: underline;
     }
-    /* Контейнер с контентом */
+    /* КОНТЕНТ */
     .content {
       padding: 40px 15px;
     }
-    /* Кнопки контактов */
+    /* КНОПКИ КОНТАКТОВ */
     .contact-btn {
       display: inline-block;
       margin: 5px;
     }
-    /* Модалки PDF в Bootstrap */
+    /* МОДАЛЬНОЕ ОКНО PDF */
     .modal-content {
-      color: #000; /* Текст модалки — чёрный для удобства чтения PDF */
+      color: #000; /* Текст внутри модалки чёрный для удобства чтения PDF */
+    }
+    /* ШАПКА САЙТА */
+    header {
+      position: relative;
+      text-align: center; /* Лого по центру */
+      padding: 20px 0;
+    }
+    /* Блок с языками в правом верхнем углу */
+    .lang-switcher {
+      position: absolute;
+      top: 10px;
+      right: 20px;
     }
   </style>
 </head>
 
 <body>
-  <!-- Шапка сайта -->
-  <header class="d-flex justify-content-between align-items-center">
-    <!-- Логотип -->
+  <!-- ШАПКА -->
+  <header>
     <img src="Logo.png" alt="Logo" id="logo" />
-    <!-- Блок переключения языков -->
-    <div class="me-4 mt-2">
+    <div class="lang-switcher">
       <button class="language-btn active" onclick="changeLang('ru')">RUS</button> |
       <button class="language-btn" onclick="changeLang('kz')">KAZ</button> |
       <button class="language-btn" onclick="changeLang('en')">ENG</button>
     </div>
   </header>
 
-  <!-- Основной контент -->
+  <!-- ОСНОВНОЙ КОНТЕНТ -->
   <div class="content container text-center" id="content">
-    <!-- Заголовок / Слоган -->
     <h3 id="slogan" class="mb-4">
       Зарабатывай, когда тебе удобно. Заботься о пациентах, а MedixGO позаботится обо
       всём остальном.
     </h3>
-    <!-- Описание -->
     <p id="description" class="mb-5">
       MedixGO – это мобильное приложение, предназначенное для соединения пациентов,
       нуждающихся в медицинской помощи на дому (уколы, перевязки, базовые медицинские
@@ -79,14 +87,13 @@
       время.
     </p>
 
-    <!-- Контакты -->
+    <!-- КОНТАКТЫ -->
     <div class="row justify-content-center">
       <div class="col-12 col-md-8">
         <div class="d-flex flex-column flex-sm-row flex-wrap justify-content-center gap-3">
           <a href="mailto:support@medixgo.kz" class="btn btn-outline-light contact-btn">
             Email: support@medixgo.kz
           </a>
-          <!-- WhatsApp (пример: +7 771 643 0037 => 77716430037) -->
           <a
             href="https://wa.me/77716430037"
             target="_blank"
@@ -94,7 +101,6 @@
           >
             WhatsApp: +7 771 643 0037
           </a>
-          <!-- Telegram (пример: +7 771 643 0037 => https://t.me/+77716430037) -->
           <a
             href="https://t.me/+77716430037"
             target="_blank"
@@ -102,7 +108,6 @@
           >
             Telegram: +7 771 643 0037
           </a>
-          <!-- Telegram Bot -->
           <a
             href="https://t.me/MedixGO_bot"
             target="_blank"
@@ -110,7 +115,6 @@
           >
             Telegram Bot: t.me/MedixGO_bot
           </a>
-          <!-- Instagram -->
           <a
             href="https://instagram.com/medixgo.kz"
             target="_blank"
@@ -122,7 +126,7 @@
       </div>
     </div>
 
-    <!-- Юр. информация -->
+    <!-- ЮР. ИНФОРМАЦИЯ -->
     <div class="mt-5">
       <p class="mb-1"><strong>ТОО "MedixGO"</strong></p>
       <p class="mb-1">
@@ -133,7 +137,7 @@
       </p>
     </div>
 
-    <!-- Ссылки на документы -->
+    <!-- ССЫЛКИ НА ДОКУМЕНТЫ -->
     <div class="mt-4">
       <a href="#" data-bs-toggle="modal" data-bs-target="#policyModal"
         >Политика конфиденциальности</a
@@ -145,7 +149,7 @@
     </div>
   </div>
 
-  <!-- Модальное окно: Политика конфиденциальности (PDF) -->
+  <!-- МОДАЛЬНОЕ ОКНО: ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ (PDF) -->
   <div class="modal fade" id="policyModal" tabindex="-1">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -170,7 +174,7 @@
     </div>
   </div>
 
-  <!-- Модальное окно: Лицензионное соглашение (PDF) -->
+  <!-- МОДАЛЬНОЕ ОКНО: ЛИЦЕНЗИОННОЕ СОГЛАШЕНИЕ (PDF) -->
   <div class="modal fade" id="licenseModal" tabindex="-1">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -203,7 +207,7 @@
     const translations = {
       ru: {
         slogan:
-          "Зарабатывай, когда тебе удобно. Заботься о пациентах, а MedixGO позаботится обо всём остальном.",
+          "Зарабатывай, когда тебе удобно. Заботься о пациентах, а MedixGO позаботится обо всём остальным.",
         description:
           "MedixGO – это мобильное приложение, предназначенное для соединения пациентов, нуждающихся в медицинской помощи на дому (уколы, перевязки, базовые медицинские процедуры), с квалифицированным медперсоналом. Приложение предлагает удобную платформу для поиска, бронирования и оплаты услуг медперсонала, а также предоставляет возможность специалистам зарабатывать, работая в удобное для них время.",
       },
