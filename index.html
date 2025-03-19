@@ -1,134 +1,240 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>MedixGO</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #343a40;
-            color: #ffffff;
-        }
-        .language-btn {
-            background: none;
-            border: none;
-            color: #ffffff;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        .language-btn.active {
-            text-decoration: underline;
-        }
-        #logo {
-            width: 80px;
-            margin-left: 20px;
-            margin-top: 10px;
-        }
-        .content {
-            padding: 40px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>MedixGO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      background-color: #343a40; /* Тёмный фон */
+      color: #ffffff;            /* Белый текст */
+      margin: 0;
+      padding: 0;
+    }
+    /* Логотип */
+    #logo {
+      width: 70px;
+      margin: 10px 20px;
+    }
+    /* Кнопки языков */
+    .language-btn {
+      background: none;
+      border: none;
+      color: #ffffff;
+      cursor: pointer;
+      font-weight: bold;
+      margin: 0 5px;
+    }
+    .language-btn.active {
+      text-decoration: underline;
+    }
+    /* Контейнер с контентом */
+    .content {
+      padding: 40px 15px;
+    }
+    /* Кнопки контактов */
+    .contact-btn {
+      display: inline-block;
+      margin: 5px;
+    }
+    /* Модалки PDF в Bootstrap */
+    .modal-content {
+      color: #000; /* Текст модалки — чёрный для удобства чтения PDF */
+    }
+  </style>
 </head>
+
 <body>
-    <div class="d-flex justify-content-between align-items-center">
-        <!-- ЛОГОТИП -->
-        <img src="Logo.png" alt="Logo" id="logo">
-        <!-- КНОПКИ ЯЗЫКОВ -->
-        <div class="me-4 mt-2">
-            <button class="language-btn active" onclick="changeLang('ru')">RUS</button> |
-            <button class="language-btn" onclick="changeLang('kz')">KAZ</button> |
-            <button class="language-btn" onclick="changeLang('en')">ENG</button>
-        </div>
+  <!-- Шапка сайта -->
+  <header class="d-flex justify-content-between align-items-center">
+    <!-- Логотип -->
+    <img src="Logo.png" alt="Logo" id="logo" />
+    <!-- Блок переключения языков -->
+    <div class="me-4 mt-2">
+      <button class="language-btn active" onclick="changeLang('ru')">RUS</button> |
+      <button class="language-btn" onclick="changeLang('kz')">KAZ</button> |
+      <button class="language-btn" onclick="changeLang('en')">ENG</button>
     </div>
+  </header>
 
-    <!-- ОСНОВНОЙ КОНТЕНТ -->
-    <div class="content container text-center" id="content">
-        <h3 id="slogan">Зарабатывай, когда тебе удобно. Заботься о пациентах, а MedixGO позаботится обо всём остальном.</h3>
-        <p id="description">
-            MedixGO – это мобильное приложение, предназначенное для соединения пациентов, нуждающихся в медицинской помощи на дому (уколы, перевязки, базовые медицинские процедуры), с квалифицированным медперсоналом. Приложение предлагает удобную платформу для поиска, бронирования и оплаты услуг медперсонала, а также предоставляет возможность специалистам зарабатывать, работая в удобное для них время.
-        </p>
-        <p>
-            <b>Email:</b> support@medixgo.kz<br>
-            <b>WhatsApp, Telegram:</b> +7 771 643 0037<br>
-            <b>Telegram bot:</b> t.me/MedixGO_bot<br>
-            <b>Instagram:</b> medixgo.kz
-        </p>
-        <p>
-            <b>ТОО "MedixGO"</b><br>
-            Казахстан, Карагандинская область,<br>
-            г. Караганда, р-н Казыбек Би,<br>
-            ул. Московская, дом 11, кв.4,<br>
-            почтовый индекс M02A1X4
-        </p>
+  <!-- Основной контент -->
+  <div class="content container text-center" id="content">
+    <!-- Заголовок / Слоган -->
+    <h3 id="slogan" class="mb-4">
+      Зарабатывай, когда тебе удобно. Заботься о пациентах, а MedixGO позаботится обо
+      всём остальном.
+    </h3>
+    <!-- Описание -->
+    <p id="description" class="mb-5">
+      MedixGO – это мобильное приложение, предназначенное для соединения пациентов,
+      нуждающихся в медицинской помощи на дому (уколы, перевязки, базовые медицинские
+      процедуры), с квалифицированным медперсоналом. Приложение предлагает удобную
+      платформу для поиска, бронирования и оплаты услуг медперсонала, а также
+      предоставляет возможность специалистам зарабатывать, работая в удобное для них
+      время.
+    </p>
 
-        <!-- ССЫЛКИ НА ДОКУМЕНТЫ -->
-        <a href="#" data-bs-toggle="modal" data-bs-target="#policyModal">Политика конфиденциальности</a> |
-        <a href="#" data-bs-toggle="modal" data-bs-target="#licenseModal">Лицензионное соглашение</a>
-    </div>
-
-    <!-- МОДАЛЬНОЕ ОКНО: ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ (PDF) -->
-    <div class="modal fade" id="policyModal" tabindex="-1">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content text-dark">
-          <div class="modal-header">
-            <h5 class="modal-title">Политика конфиденциальности</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
-          <div class="modal-body">
-            <!-- Встраиваем PDF -->
-            <object data="Политика конфиденциальности.pdf" type="application/pdf" width="100%" height="600px">
-              <p>Если ваш браузер не поддерживает PDF, <a href="Политика конфиденциальности.pdf">откройте файл напрямую</a>.</p>
-            </object>
-          </div>
+    <!-- Контакты -->
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8">
+        <div class="d-flex flex-column flex-sm-row flex-wrap justify-content-center gap-3">
+          <a href="mailto:support@medixgo.kz" class="btn btn-outline-light contact-btn">
+            Email: support@medixgo.kz
+          </a>
+          <!-- WhatsApp (пример: +7 771 643 0037 => 77716430037) -->
+          <a
+            href="https://wa.me/77716430037"
+            target="_blank"
+            class="btn btn-outline-light contact-btn"
+          >
+            WhatsApp: +7 771 643 0037
+          </a>
+          <!-- Telegram (пример: +7 771 643 0037 => https://t.me/+77716430037) -->
+          <a
+            href="https://t.me/+77716430037"
+            target="_blank"
+            class="btn btn-outline-light contact-btn"
+          >
+            Telegram: +7 771 643 0037
+          </a>
+          <!-- Telegram Bot -->
+          <a
+            href="https://t.me/MedixGO_bot"
+            target="_blank"
+            class="btn btn-outline-light contact-btn"
+          >
+            Telegram Bot: t.me/MedixGO_bot
+          </a>
+          <!-- Instagram -->
+          <a
+            href="https://instagram.com/medixgo.kz"
+            target="_blank"
+            class="btn btn-outline-light contact-btn"
+          >
+            Instagram: medixgo.kz
+          </a>
         </div>
       </div>
     </div>
 
-    <!-- МОДАЛЬНОЕ ОКНО: ЛИЦЕНЗИОННОЕ СОГЛАШЕНИЕ (PDF) -->
-    <div class="modal fade" id="licenseModal" tabindex="-1">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content text-dark">
-          <div class="modal-header">
-            <h5 class="modal-title">Лицензионное соглашение</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
-          <div class="modal-body">
-            <!-- Встраиваем PDF -->
-            <object data="Лицензионное соглашение.pdf" type="application/pdf" width="100%" height="600px">
-              <p>Если ваш браузер не поддерживает PDF, <a href="Лицензионное соглашение.pdf">откройте файл напрямую</a>.</p>
-            </object>
-          </div>
+    <!-- Юр. информация -->
+    <div class="mt-5">
+      <p class="mb-1"><strong>ТОО "MedixGO"</strong></p>
+      <p class="mb-1">
+        Казахстан, Карагандинская область,<br />
+        г. Караганда, р-н Казыбек Би,<br />
+        ул. Московская, дом 11, кв.4,<br />
+        почтовый индекс M02A1X4
+      </p>
+    </div>
+
+    <!-- Ссылки на документы -->
+    <div class="mt-4">
+      <a href="#" data-bs-toggle="modal" data-bs-target="#policyModal"
+        >Политика конфиденциальности</a
+      >
+      |
+      <a href="#" data-bs-toggle="modal" data-bs-target="#licenseModal"
+        >Лицензионное соглашение</a
+      >
+    </div>
+  </div>
+
+  <!-- Модальное окно: Политика конфиденциальности (PDF) -->
+  <div class="modal fade" id="policyModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Политика конфиденциальности</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <object
+            data="Политика конфиденциальности.pdf"
+            type="application/pdf"
+            width="100%"
+            height="600px"
+          >
+            <p>
+              Ваш браузер не поддерживает PDF. <br />
+              <a href="Политика конфиденциальности.pdf">Откройте файл напрямую.</a>
+            </p>
+          </object>
         </div>
       </div>
     </div>
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-      // Переводы для переключения языка (только 2 блока: slogan и description)
-      const translations = {
-        ru: {
-          slogan: "Зарабатывай, когда тебе удобно. Заботься о пациентах, а MedixGO позаботится обо всём остальном.",
-          description: "MedixGO – это мобильное приложение, предназначенное для соединения пациентов, нуждающихся в медицинской помощи на дому (уколы, перевязки, базовые медицинские процедуры), с квалифицированным медперсоналом. Приложение предлагает удобную платформу для поиска, бронирования и оплаты услуг медперсонала, а также предоставляет возможность специалистам зарабатывать, работая в удобное для них время."
-        },
-        kz: {
-          slogan: "Өзіңізге ыңғайлы уақытта табыс табыңыз. Пациенттерге қамқорлық жасаңыз, қалғанын MedixGO реттейді.",
-          description: "MedixGO – үйде медициналық көмекке мұқтаж пациенттерді (инъекция, таңу, базалық медициналық рәсімдер) білікті медициналық қызметкерлермен байланыстыруға арналған мобильді қосымша. Қосымша медициналық қызметкерлерді іздеу, брондау және төлеуге арналған ыңғайлы платформаны ұсынады, сондай-ақ мамандарға ыңғайлы уақытта табыс табуға мүмкіндік береді."
-        },
-        en: {
-          slogan: "Earn when it's convenient for you. Take care of patients, MedixGO will handle the rest.",
-          description: "MedixGO is a mobile app designed to connect patients requiring medical care at home (injections, bandages, basic medical procedures) with qualified medical personnel. The app provides a convenient platform for searching, booking, and paying for medical staff services, as well as enabling specialists to earn income at their convenience."
-        }
-      };
+  <!-- Модальное окно: Лицензионное соглашение (PDF) -->
+  <div class="modal fade" id="licenseModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Лицензионное соглашение</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <object
+            data="Лицензионное соглашение.pdf"
+            type="application/pdf"
+            width="100%"
+            height="600px"
+          >
+            <p>
+              Ваш браузер не поддерживает PDF. <br />
+              <a href="Лицензионное соглашение.pdf">Откройте файл напрямую.</a>
+            </p>
+          </object>
+        </div>
+      </div>
+    </div>
+  </div>
 
-      function changeLang(lang) {
-        document.getElementById('slogan').innerText = translations[lang].slogan;
-        document.getElementById('description').innerText = translations[lang].description;
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-        // Подсветка активной кнопки
-        document.querySelectorAll('.language-btn').forEach(btn => btn.classList.remove('active'));
-        const btn = document.querySelector(`.language-btn[onclick="changeLang('${lang}')"]`);
-        if(btn) btn.classList.add('active');
-      }
-    </script>
+  <script>
+    // Переводы (для двух блоков: slogan и description)
+    const translations = {
+      ru: {
+        slogan:
+          "Зарабатывай, когда тебе удобно. Заботься о пациентах, а MedixGO позаботится обо всём остальном.",
+        description:
+          "MedixGO – это мобильное приложение, предназначенное для соединения пациентов, нуждающихся в медицинской помощи на дому (уколы, перевязки, базовые медицинские процедуры), с квалифицированным медперсоналом. Приложение предлагает удобную платформу для поиска, бронирования и оплаты услуг медперсонала, а также предоставляет возможность специалистам зарабатывать, работая в удобное для них время.",
+      },
+      kz: {
+        slogan:
+          "Өзіңізге ыңғайлы уақытта табыс табыңыз. Пациенттерге қамқорлық жасаңыз, қалғанын MedixGO реттейді.",
+        description:
+          "MedixGO – үйде медициналық көмекке мұқтаж пациенттерді (инъекция, таңу, базалық медициналық рәсімдер) білікті медициналық қызметкерлермен байланыстыруға арналған мобильді қосымша. Қосымша медициналық қызметкерлерді іздеу, брондау және төлеуге арналған ыңғайлы платформаны ұсынады, сондай-ақ мамандарға ыңғайлы уақытта табыс табуға мүмкіндік береді.",
+      },
+      en: {
+        slogan:
+          "Earn when it's convenient for you. Take care of patients, MedixGO will handle the rest.",
+        description:
+          "MedixGO is a mobile app designed to connect patients requiring medical care at home (injections, bandages, basic medical procedures) with qualified medical personnel. The app provides a convenient platform for searching, booking, and paying for medical staff services, as well as enabling specialists to earn income at their convenience.",
+      },
+    };
+
+    function changeLang(lang) {
+      document.getElementById("slogan").innerText = translations[lang].slogan;
+      document.getElementById("description").innerText =
+        translations[lang].description;
+
+      // Подсветка активной кнопки
+      document.querySelectorAll(".language-btn").forEach((btn) => {
+        btn.classList.remove("active");
+      });
+      const btn = document.querySelector(
+        `.language-btn[onclick="changeLang('${lang}')"]`
+      );
+      if (btn) btn.classList.add("active");
+    }
+  </script>
 </body>
 </html>
