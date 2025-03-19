@@ -13,6 +13,7 @@
       margin: 0;
       padding: 0;
       z-index: 0;
+      color: #000;
     }
     body::before {
       content: '';
@@ -20,12 +21,20 @@
       top: 0; left: 0;
       width: 100%;
       height: 100%;
-      background: url('187111vef36339b.jpg') center/cover no-repeat;
-      filter: blur(5px);
-      opacity: 0.4;
+      background: url('187111vef36339b.jpg') center no-repeat;
+      background-size: contain;
+      filter: blur(4px);
+      opacity: 0.3;
       z-index: -1;
     }
-    header { background: #2196F3; color: #fff; padding: 0.5rem 1rem; display: flex; align-items: center; justify-content: space-between; }
+    header, footer, section {
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 1rem;
+      margin: 1rem auto;
+      border-radius: 10px;
+      max-width: 1200px;
+    }
+    header { display: flex; align-items: center; justify-content: space-between; }
     .logo { display: flex; align-items: center; }
     .logo img { width: 50px; height: 50px; margin-right: 10px; }
     .language-selector { position: relative; cursor: pointer; }
@@ -33,8 +42,8 @@
     .dropdown { position: absolute; background: #fff; top: 30px; right: 0; display: none; border: 1px solid #ccc; }
     .dropdown div { padding: 5px 10px; cursor: pointer; color: #2196F3; }
     .dropdown div:hover { background-color: #f0f0f0; }
-    .hero { color: #fff; padding: 80px 20px; text-align: center; }
-    footer { background: #2196F3; color: #fff; text-align: center; padding: 1rem; margin-top: 50px; }
+    .hero { text-align: center; padding: 60px 20px; }
+    footer { text-align: center; margin-top: 50px; }
     .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; }
     .modal-content { background: #fff; padding: 2rem; width: 80%; max-height: 80%; overflow-y: auto; position: relative; }
     .modal-close { position: absolute; top: 10px; right: 10px; cursor: pointer; }
@@ -47,7 +56,7 @@
       <img src="Logo.png" alt="MedixGO Logo">
       <h1 class="fs-4 m-0">MedixGO</h1>
     </div>
-    <div class="language-selector text-white" onclick="toggleDropdown()">
+    <div class="language-selector text-dark" onclick="toggleDropdown()">
       <span id="current-lang">RU</span> ▼
       <div class="dropdown" id="dropdown-menu">
         <div onclick="setLang('ru')">RU</div>
@@ -66,15 +75,12 @@
     <h2 id="services-title" class="text-center mb-4">Медицинские услуги</h2>
     <div class="row">
       <div class="col-md-4 mb-3 text-center">
-        <img src="service1.jpg" class="img-fluid" alt="service">
         <h4>Госпитализация</h4>
       </div>
       <div class="col-md-4 mb-3 text-center">
-        <img src="service2.jpg" class="img-fluid" alt="service">
         <h4>Педиатрия</h4>
       </div>
       <div class="col-md-4 mb-3 text-center">
-        <img src="service3.jpg" class="img-fluid" alt="service">
         <h4>Критическая помощь</h4>
       </div>
     </div>
@@ -103,7 +109,6 @@
     &copy; 2025 MedixGO
   </footer>
 
-  <!-- Модальные окна -->
   <div class="modal" id="privacy-modal">
     <div class="modal-content">
       <span class="modal-close" onclick="closeModal('privacy')">&times;</span>
