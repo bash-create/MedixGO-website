@@ -139,9 +139,6 @@
     .bottom-nav-links a:hover {
       text-decoration: underline;
     }
-
-    /* Дополнительные ID-шники для подстановки */
-    /* (не обязательно, но удобнее управлять через JS) */
   </style>
 </head>
 <body>
@@ -170,13 +167,7 @@
       <p id="mainParagraph"></p>
       <div class="mt-4">
         <strong id="projectGoalsTitle"></strong>
-        <ul
-          style="
-            display: inline-block;
-            text-align: left;
-            margin-top: 1rem;
-          "
-        >
+        <ul style="display: inline-block; text-align: left; margin-top: 1rem;">
           <li id="goal1"></li>
           <li id="goal2"></li>
           <li id="goal3"></li>
@@ -187,7 +178,6 @@
 
     <!-- Видео -->
     <section id="video" class="py-5">
-      <!-- Заголовок к видео -->
       <h2 style="font-size: 2.2rem; text-align:center; margin-bottom: 1.5rem;" id="videoTitle"></h2>
       <div class="video-container" style="max-width: 800px; margin: 0 auto;">
         <iframe
@@ -207,14 +197,11 @@
   <!-- Футер -->
   <footer>
     <div class="bottom-nav">
-      <!-- Адрес компании -->
       <p id="footerAddress"></p>
-      <!-- Ссылки на политику и лицензию -->
       <div class="bottom-nav-links">
         <a href="politika.html" id="footerPolicy" style="margin-right:2rem;"></a>
         <a href="licenziya.html" id="footerLicense"></a>
       </div>
-      <!-- Копирайт -->
       <p id="footerCopy"></p>
     </div>
   </footer>
@@ -289,6 +276,7 @@ and also provides an opportunity for specialists to earn by working at a conveni
         goal3: "Simplify the process of searching and paying for services.",
         goal4: "Improve the quality of medical services through a feedback system.",
         videoTitle: "More about the application",
+        // Для примера поменял, чтобы отличалось от русского
         videoSrc: "https://youtube.com/shorts/m74WTJ7pifA?feature=share",
         footerAddress: `MedixGO LLP
 Kazakhstan, Karaganda Region, Karaganda,
@@ -300,6 +288,9 @@ Moskovskaya St. 11, apt.4, index M02A1X4`,
     };
 
     function changeLang(lang) {
+      // Сохраняем выбранный язык в localStorage
+      localStorage.setItem('preferredLang', lang);
+
       // Удаляем класс active со всех кнопок
       document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
       // Активируем кнопку текущего языка
@@ -336,8 +327,15 @@ Moskovskaya St. 11, apt.4, index M02A1X4`,
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      // По умолчанию русский
-      changeLang('ru');
+      // Проверяем, сохранён ли язык в localStorage
+      const savedLang = localStorage.getItem('preferredLang');
+      if (savedLang) {
+        // Если да — используем его
+        changeLang(savedLang);
+      } else {
+        // Иначе русский по умолчанию
+        changeLang('ru');
+      }
     });
   </script>
 </body>
