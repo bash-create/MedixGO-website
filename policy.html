@@ -4,29 +4,95 @@
   <meta charset="UTF-8">
   <title>Политика конфиденциальности</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Bootstrap CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  />
+  <!-- Google Font Poppins -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+
   <style>
-    body {
-      font-family: sans-serif;
-      margin: 20px;
-      line-height: 1.6;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
     }
-    a {
-      color: blue; 
+    body {
+      background-color: #343a40; /* тёмный фон */
+      color: #ffffff;           /* белый текст */
+    }
+    /* ШАПКА (фиксированная, упрощённая) */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: #20232a;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      margin: 0; padding: 0;
+    }
+    .nav-links li a {
       text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+    }
+    .nav-links li a:hover {
+      color: #ddd;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 80px 20px; /* отступ под фиксированную шапку */
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    /* ФУТЕР */
+    footer {
+      background: #20232a;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
+  <!-- Шапка -->
+  <header>
+    <h3 style="margin:0;color:#fff;">MedixGO</h3>
+    <ul class="nav-links">
+      <li><a href="index.html">На главную</a></li>
+      <li><a href="license.html">Лицензионное соглашение</a></li>
+    </ul>
+  </header>
 
-  <!-- Шапка или меню (упрощённый, чтобы вернуться на главную) -->
-  <nav>
-    <a href="index.html">На главную</a>
-    | <a href="license.html">Лицензионное соглашение</a>
-  </nav>
-  
-  <h1>Политика конфиденциальности</h1>
-
-  <p>Политика конфиденциальности для мобильного приложения "MedixGO" 
+  <main>
+    <h1>Политика конфиденциальности</h1>
+    <p>
+     Политика конфиденциальности для мобильного приложения "MedixGO" 
 1. Общие положения 
 1.1. Настоящая Политика конфиденциальности (далее — Политика) регулирует обработку 
 персональной информации (далее — Персональная информация), которая собирается и 
@@ -87,8 +153,25 @@ support@medixgo.kz.
 уведомления в Приложении. 
 9. Контакты 
 Для вопросов, связанных с обработкой персональной информации, пожалуйста, свяжитесь с нами: 
-Адрес: г. Караганда, Республика Казахстан. Электронная почта: support@medixgo.kz</p>
-  <!-- ... -->
+Адрес: г. Караганда, Республика Казахстан. Электронная почта: support@medixgo.kz
+    </p>
+    <p>
+      MedixGO — это ...
+      <!-- ваш текст -->
+    </p>
+    <p>
+      1. Общие положения ...  
+      2. Права и обязанности ...  
+      <!-- и т.д. -->
+    </p>
+    <!-- Дополняйте своим контентом -->
+  </main>
 
+  <footer>
+    © 2025 MedixGO
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
