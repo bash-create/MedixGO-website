@@ -15,6 +15,14 @@
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
     rel="stylesheet"
   />
+  <!-- Font Awesome для иконок -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-..."
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
 
   <style>
     * {
@@ -140,6 +148,17 @@
     .bottom-nav-links a:hover {
       text-decoration: underline;
     }
+
+    /* Кнопки контактов (иконки) */
+    .contact-btn {
+      width: 50px; 
+      height: 50px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
   </style>
 </head>
 <body>
@@ -169,7 +188,7 @@
       <!-- Основной параграф -->
       <p id="mainParagraph"></p>
 
-      <!-- Заголовок "Цели проекта" (центрированный, как и "Главная") -->
+      <!-- Заголовок "Цели проекта" (центрированный) -->
       <h2 id="projectGoalsTitle" style="margin-top: 2rem;"></h2>
 
       <ul style="display: inline-block; text-align: left; margin-top: 1rem;">
@@ -196,47 +215,59 @@
         </iframe>
       </div>
     </section>
-  </main>
 
-      <!-- КОНТАКТЫ -->
+    <!-- Заголовок "Связаться с нами" (или на других языках) -->
+    <h2 id="contactTitle" style="margin-top: 2rem;"></h2>
+
+    <!-- Блок с иконками контактов -->
     <div class="row justify-content-center">
       <div class="col-12 col-md-8">
         <div class="d-flex flex-column flex-sm-row flex-wrap justify-content-center gap-3">
-          <a href="mailto:support@medixgo.kz" class="btn btn-outline-light contact-btn">
-            Email: support@medixgo.kz
+          <!-- Email -->
+          <a
+            href="mailto:support@medixgo.kz"
+            class="btn btn-outline-light contact-btn"
+            target="_blank"
+          >
+            <i class="fa-solid fa-envelope"></i>
           </a>
+          <!-- WhatsApp -->
           <a
             href="https://wa.me/77716430037"
-            target="_blank"
             class="btn btn-outline-light contact-btn"
+            target="_blank"
           >
-            WhatsApp: +7 771 643 0037
+            <i class="fa-brands fa-whatsapp"></i>
           </a>
+          <!-- Telegram -->
           <a
             href="https://t.me/+77716430037"
-            target="_blank"
             class="btn btn-outline-light contact-btn"
+            target="_blank"
           >
-            Telegram: +7 771 643 0037
+            <i class="fa-brands fa-telegram"></i>
           </a>
+          <!-- Telegram Bot -->
           <a
             href="https://t.me/MedixGO_bot"
-            target="_blank"
             class="btn btn-outline-light contact-btn"
+            target="_blank"
           >
-            Telegram Bot: t.me/MedixGO_bot
+            <i class="fa-brands fa-telegram"></i>
           </a>
+          <!-- Instagram -->
           <a
             href="https://instagram.com/medixgo.kz"
-            target="_blank"
             class="btn btn-outline-light contact-btn"
+            target="_blank"
           >
-            Instagram: medixgo.kz
+            <i class="fa-brands fa-instagram"></i>
           </a>
         </div>
       </div>
     </div>
-  
+  </main>
+
   <!-- Футер -->
   <footer>
     <div class="bottom-nav">
@@ -266,9 +297,7 @@
 процедуры), с квалифицированным медперсоналом. Приложение предлагает удобную 
 платформу для поиска, бронирования и оплаты услуг медицинского персонала,
 а также предоставляет возможность специалистам зарабатывать, работая в удобное время.`,
-        // Новый заголовок "Цели проекта"
         projectGoalsTitle: "Цели проекта",
-        // Список целей
         goal1: "Обеспечить доступность квалифицированной медицинской помощи на дому.",
         goal2: "Создать возможность для медицинского персонала получать дополнительный доход.",
         goal3: "Упростить процесс поиска и оплаты услуг.",
@@ -276,6 +305,8 @@
         // Видео
         videoTitle: "Подробнее о приложении",
         videoSrc: "https://www.youtube.com/embed/dyO8YV84Izw",
+        // Заголовок «Связаться с нами»
+        contactTitle: "Связаться с нами",
         // Футер
         footerAddress: `ТОО «MedixGO»
 Казахстан, Карагандинская область, г. Караганда,
@@ -300,6 +331,7 @@
         goal4: "Пікірлер жүйесі арқылы медициналық қызметтердің сапасын арттыру.",
         videoTitle: "Қосымша туралы толығырақ",
         videoSrc: "https://www.youtube.com/embed/m74WTJ7pifA",
+        contactTitle: "Бізбен байланысу",
         footerAddress: `"MedixGO" ЖШС
 Қазақстан, Қарағанды облысы, Қарағанды қ.,
 Мәскеу көшесі, 11-үй, 4-пәтер, M02A1X4`,
@@ -322,6 +354,7 @@ and also provides an opportunity for specialists to earn by working at a conveni
         goal4: "Improve the quality of medical services through a feedback system.",
         videoTitle: "More about the application",
         videoSrc: "https://www.youtube.com/embed/dyO8YV84Izw",
+        contactTitle: "Contact us",
         footerAddress: `MedixGO LLP
 Kazakhstan, Karaganda Region, Karaganda,
 Moskovskaya St. 11, apt.4, index M02A1X4`,
@@ -351,8 +384,6 @@ Moskovskaya St. 11, apt.4, index M02A1X4`,
       // Главная секция
       document.getElementById("mainTitle").textContent = t.mainTitle;
       document.getElementById("mainParagraph").textContent = t.mainParagraph;
-
-      // Заголовок "Цели проекта" (или на другом языке)
       document.getElementById("projectGoalsTitle").textContent = t.projectGoalsTitle;
 
       // Список целей
@@ -364,6 +395,9 @@ Moskovskaya St. 11, apt.4, index M02A1X4`,
       // Видео
       document.getElementById("videoTitle").textContent = t.videoTitle;
       document.getElementById("videoFrame").src = t.videoSrc;
+
+      // Заголовок "Связаться с нами"
+      document.getElementById("contactTitle").textContent = t.contactTitle;
 
       // Футер
       document.getElementById("footerAddress").textContent = t.footerAddress;
