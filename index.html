@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>MedixGO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -10,12 +10,7 @@
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
   />
-  <!-- Bootstrap Icons (для иконок) -->
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
-  />
-  <!-- Google Font -->
+  <!-- Google Font: Poppins -->
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
     rel="stylesheet"
@@ -23,16 +18,16 @@
 
   <style>
     * {
-      margin: 0; 
+      margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: 'Poppins', sans-serif;
     }
     body {
-      background-color: #343a40; /* Тёмный фон */
-      color: #ffffff;           /* Белый текст */
+      background-color: #343a40; /* тёмный фон */
+      color: #ffffff;           /* белый текст */
     }
-    /* ШАПКА (фиксированная) */
+    /* Шапка (фиксированная) */
     header {
       position: sticky;
       top: 0;
@@ -43,6 +38,7 @@
       justify-content: space-between;
       padding: 10px 20px;
     }
+    /* Логотип */
     #logo {
       width: 60px;
       height: auto;
@@ -52,7 +48,7 @@
       display: flex;
       gap: 1rem;
       list-style: none;
-      margin: 0; 
+      margin: 0;
       padding: 0;
     }
     .nav-links li a {
@@ -64,8 +60,7 @@
     .nav-links li a:hover {
       color: #ddd;
     }
-
-    /* Языковой переключатель */
+    /* Языки (справа) */
     .lang-switch {
       display: flex;
       gap: 0.5rem;
@@ -84,7 +79,7 @@
 
     /* Основной контейнер */
     main {
-      padding: 80px 20px; /* отступ от фиксированной шапки */
+      padding: 80px 20px; /* отступ под фикс.шапку */
       max-width: 1200px;
       margin: auto;
       text-align: center;
@@ -99,74 +94,23 @@
     }
     section p,
     section ul {
-      font-size: 1.1rem; 
-      line-height: 1.5;
+      font-size: 1.1rem;
+      line-height: 1.6;
     }
 
-    /* Видео (меньше, центрированный) */
+    /* Видео (уменьшенное, центрированное) */
     .video-container {
       position: relative;
       padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
-      max-width: 600px; /* Делаем поменьше */
+      max-width: 600px;
       margin: 20px auto;
     }
     .video-container iframe {
       position: absolute;
-      top: 0; 
-      left: 0;
-      width: 100%; 
-      height: 100%;
-    }
-
-    /* Контакты (иконки) */
-    .contact-icons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 1rem;
-    }
-    .contact-icons a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-      border: 1px solid #fff;
-      padding: 5px 10px;
-      border-radius: 5px;
-      font-size: 1rem;
-    }
-    .contact-icons a:hover {
-      background: #444;
-    }
-
-    /* Форма «Связаться» */
-    .contact-form {
-      max-width: 500px;
-      margin: 20px auto;
-    }
-    .contact-form input,
-    .contact-form textarea {
-      margin-bottom: 1rem;
-      background: #454b52; 
-      color: #fff;
-      border: 1px solid #666;
-      font-size: 1rem;
-    }
-    .contact-form input::placeholder,
-    .contact-form textarea::placeholder {
-      color: #bbb;
-    }
-    .contact-form button {
-      background: #007bff;
-      border: none;
-      font-size: 1rem;
-      font-weight: 600;
-      padding: 0.7rem 1.2rem;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
     }
 
     /* Футер */
@@ -177,16 +121,16 @@
       padding: 1rem;
       margin-top: 40px;
     }
-    /* Нижняя «навигация» */
+    /* Нижняя часть, где меняем порядок */
     .bottom-nav {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.7rem;
     }
     .bottom-nav-links {
       display: flex;
-      gap: 1rem;
+      gap: 2rem;
     }
     .bottom-nav-links a {
       color: #fff;
@@ -199,15 +143,17 @@
   </style>
 </head>
 <body>
-  <!-- ШАПКА -->
+
+  <!-- Шапка -->
   <header>
     <div class="d-flex align-items-center gap-3">
       <img src="Logo.png" alt="MedixGO Logo" id="logo" />
       <ul class="nav-links">
-        <li><a href="#home" id="navHome">Главная</a></li>
-        <li><a href="#contact" id="navContact">Связаться</a></li>
+        <li><a href="#home">Главная</a></li>
+        <li><a href="#video">Видео</a></li>
       </ul>
     </div>
+    <!-- Языки справа в шапке -->
     <div class="lang-switch">
       <button class="lang-btn active" onclick="changeLang('ru')">RUS</button> |
       <button class="lang-btn" onclick="changeLang('kz')">KAZ</button> |
@@ -215,32 +161,35 @@
     </div>
   </header>
 
-  <!-- Основной контент -->
+  <!-- Контент -->
   <main>
     <!-- Главная -->
     <section id="home">
-      <h2 id="homeTitle">Главная</h2>
-      <p id="homeDesc" class="mt-3">
-        MedixGO – это мобильное приложение, предназначенное для соединения пациентов,
-        нуждающихся в медицинской помощи на дому, с квалифицированным медперсоналом...
+      <h2>Главная</h2>
+      <p>
+        MedixGO – это мобильное приложение, предназначенное для соединения пациентов, 
+        нуждающихся в медицинской помощи на дому (уколы, перевязки, базовые медицинские 
+        процедуры), с квалифицированным медперсоналом. Приложение предлагает удобную 
+        платформу для поиска, бронирования и оплаты услуг медицинского персонала, 
+        а также предоставляет возможность специалистам зарабатывать, работая в удобное 
+        время.
       </p>
       <div class="mt-4">
-        <strong id="goalsTitle">Цели проекта:</strong>
-        <ul id="goalsList" style="display: inline-block; text-align: left; margin-top: 1rem;">
-          <li>Обеспечить доступность медицинской помощи на дому.</li>
-          <li>Создать возможность для медперсонала получать дополнительный доход.</li>
-          <li>Упростить поиск и оплату услуг.</li>
-          <li>Повысить качество через систему отзывов.</li>
+        <strong>Цели проекта:</strong>
+        <ul style="display: inline-block; text-align: left; margin-top: 1rem;">
+          <li>Обеспечить доступность квалифицированной медицинской помощи на дому.</li>
+          <li>Создать возможность для медицинского персонала получать дополнительный доход.</li>
+          <li>Упростить процесс поиска и оплаты услуг.</li>
+          <li>Повысить качество медицинских услуг за счет системы отзывов.</li>
         </ul>
       </div>
     </section>
 
     <!-- Видео -->
-    <section>
-      <h2 id="videoTitle">Видео</h2>
+    <section id="video">
+      <h2>Видео</h2>
       <div class="video-container">
         <iframe
-          id="langVideo"
           src="https://www.youtube.com/embed/dyO8YV84Izw"
           title="YouTube video"
           frameborder="0"
@@ -249,62 +198,18 @@
         </iframe>
       </div>
     </section>
-
-    <!-- Контакты + Форма -->
-    <section id="contact">
-      <h2 id="contactTitle">Связаться с нами</h2>
-      <div class="contact-icons" id="contactIcons">
-        <a href="mailto:support@medixgo.kz">
-          <i class="bi bi-envelope"></i> Email
-        </a>
-        <a href="https://wa.me/77716430037" target="_blank">
-          <i class="bi bi-whatsapp"></i> WhatsApp
-        </a>
-        <a href="https://t.me/+77716430037" target="_blank">
-          <i class="bi bi-telegram"></i> Telegram
-        </a>
-        <a href="https://t.me/MedixGO_bot" target="_blank">
-          <i class="bi bi-telegram"></i> Bot
-        </a>
-        <a href="https://instagram.com/medixgo.kz" target="_blank">
-          <i class="bi bi-instagram"></i> Instagram
-        </a>
-      </div>
-      <!-- Форма -->
-      <div class="contact-form">
-        <input
-          type="text"
-          class="form-control"
-          id="inputName"
-          placeholder="Введите имя"
-        />
-        <input
-          type="text"
-          class="form-control"
-          id="inputPhone"
-          placeholder="Введите номер телефона"
-        />
-        <textarea
-          class="form-control"
-          rows="4"
-          id="inputMessage"
-          placeholder="Введите сообщение"
-        ></textarea>
-        <button class="btn btn-primary" id="sendBtn">Отправить</button>
-      </div>
-    </section>
   </main>
 
-  <!-- ФУТЕР (внизу о нас + политика + лицензия) -->
+  <!-- Футер -->
   <footer>
     <div class="bottom-nav">
+      <!-- Меняем порядок: сначала ссылки, потом ©, потом адрес -->
       <div class="bottom-nav-links">
-        <!-- Ведут на policy.html и license.html -->
-        <a href="policy.html">Политика конфиденциальности</a>
-        <a href="license.html">Лицензионное соглашение</a>
+        <a href="#" style="margin-right:2rem;">Политика конфиденциальности</a>
+        <a href="#">Лицензионное соглашение</a>
       </div>
-      <p class="mt-2">© 2025 MedixGO</p>
-      <p style="margin-top: 1rem;">
+      <p>© 2025 MedixGO</p>
+      <p>
         ТОО «MedixGO»<br>
         Казахстан, Карагандинская область, г. Караганда,<br>
         ул. Московская, дом 11, кв.4, индекс M02A1X4
@@ -316,15 +221,19 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    // Тексты для 3 языков (пример, допишите если надо):
-    const videoMap = { ru: 'dyO8YV84Izw', kz: 'm74WTJ7pifA', en: 'dyO8YV84Izw' };
-
+    // Если нужно полноценное переключение языков - допишите сюда
     function changeLang(lang) {
-      // Подсветка
+      // Подсветка активной кнопки
       document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-      const clickedBtn = document.querySelector(`.lang-btn[onclick="changeLang('${lang}')"]`);
-      if(clickedBtn) clickedBtn.classList.add('active');
+      const btn = document.querySelector(`.lang-btn[onclick="changeLang('${lang}')"]`);
+      if(btn) btn.classList.add('active');
 
-      // Меняем видео
-      const iframe = document.getElementById('langVideo');
-      iframe.src = 'https://www
+      // Пример: console.log(`Язык переключён на ${lang}`);
+    }
+    // По умолчанию русский
+    document.addEventListener('DOMContentLoaded', () => {
+      changeLang('ru');
+    });
+  </script>
+</body>
+</html>
