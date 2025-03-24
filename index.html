@@ -139,6 +139,9 @@
     .bottom-nav-links a:hover {
       text-decoration: underline;
     }
+
+    /* Дополнительные ID-шники для подстановки */
+    /* (не обязательно, но удобнее управлять через JS) */
   </style>
 </head>
 <body>
@@ -147,8 +150,8 @@
     <div class="d-flex align-items-center gap-3">
       <img src="Logo.png" alt="MedixGO Logo" id="logo" />
       <ul class="nav-links">
-        <li><a href="#home">Главная</a></li>
-        <li><a href="#video">Видео</a></li>
+        <li><a href="#home" id="navHome"></a></li>
+        <li><a href="#video" id="navVideo"></a></li>
       </ul>
     </div>
     <!-- Языки справа в шапке -->
@@ -163,65 +166,56 @@
   <main>
     <!-- Главная -->
     <section id="home">
-      <h2>Главная</h2>
-      <p>
-        MedixGO – это мобильное приложение, предназначенное для соединения пациентов, 
-        нуждающихся в медицинской помощи на дому (уколы, перевязки, базовые медицинские 
-        процедуры), с квалифицированным медперсоналом. Приложение предлагает удобную 
-        платформу для поиска, бронирования и оплаты услуг медицинского персонала, 
-        а также предоставляет возможность специалистам зарабатывать, работая в удобное 
-        время.
-      </p>
+      <h2 id="mainTitle"></h2>
+      <p id="mainParagraph"></p>
       <div class="mt-4">
-        <strong>Цели проекта:</strong>
-        <ul style="display: inline-block; text-align: left; margin-top: 1rem;">
-          <li>Обеспечить доступность квалифицированной медицинской помощи на дому.</li>
-          <li>Создать возможность для медицинского персонала получать дополнительный доход.</li>
-          <li>Упростить процесс поиска и оплаты услуг.</li>
-          <li>Повысить качество медицинских услуг за счет системы отзывов.</li>
+        <strong id="projectGoalsTitle"></strong>
+        <ul
+          style="
+            display: inline-block;
+            text-align: left;
+            margin-top: 1rem;
+          "
+        >
+          <li id="goal1"></li>
+          <li id="goal2"></li>
+          <li id="goal3"></li>
+          <li id="goal4"></li>
         </ul>
       </div>
     </section>
 
     <!-- Видео -->
- <section id="video" class="py-5">
-  <!-- Крупный заголовок, по центру -->
-  <h2 style="font-size: 2.2rem; text-align:center; margin-bottom: 1.5rem;">
-    Подробнее о приложении
-  </h2>
-  
-  <div class="video-container" style="max-width: 800px; margin: 0 auto;">
-    <iframe
-      width="100%"
-      height="450"
-      src="https://www.youtube.com/embed/dyO8YV84Izw"
-      title="YouTube video"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen>
-    </iframe>
-  </div>
-</section>
-
+    <section id="video" class="py-5">
+      <!-- Заголовок к видео -->
+      <h2 style="font-size: 2.2rem; text-align:center; margin-bottom: 1.5rem;" id="videoTitle"></h2>
+      <div class="video-container" style="max-width: 800px; margin: 0 auto;">
+        <iframe
+          id="videoFrame"
+          width="100%"
+          height="450"
+          src=""
+          title="YouTube video"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </section>
   </main>
 
   <!-- Футер -->
   <footer>
     <div class="bottom-nav">
       <!-- Адрес компании -->
-      <p>
-        ТОО «MedixGO»<br>
-        Казахстан, Карагандинская область, г. Караганда,<br>
-        ул. Московская, дом 11, кв.4, индекс M02A1X4
-      </p>
+      <p id="footerAddress"></p>
       <!-- Ссылки на политику и лицензию -->
       <div class="bottom-nav-links">
-        <!-- ВАЖНО: меняем href для перехода на новые страницы -->
-        <a href="politika.html" style="margin-right:2rem;">Политика конфиденциальности</a>
-        <a href="licenziya.html">Лицензионное соглашение</a>
+        <a href="politika.html" id="footerPolicy" style="margin-right:2rem;"></a>
+        <a href="licenziya.html" id="footerLicense"></a>
       </div>
       <!-- Копирайт -->
-      <p>© 2025 MedixGO</p>
+      <p id="footerCopy"></p>
     </div>
   </footer>
 
@@ -229,16 +223,120 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    // Переключение языков (пример)
+    // Словарь переводов для RU, KZ, EN
+    const translations = {
+      ru: {
+        // Шапка
+        navHome: "Главная",
+        navVideo: "Видео",
+        // Главная секция
+        mainTitle: "Главная",
+        mainParagraph: `MedixGO – это мобильное приложение, предназначенное для соединения пациентов,
+нуждающихся в медицинской помощи на дому (уколы, перевязки, базовые медицинские 
+процедуры), с квалифицированным медперсоналом. Приложение предлагает удобную 
+платформу для поиска, бронирования и оплаты услуг медицинского персонала,
+а также предоставляет возможность специалистам зарабатывать, работая в удобное время.`,
+        projectGoalsTitle: "Цели проекта:",
+        goal1: "Обеспечить доступность квалифицированной медицинской помощи на дому.",
+        goal2: "Создать возможность для медицинского персонала получать дополнительный доход.",
+        goal3: "Упростить процесс поиска и оплаты услуг.",
+        goal4: "Повысить качество медицинских услуг за счет системы отзывов.",
+        // Видео
+        videoTitle: "Подробнее о приложении",
+        videoSrc: "https://youtube.com/shorts/dyO8YV84Izw",
+        // Футер
+        footerAddress: `ТОО «MedixGO»
+Казахстан, Карагандинская область, г. Караганда,
+ул. Московская, дом 11, кв.4, индекс M02A1X4`,
+        footerPolicy: "Политика конфиденциальности",
+        footerLicense: "Лицензионное соглашение",
+        footerCopy: "© 2025 MedixGO",
+      },
+      kz: {
+        navHome: "Басты бет",
+        navVideo: "Бейне",
+        mainTitle: "Басты бет",
+        mainParagraph: `MedixGO – бұл үйде медициналық көмекке мұқтаж науқастарды (егулер, таңулар, негізгі 
+медициналық процедуралар) білікті медицина мамандарымен байланыстыруға арналған 
+мобильді қосымша. Қосымша медициналық персоналды іздеу, брондау және қызметтерді 
+төлеу үшін ыңғайлы платформаны ұсынады, сондай-ақ мамандарға қолайлы уақытта 
+жұмыс істеп, табыс табуға мүмкіндік береді.`,
+        projectGoalsTitle: "Жобаның мақсаттары:",
+        goal1: "Үйде білікті медициналық көмектің қолжетімділігін қамтамасыз ету.",
+        goal2: "Медицина мамандарына қосымша табыс табу мүмкіндігін жасау.",
+        goal3: "Қызметтерді іздеу мен төлеу үдерісін оңайлату.",
+        goal4: "Пікірлер жүйесі арқылы медициналық қызметтердің сапасын арттыру.",
+        videoTitle: "Қосымша туралы толығырақ",
+        videoSrc: "https://youtube.com/shorts/m74WTJ7pifA",
+        footerAddress: `"MedixGO" ЖШС
+Қазақстан, Қарағанды облысы, Қарағанды қ.,
+Мәскеу көшесі, 11-үй, 4-пәтер, M02A1X4`,
+        footerPolicy: "Құпиялық саясаты",
+        footerLicense: "Лицензиялық келісім",
+        footerCopy: "© 2025 MedixGO",
+      },
+      en: {
+        navHome: "Home",
+        navVideo: "Video",
+        mainTitle: "Home",
+        mainParagraph: `MedixGO is a mobile application designed to connect patients who need home medical care
+(injections, dressings, basic medical procedures) with qualified medical personnel. 
+The application offers a convenient platform to search, book, and pay for medical services, 
+and also provides an opportunity for specialists to earn by working at a convenient time.`,
+        projectGoalsTitle: "Project Goals:",
+        goal1: "Provide access to qualified home healthcare.",
+        goal2: "Enable medical staff to earn additional income.",
+        goal3: "Simplify the process of searching and paying for services.",
+        goal4: "Improve the quality of medical services through a feedback system.",
+        videoTitle: "More about the application",
+        videoSrc: "https://youtube.com/shorts/dyO8YV84Izw",
+        footerAddress: `MedixGO LLP
+Kazakhstan, Karaganda Region, Karaganda,
+Moskovskaya St. 11, apt.4, index M02A1X4`,
+        footerPolicy: "Privacy Policy",
+        footerLicense: "License Agreement",
+        footerCopy: "© 2025 MedixGO",
+      }
+    };
+
     function changeLang(lang) {
+      // Удаляем класс active со всех кнопок
       document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      // Активируем кнопку текущего языка
       const btn = document.querySelector(`.lang-btn[onclick="changeLang('${lang}')"]`);
       if(btn) btn.classList.add('active');
-      
+
+      // Достаем нужный объект
+      const t = translations[lang];
+
+      // Переводим шапку
+      document.getElementById("navHome").textContent = t.navHome;
+      document.getElementById("navVideo").textContent = t.navVideo;
+
+      // Главная секция
+      document.getElementById("mainTitle").textContent = t.mainTitle;
+      document.getElementById("mainParagraph").textContent = t.mainParagraph;
+      document.getElementById("projectGoalsTitle").textContent = t.projectGoalsTitle;
+      document.getElementById("goal1").textContent = t.goal1;
+      document.getElementById("goal2").textContent = t.goal2;
+      document.getElementById("goal3").textContent = t.goal3;
+      document.getElementById("goal4").textContent = t.goal4;
+
+      // Видео
+      document.getElementById("videoTitle").textContent = t.videoTitle;
+      document.getElementById("videoFrame").src = t.videoSrc;
+
+      // Футер
+      document.getElementById("footerAddress").textContent = t.footerAddress;
+      document.getElementById("footerPolicy").textContent = t.footerPolicy;
+      document.getElementById("footerLicense").textContent = t.footerLicense;
+      document.getElementById("footerCopy").textContent = t.footerCopy;
+
       console.log(`Язык переключён на ${lang}`);
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+      // По умолчанию русский
       changeLang('ru');
     });
   </script>
