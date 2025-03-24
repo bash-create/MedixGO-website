@@ -4,67 +4,147 @@
   <meta charset="UTF-8" />
   <title>MedixGO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Bootstrap CSS -->
+
+  <!-- Google Font для виксового стиля -->
   <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
     rel="stylesheet"
   />
+  <!-- Bootstrap CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  />
+
   <style>
-    body {
-      background-color: #343a40; /* Тёмный фон */
-      color: #ffffff;            /* Белый текст */
-      margin: 0;
-      padding: 0;
+    * {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+      font-family: 'Open Sans', sans-serif;
     }
-    /* ЛОГОТИП */
+    body {
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    /* Шапка + логотип */
+    header {
+      position: relative;
+      z-index: 10;
+      background: #fff;
+      text-align: center;
+      padding: 1rem;
+    }
     #logo {
-      width: 120px; /* Увеличенная ширина */
+      width: 120px;
       height: auto;
     }
-    /* КНОПКИ ЯЗЫКОВ */
+    /* Кнопки переключения языка в правом верхнем углу */
+    .lang-switcher {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+    }
     .language-btn {
       background: none;
       border: none;
-      color: #ffffff;
+      color: #333;
       cursor: pointer;
-      font-weight: bold;
+      font-weight: 600;
       margin: 0 5px;
     }
     .language-btn.active {
       text-decoration: underline;
     }
-    /* КОНТЕНТ */
-    .content {
-      padding: 40px 15px;
-    }
-    /* КНОПКИ КОНТАКТОВ */
-    .contact-btn {
-      display: inline-block;
-      margin: 5px;
-    }
-    /* МОДАЛЬНОЕ ОКНО PDF */
-    .modal-content {
-      color: #000; /* Текст внутри модалки чёрный для удобства чтения PDF */
-    }
-    /* ШАПКА САЙТА */
-    header {
+
+    /* HERO: крупная обложка */
+    .hero {
       position: relative;
-      text-align: center; /* Лого по центру */
-      padding: 20px 0;
+      min-height: 70vh;
+      background: url('https://static.wixstatic.com/media/84770f_6c8b89a4bfdf42e08e291fd2683239f5f000.jpg')
+        center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
     }
-    /* Блок с языками в правом верхнем углу */
-    .lang-switcher {
+    .hero-overlay {
       position: absolute;
-      top: 10px;
-      right: 20px;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.35);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      padding: 2rem;
+    }
+    .hero h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .hero p {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Общие стили секций */
+    .section {
+      padding: 3rem 1rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      text-align: center;
+    }
+    /* Кнопки контактов */
+    .contact-btn {
+      margin: 0.5rem;
+    }
+    /* Модальные окна Bootstrap (для PDF) */
+    .modal-content {
+      color: #000;
+    }
+    /* Футер */
+    footer {
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+    .small-text {
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    /* Скрытый блок (для Читать далее) */
+    .hidden-content {
+      display: none;
+      margin-top: 1rem;
+    }
+
+    .read-more-btn {
+      color: #0066cc;
+      cursor: pointer;
+      text-decoration: underline;
+      background: none;
+      border: none;
+      font-size: 1rem;
+      font-weight: 600;
     }
   </style>
 </head>
 
 <body>
-  <!-- ШАПКА -->
+  <!-- ШАПКА СВЕРХУ -->
   <header>
-    <img src="Logo.png" alt="Logo" id="logo" />
+    <img src="Logo.png" alt="MedixGO Logo" id="logo" />
     <div class="lang-switcher">
       <button class="language-btn active" onclick="changeLang('ru')">RUS</button> |
       <button class="language-btn" onclick="changeLang('kz')">KAZ</button> |
@@ -72,84 +152,123 @@
     </div>
   </header>
 
-  <!-- ОСНОВНОЙ КОНТЕНТ -->
-  <div class="content container text-center" id="content">
-    <h3 id="slogan" class="mb-4">
-      Зарабатывай, когда тебе удобно. Заботься о пациентах, а MedixGO позаботится обо
-      всём остальном.
-    </h3>
-    <p id="description" class="mb-5">
-      MedixGO – это мобильное приложение, предназначенное для соединения пациентов,
-      нуждающихся в медицинской помощи на дому (уколы, перевязки, базовые медицинские
-      процедуры), с квалифицированным медперсоналом. Приложение предлагает удобную
-      платформу для поиска, бронирования и оплаты услуг медперсонала, а также
-      предоставляет возможность специалистам зарабатывать, работая в удобное для них
-      время.
-    </p>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h3 id="slogan">
+        Зарабатывай, когда тебе удобно. Заботься о пациентах, а MedixGO позаботится обо
+        всём остальном.
+      </h3>
+      <p id="description">
+        MedixGO – это мобильное приложение, предназначенное для соединения пациентов,
+        нуждающихся в медицинской помощи на дому, с квалифицированным медперсоналом.
+      </p>
+    </div>
+  </section>
 
-    <!-- КОНТАКТЫ -->
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-8">
-        <div class="d-flex flex-column flex-sm-row flex-wrap justify-content-center gap-3">
-          <a href="mailto:support@medixgo.kz" class="btn btn-outline-light contact-btn">
-            Email: support@medixgo.kz
-          </a>
-          <a
-            href="https://wa.me/77716430037"
-            target="_blank"
-            class="btn btn-outline-light contact-btn"
-          >
-            WhatsApp: +7 771 643 0037
-          </a>
-          <a
-            href="https://t.me/+77716430037"
-            target="_blank"
-            class="btn btn-outline-light contact-btn"
-          >
-            Telegram: +7 771 643 0037
-          </a>
-          <a
-            href="https://t.me/MedixGO_bot"
-            target="_blank"
-            class="btn btn-outline-light contact-btn"
-          >
-            Telegram Bot: t.me/MedixGO_bot
-          </a>
-          <a
-            href="https://instagram.com/medixgo.kz"
-            target="_blank"
-            class="btn btn-outline-light contact-btn"
-          >
-            Instagram: medixgo.kz
-          </a>
+  <!-- ОПИСАНИЕ ПРОЕКТА С КНОПКОЙ "ЧИТАТЬ ДАЛЕЕ" -->
+  <section class="section">
+    <h2>О проекте</h2>
+    <p class="text-center mb-4">
+      MedixGO — это мобильное приложение, предназначенное для соединения пациентов,
+      нуждающихся в медицинской помощи на дому (уколы, перевязки, базовые медицинские
+      процедуры), с квалифицированным медперсоналом.
+    </p>
+    <!-- КНОПКА ЧИТАТЬ ДАЛЕЕ -->
+    <div class="text-center">
+      <button class="read-more-btn" onclick="toggleReadMore()">Читать далее</button>
+    </div>
+    <!-- СКРЫТЫЙ БЛОК -->
+    <div id="hiddenContent" class="hidden-content">
+      <p class="text-center mt-3">
+        Приложение предлагает удобную платформу для поиска, бронирования и оплаты
+        услуг медицинского персонала, а также предоставляет возможность специалистам
+        зарабатывать, работая в удобное для них время.
+      </p>
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <h5>Цели проекта:</h5>
+          <ul class="small-text">
+            <li>Обеспечить доступность квалифицированной медпомощи на дому.</li>
+            <li>Создать возможность для медперсонала получать дополнительный доход.</li>
+            <li>Упростить процесс поиска и оплаты услуг.</li>
+            <li>Повысить качество услуг через систему рейтингов и отзывов.</li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <h5>Задачи проекта:</h5>
+          <ul class="small-text">
+            <li>Разработка удобного интерфейса (регистрация, поиск, бронирование).</li>
+            <li>Проверка квалификации специалистов, система рейтингов.</li>
+            <li>Прозрачная и безопасная система оплат.</li>
+            <li>Техподдержка и служба поддержки пользователей.</li>
+          </ul>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- ЮР. ИНФОРМАЦИЯ -->
-    <div class="mt-5">
-      <p class="mb-1"><strong>ТОО "MedixGO"</strong></p>
-      <p class="mb-1">
-        Казахстан, Карагандинская область,<br />
-        г. Караганда, р-н Казыбек Би,<br />
-        ул. Московская, дом 11, кв.4,<br />
-        почтовый индекс M02A1X4
-      </p>
-    </div>
-
-    <!-- ССЫЛКИ НА ДОКУМЕНТЫ -->
-    <div class="mt-4">
-      <a href="#" data-bs-toggle="modal" data-bs-target="#policyModal"
-        >Политика конфиденциальности</a
+  <!-- Контакты -->
+  <section class="section text-center">
+    <h2>Контакты</h2>
+    <div class="d-flex flex-column flex-sm-row flex-wrap justify-content-center gap-3">
+      <a
+        href="mailto:support@medixgo.kz"
+        class="btn btn-outline-dark contact-btn"
       >
-      |
-      <a href="#" data-bs-toggle="modal" data-bs-target="#licenseModal"
-        >Лицензионное соглашение</a
+        Email: support@medixgo.kz
+      </a>
+      <a
+        href="https://wa.me/77716430037"
+        target="_blank"
+        class="btn btn-outline-dark contact-btn"
       >
+        WhatsApp: +7 771 643 0037
+      </a>
+      <a
+        href="https://t.me/+77716430037"
+        target="_blank"
+        class="btn btn-outline-dark contact-btn"
+      >
+        Telegram: +7 771 643 0037
+      </a>
+      <a
+        href="https://t.me/MedixGO_bot"
+        target="_blank"
+        class="btn btn-outline-dark contact-btn"
+      >
+        Telegram Bot: t.me/MedixGO_bot
+      </a>
+      <a
+        href="https://instagram.com/medixgo.kz"
+        target="_blank"
+        class="btn btn-outline-dark contact-btn"
+      >
+        Instagram: medixgo.kz
+      </a>
     </div>
-  </div>
+  </section>
 
-  <!-- МОДАЛЬНОЕ ОКНО: ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ (PDF) -->
+  <!-- Юридическая информация -->
+  <section class="section text-center">
+    <h2>Юридическая информация</h2>
+    <p class="mb-1"><strong>ТОО "MedixGO"</strong></p>
+    <p class="mb-3">
+      Казахстан, Карагандинская область, г. Караганда,<br />
+      р-н Казыбек Би, ул. Московская, дом 11, кв.4,<br />
+      почтовый индекс M02A1X4
+    </p>
+    <a href="#" data-bs-toggle="modal" data-bs-target="#policyModal">
+      Политика конфиденциальности
+    </a>
+    |
+    <a href="#" data-bs-toggle="modal" data-bs-target="#licenseModal">
+      Лицензионное соглашение
+    </a>
+  </section>
+
+  <!-- Модалки (PDF) -->
   <div class="modal fade" id="policyModal" tabindex="-1">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -174,7 +293,6 @@
     </div>
   </div>
 
-  <!-- МОДАЛЬНОЕ ОКНО: ЛИЦЕНЗИОННОЕ СОГЛАШЕНИЕ (PDF) -->
   <div class="modal fade" id="licenseModal" tabindex="-1">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -199,30 +317,37 @@
     </div>
   </div>
 
+  <!-- Футер -->
+  <footer>
+    <p class="m-0">© 2025 MedixGO</p>
+  </footer>
+
   <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+  ></script>
 
   <script>
-    // Переводы (для двух блоков: slogan и description)
+    // ТЕКСТЫ ДЛЯ ПЕРЕКЛЮЧЕНИЯ ЯЗЫКА (сокращённая версия)
     const translations = {
       ru: {
         slogan:
-          "Зарабатывай, когда тебе удобно. Заботься о пациентах, а MedixGO позаботится обо всём остальным.",
+          "Зарабатывай, когда тебе удобно. Заботься о пациентах, а MedixGO позаботится обо всём остальном.",
         description:
-          "MedixGO – это мобильное приложение, предназначенное для соединения пациентов, нуждающихся в медицинской помощи на дому (уколы, перевязки, базовые медицинские процедуры), с квалифицированным медперсоналом. Приложение предлагает удобную платформу для поиска, бронирования и оплаты услуг медперсонала, а также предоставляет возможность специалистам зарабатывать, работая в удобное для них время.",
+          "MedixGO – это мобильное приложение, предназначенное для соединения пациентов, нуждающихся в медицинской помощи на дому, с квалифицированным медперсоналом."
       },
       kz: {
         slogan:
           "Өзіңізге ыңғайлы уақытта табыс табыңыз. Пациенттерге қамқорлық жасаңыз, қалғанын MedixGO реттейді.",
         description:
-          "MedixGO – үйде медициналық көмекке мұқтаж пациенттерді (инъекция, таңу, базалық медициналық рәсімдер) білікті медициналық қызметкерлермен байланыстыруға арналған мобильді қосымша. Қосымша медициналық қызметкерлерді іздеу, брондау және төлеуге арналған ыңғайлы платформаны ұсынады, сондай-ақ мамандарға ыңғайлы уақытта табыс табуға мүмкіндік береді.",
+          "MedixGO – үйде медициналық көмекке мұқтаж пациенттерді білікті медициналық қызметкерлермен байланыстыруға арналған мобильді қосымша."
       },
       en: {
         slogan:
           "Earn when it's convenient for you. Take care of patients, MedixGO will handle the rest.",
         description:
-          "MedixGO is a mobile app designed to connect patients requiring medical care at home (injections, bandages, basic medical procedures) with qualified medical personnel. The app provides a convenient platform for searching, booking, and paying for medical staff services, as well as enabling specialists to earn income at their convenience.",
-      },
+          "MedixGO is a mobile application designed to connect patients needing medical home care with qualified medical staff."
+      }
     };
 
     function changeLang(lang) {
@@ -238,6 +363,16 @@
         `.language-btn[onclick="changeLang('${lang}')"]`
       );
       if (btn) btn.classList.add("active");
+    }
+
+    // Скрипт для кнопки "Читать далее"
+    function toggleReadMore() {
+      const hiddenBlock = document.getElementById("hiddenContent");
+      if (hiddenBlock.style.display === "none") {
+        hiddenBlock.style.display = "block";
+      } else {
+        hiddenBlock.style.display = "none";
+      }
     }
   </script>
 </body>
