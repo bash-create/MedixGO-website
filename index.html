@@ -121,7 +121,7 @@
       padding: 1rem;
       margin-top: 40px;
     }
-    /* Нижняя часть, где меняем порядок */
+    /* Нижняя часть футера */
     .bottom-nav {
       display: flex;
       flex-direction: column;
@@ -143,7 +143,6 @@
   </style>
 </head>
 <body>
-
   <!-- Шапка -->
   <header>
     <div class="d-flex align-items-center gap-3">
@@ -200,20 +199,22 @@
     </section>
   </main>
 
-  <!-- Футер -->
+  <!-- Футер с изменённым порядком -->
   <footer>
     <div class="bottom-nav">
-      <!-- Меняем порядок: сначала ссылки, потом ©, потом адрес -->
-      <div class="bottom-nav-links">
-        <a href="#" style="margin-right:2rem;">Политика конфиденциальности</a>
-        <a href="#">Лицензионное соглашение</a>
-      </div>
-      <p>© 2025 MedixGO</p>
+      <!-- 1) Адрес компании -->
       <p>
         ТОО «MedixGO»<br>
         Казахстан, Карагандинская область, г. Караганда,<br>
         ул. Московская, дом 11, кв.4, индекс M02A1X4
       </p>
+      <!-- 2) Ссылки -->
+      <div class="bottom-nav-links">
+        <a href="#" style="margin-right:2rem;">Политика конфиденциальности</a>
+        <a href="#">Лицензионное соглашение</a>
+      </div>
+      <!-- 3) Копирайт -->
+      <p>© 2025 MedixGO</p>
     </div>
   </footer>
 
@@ -228,7 +229,8 @@
       const btn = document.querySelector(`.lang-btn[onclick="changeLang('${lang}')"]`);
       if(btn) btn.classList.add('active');
 
-      // Пример: console.log(`Язык переключён на ${lang}`);
+      // Можно добавить логику переключения текстов
+      console.log(`Язык переключён на ${lang}`);
     }
     // По умолчанию русский
     document.addEventListener('DOMContentLoaded', () => {
