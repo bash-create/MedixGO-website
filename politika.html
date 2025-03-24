@@ -413,6 +413,9 @@ Moskovskaya St. 11, apt.4, M02A1X4`,
     };
 
     function changeLang(lang) {
+      // Сохраняем выбранный язык в localStorage
+      localStorage.setItem('preferredLang', lang);
+
       // Снимаем класс active со всех кнопок
       document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
       // Активируем кнопку выбранного языка
@@ -438,9 +441,17 @@ Moskovskaya St. 11, apt.4, M02A1X4`,
       console.log(`Язык переключён на ${lang}`);
     }
 
-    // По умолчанию RU
+    // При загрузке страницы
     document.addEventListener('DOMContentLoaded', () => {
-      changeLang('ru');
+      // Проверяем, сохранён ли язык в localStorage
+      const savedLang = localStorage.getItem('preferredLang');
+      if (savedLang) {
+        // Если есть — применяем
+        changeLang(savedLang);
+      } else {
+        // Иначе по умолчанию русский
+        changeLang('ru');
+      }
     });
   </script>
 </body>
