@@ -420,9 +420,12 @@ Moskovskaya St. 11, apt.4, M02A1X4`,
     };
 
     function changeLang(lang) {
+      // Сохраняем выбранный язык в localStorage
+      localStorage.setItem('preferredLang', lang);
+
       // Удаляем класс active со всех кнопок
       document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-      // Активируем кнопку текущего языка
+      // Активируем кнопку выбранного языка
       const btn = document.querySelector(`.lang-btn[onclick="changeLang('${lang}')"]`);
       if(btn) btn.classList.add('active');
 
@@ -434,8 +437,6 @@ Moskovskaya St. 11, apt.4, M02A1X4`,
 
       // Заголовок и тело лицензионного соглашения
       document.getElementById("licenseTitle").textContent = t.licenseTitle;
-      // Чтобы сохранить переносы, используем textContent + white-space: pre-wrap
-      // Если хотите поддержку HTML-тегов внутри текста, используйте innerHTML
       document.getElementById("licenseBody").textContent = t.licenseBody;
 
       // Футер
@@ -447,9 +448,17 @@ Moskovskaya St. 11, apt.4, M02A1X4`,
       console.log(`Язык переключён на ${lang}`);
     }
 
-    // При загрузке страницы ставим язык по умолчанию (RU)
+    // При загрузке страницы
     document.addEventListener('DOMContentLoaded', () => {
-      changeLang('ru');
+      // Смотрим, есть ли сохранённый язык в localStorage
+      const savedLang = localStorage.getItem('preferredLang');
+      if (savedLang) {
+        // Если язык найден, применяем его
+        changeLang(savedLang);
+      } else {
+        // Иначе по умолчанию русский
+        changeLang('ru');
+      }
     });
   </script>
 </body>
