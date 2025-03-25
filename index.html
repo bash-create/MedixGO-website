@@ -46,6 +46,26 @@
       justify-content: space-between;
       padding: 10px 20px;
     }
+/* Стилизация скроллбара для Chrome, Edge, Safari */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #20232a; /* Цвет трека (фона) скролла под цвет сайта */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #343a40; /* Цвет ползунка (скролла), совпадает с цветом фона страницы */
+    border-radius: 6px;
+    border: 3px solid #20232a; /* Цвет границы ползунка (трек) */
+}
+
+/* Стилизация скроллбара для Firefox */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #343a40 #20232a;
+}    
     /* Логотип */
     #logo {
       width: 60px;
