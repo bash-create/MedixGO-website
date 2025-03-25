@@ -4,93 +4,95 @@
   <meta charset="UTF-8">
   <title>MedixGO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+
+  <!-- Google Font: Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
 
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
   <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      font-family: 'Poppins', sans-serif;
-      overflow-x: hidden;
-      overflow-y: auto;
-      scroll-snap-type: y mandatory;
-    }
-
-    section {
-      height: 100vh;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      scroll-snap-align: start;
-      position: relative;
-      color: #fff;
-      background-image: url('image.png');
-      background-size: cover;
-      background-attachment: fixed;
-      background-position: center;
-    }
-
-    .content-box {
-      background: rgba(32, 35, 42, 0.85);
-      padding: 30px;
-      border-radius: 10px;
-      max-width: 800px;
-      margin: auto;
-    }
-
-    .logo {
-      width: 120px;
-      height: auto;
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-
-    p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+    body { overflow-x:hidden; background-color:#343a40; color:#fff; }
+    header { position:sticky; top:0; z-index:999; background:#20232a; padding:10px 20px; }
+    #logo { width:60px; }
+    .nav-links { display:flex; gap:1rem; list-style:none; }
+    .nav-links a { color:#fff; text-decoration:none; font-weight:600; }
+    .lang-btn { background:none; border:none; color:#fff; cursor:pointer; }
+    main { padding-top:80px; }
+    section { padding:80px 20px; text-align:center; background:url('image.png') center fixed; background-size:cover; }
+    .content-box { background:rgba(32,35,42,0.85); padding:30px; border-radius:10px; max-width:800px; margin:auto; }
+    .contact-btn { width:50px; height:50px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:1.4rem; }
+    footer { background:#20232a; padding:1rem; margin-top:40px; }
   </style>
 </head>
 <body>
+  <header>
+    <div class="d-flex align-items-center gap-3">
+      <img src="Logotip.jpg" id="logo" />
+      <ul class="nav-links">
+        <li><a href="#home" id="navHome"></a></li>
+        <li><a href="#video" id="navVideo"></a></li>
+      </ul>
+    </div>
+    <div class="lang-switch">
+      <button class="lang-btn active" onclick="changeLang('ru')">RUS</button> |
+      <button class="lang-btn" onclick="changeLang('kz')">KAZ</button> |
+      <button class="lang-btn" onclick="changeLang('en')">ENG</button>
+    </div>
+  </header>
 
-<section>
-  <div class="content-box">
-    <img src="Logotip.jpg" alt="MedixGO Logo" class="logo"/>
-    <h1>MedixGO</h1>
-    <p>MedixGO – это мобильное приложение, предназначенное для соединения пациентов, нуждающихся в медицинской помощи на дому (уколы, перевязки, базовые медицинские процедуры), с квалифицированным медперсоналом. Приложение предлагает удобную платформу для поиска, бронирования и оплаты услуг медицинского персонала, а также предоставляет возможность специалистам зарабатывать, работая в удобное время.</p>
-  </div>
-</section>
+  <main>
+    <section id="home">
+      <div class="content-box">
+        <p id="mainParagraph"></p>
+      </div>
+    </section>
 
-<section>
-  <div class="content-box">
-    <h1>Цели проекта</h1>
-    <ul>
-      <li>Обеспечить доступность медицинской помощи на дому.</li>
-      <li>Создать возможности дополнительного дохода для медперсонала.</li>
-      <li>Упростить процесс поиска и оплаты медицинских услуг.</li>
-      <li>Повысить качество услуг через систему отзывов.</li>
-    </ul>
-  </div>
-</section>
+    <section id="video">
+      <div class="content-box">
+        <h2 id="videoTitle"></h2>
+        <iframe id="videoFrame" width="100%" height="450" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </section>
 
-<section>
-  <div class="content-box">
-    <h1>Связаться с нами</h1>
-    <p>Email: support@medixgo.kz<br>
-       WhatsApp: +7 771 643 0037<br>
-       Telegram: @MedixGO_bot
-    </p>
-  </div>
-</section>
+    <section id="contact">
+      <div class="content-box">
+        <h2 id="contactTitle"></h2>
+        <a href="mailto:support@medixgo.kz" class="btn btn-outline-light contact-btn"><i class="fa-solid fa-envelope"></i></a>
+        <a href="https://wa.me/77716430037" class="btn btn-outline-light contact-btn"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://t.me/MedixGO_bot" class="btn btn-outline-light contact-btn"><i class="fa-brands fa-telegram"></i></a>
+        <a href="https://instagram.com/medixgo.kz" class="btn btn-outline-light contact-btn"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </section>
+  </main>
 
+  <footer>
+    <p id="footerAddress"></p>
+    <a href="politika.html" id="footerPolicy"></a> |
+    <a href="licenziya.html" id="footerLicense"></a>
+    <p id="footerCopy"></p>
+  </footer>
+
+  <script>
+    const translations={ru:{navHome:"",navVideo:"Видео",mainParagraph:"MedixGO – это мобильное приложение, предназначенное для соединения пациентов, нуждающихся в медицинской помощи на дому (уколы, перевязки, базовые медицинские процедуры), с квалифицированным медперсоналом. Приложение предлагает удобную платформу для поиска, бронирования и оплаты услуг медицинского персонала, а также предоставляет возможность специалистам зарабатывать, работая в удобное время.",videoTitle:"Подробнее о приложении",videoSrc:"https://www.youtube.com/embed/dyO8YV84Izw",contactTitle:"Связаться с нами",footerAddress:"ТОО «MedixGO» Казахстан, Караганда",footerPolicy:"Политика конфиденциальности",footerLicense:"Лицензионное соглашение",footerCopy:"© 2025 MedixGO"}};
+
+    function changeLang(lang){
+      document.getElementById("navVideo").textContent=translations[lang].navVideo;
+      document.getElementById("mainParagraph").textContent=translations[lang].mainParagraph;
+      document.getElementById("videoTitle").textContent=translations[lang].videoTitle;
+      document.getElementById("videoFrame").src=translations[lang].videoSrc;
+      document.getElementById("contactTitle").textContent=translations[lang].contactTitle;
+      document.getElementById("footerAddress").textContent=translations[lang].footerAddress;
+      document.getElementById("footerPolicy").textContent=translations[lang].footerPolicy;
+      document.getElementById("footerLicense").textContent=translations[lang].footerLicense;
+      document.getElementById("footerCopy").textContent=translations[lang].footerCopy;
+    }
+
+    document.addEventListener('DOMContentLoaded',()=>{changeLang('ru');});
+  </script>
 </body>
 </html>
