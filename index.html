@@ -35,15 +35,18 @@
       background-color: #343a40; /* тёмный фон */
       color: #ffffff;           /* белый текст */
     
-      /*overflow-x: hidden; /* Решение проблемы двойного скролла */
-    /*background-color: #343a40;
-    background-image: url('image.png');
-    background-size: cover;
-    background-attachment: fixed; /* Параллакс-эффект */
-    /*ackground-position: center;
-    color: #ffffff;    
-    }
-    /* Шапка (фиксированная) */
+    html, body {
+    height: 100%;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+  }
+
+  section {
+    height: 100vh; /* каждая секция занимает полный экран */
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+      
     header {
       position: sticky;
       top: 0;
