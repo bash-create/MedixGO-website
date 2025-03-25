@@ -216,53 +216,72 @@
       </div>
     </section>
 
-    <!-- Заголовок "Связаться с нами" (или на других языках) -->
+    <!-- Заголовок "Связаться с нами" (или другие переводы) -->
     <h2 id="contactTitle" style="margin-top: 2rem;"></h2>
 
-    <!-- Блок с иконками контактов -->
+    <!-- Блок с иконками контактов (Email, WhatsApp, Telegram, Telegram Bot, Instagram) -->
     <div class="row justify-content-center">
       <div class="col-12 col-md-8">
         <div class="d-flex flex-column flex-sm-row flex-wrap justify-content-center gap-3">
           <!-- Email -->
-          <a
-            href="mailto:support@medixgo.kz"
-            class="btn btn-outline-light contact-btn"
-            target="_blank"
-          >
-            <i class="fa-solid fa-envelope"></i>
-          </a>
+          <div class="d-flex flex-column align-items-center">
+            <a
+              href="mailto:support@medixgo.kz"
+              class="btn btn-outline-light contact-btn"
+              target="_blank"
+            >
+              <i class="fa-solid fa-envelope"></i>
+            </a>
+            <span class="mt-1" style="font-size: 0.9rem;">Email</span>
+          </div>
+
           <!-- WhatsApp -->
-          <a
-            href="https://wa.me/77716430037"
-            class="btn btn-outline-light contact-btn"
-            target="_blank"
-          >
-            <i class="fa-brands fa-whatsapp"></i>
-          </a>
+          <div class="d-flex flex-column align-items-center">
+            <a
+              href="https://wa.me/77716430037"
+              class="btn btn-outline-light contact-btn"
+              target="_blank"
+            >
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <span class="mt-1" style="font-size: 0.9rem;">WhatsApp</span>
+          </div>
+
           <!-- Telegram -->
-          <a
-            href="https://t.me/+77716430037"
-            class="btn btn-outline-light contact-btn"
-            target="_blank"
-          >
-            <i class="fa-brands fa-telegram"></i>
-          </a>
-          <!-- Telegram Bot -->
-          <a
-            href="https://t.me/MedixGO_bot"
-            class="btn btn-outline-light contact-btn"
-            target="_blank"
-          >
-            <i class="fa-brands fa-telegram"></i>
-          </a>
+          <div class="d-flex flex-column align-items-center">
+            <a
+              href="https://t.me/+77716430037"
+              class="btn btn-outline-light contact-btn"
+              target="_blank"
+            >
+              <i class="fa-brands fa-telegram"></i>
+            </a>
+            <span class="mt-1" style="font-size: 0.9rem;">Telegram</span>
+          </div>
+
+          <!-- Telegram Bot (отделяем подписью "Telegram Bot") -->
+          <div class="d-flex flex-column align-items-center">
+            <a
+              href="https://t.me/MedixGO_bot"
+              class="btn btn-outline-light contact-btn"
+              target="_blank"
+            >
+              <i class="fa-brands fa-telegram"></i>
+            </a>
+            <span class="mt-1" style="font-size: 0.9rem;">Telegram Bot</span>
+          </div>
+
           <!-- Instagram -->
-          <a
-            href="https://instagram.com/medixgo.kz"
-            class="btn btn-outline-light contact-btn"
-            target="_blank"
-          >
-            <i class="fa-brands fa-instagram"></i>
-          </a>
+          <div class="d-flex flex-column align-items-center">
+            <a
+              href="https://instagram.com/medixgo.kz"
+              class="btn btn-outline-light contact-btn"
+              target="_blank"
+            >
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <span class="mt-1" style="font-size: 0.9rem;">Instagram</span>
+          </div>
         </div>
       </div>
     </div>
@@ -305,7 +324,7 @@
         // Видео
         videoTitle: "Подробнее о приложении",
         videoSrc: "https://www.youtube.com/embed/dyO8YV84Izw",
-        // Заголовок «Связаться с нами»
+        // Заголовок "Связаться с нами"
         contactTitle: "Связаться с нами",
         // Футер
         footerAddress: `ТОО «MedixGO»
@@ -377,16 +396,14 @@ Moskovskaya St. 11, apt.4, index M02A1X4`,
       // Достаем нужный объект
       const t = translations[lang];
 
-      // Переводим шапку
+      // Шапка
       document.getElementById("navHome").textContent = t.navHome;
       document.getElementById("navVideo").textContent = t.navVideo;
 
-      // Главная секция
+      // Главная
       document.getElementById("mainTitle").textContent = t.mainTitle;
       document.getElementById("mainParagraph").textContent = t.mainParagraph;
       document.getElementById("projectGoalsTitle").textContent = t.projectGoalsTitle;
-
-      // Список целей
       document.getElementById("goal1").textContent = t.goal1;
       document.getElementById("goal2").textContent = t.goal2;
       document.getElementById("goal3").textContent = t.goal3;
@@ -396,7 +413,7 @@ Moskovskaya St. 11, apt.4, index M02A1X4`,
       document.getElementById("videoTitle").textContent = t.videoTitle;
       document.getElementById("videoFrame").src = t.videoSrc;
 
-      // Заголовок "Связаться с нами"
+      // Контакты
       document.getElementById("contactTitle").textContent = t.contactTitle;
 
       // Футер
@@ -412,10 +429,8 @@ Moskovskaya St. 11, apt.4, index M02A1X4`,
       // Проверяем, сохранён ли язык в localStorage
       const savedLang = localStorage.getItem('preferredLang');
       if (savedLang) {
-        // Если да — используем его
         changeLang(savedLang);
       } else {
-        // Иначе русский
         changeLang('ru');
       }
     });
