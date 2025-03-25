@@ -34,6 +34,13 @@
     body {
       background-color: #343a40; /* тёмный фон */
       color: #ffffff;           /* белый текст */
+    overflow-x: hidden; /* Решение проблемы двойного скролла */
+    background-color: #343a40;
+    background-image: url('image.png');
+    background-size: cover;
+    background-attachment: fixed; /* Параллакс-эффект */
+    background-position: center;
+    color: #ffffff;    
     }
     /* Шапка (фиксированная) */
     header {
@@ -184,7 +191,7 @@
     <!-- Главная -->
     <section id="home">
       <!-- Заголовок "Главная" -->
-      <h2 id="mainTitle"></h2>
+     <!-- <h2 id="mainTitle"></h2> -->
       <!-- Основной параграф -->
       <p id="mainParagraph"></p>
 
