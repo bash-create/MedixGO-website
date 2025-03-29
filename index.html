@@ -185,13 +185,27 @@
 
     /* Кнопки контактов (иконки) */
     .contact-btn {
-      width: 50px; 
-      height: 50px;
-      border-radius: 50%;
-      display: inline-flex;
+      width: 48px;
+      height: 48px;
+      display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.4rem;
+      border-radius: 50%;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      background: var(--white);
+      transition: all 0.3s ease;
+    }
+    
+    .contact-btn:hover {
+      background: var(--primary);
+      color: var(--white);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(44, 110, 171, 0.2);
+    }
+    
+    .contact-btn i {
+      font-size: 1.2rem;
     }
   </style>
 </head>
