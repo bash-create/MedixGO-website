@@ -25,47 +25,61 @@
   />
 
   <style>
+    :root {
+      --primary: #2C6EAB;        /* основной синий */
+      --primary-light: #4A90E2;  /* светло-синий */
+      --secondary: #34A7B2;      /* бирюзовый */
+      --accent: #4CAF50;         /* зеленый */
+      --background: #F5F9FC;     /* светлый фон */
+      --text-dark: #2D3748;      /* темный текст */
+      --text-light: #718096;     /* светлый текст */
+      --white: #FFFFFF;          /* белый */
+    }
+    
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: 'Poppins', sans-serif;
     }
+    
     body {
-      background-color: #87CEEB; /* голубой фон */
-      color: #ffffff;           /* белый текст */
+      background-color: var(--background);
+      color: var(--text-dark);
     }
-    /* Шапка (фиксированная) */
+    
     header {
       position: sticky;
       top: 0;
       z-index: 999;
-      background: #20232a;
+      background: var(--primary);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 10px 20px;
     }
-/* Стилизация скроллбара для Chrome, Edge, Safari */
-::-webkit-scrollbar {
-    width: 12px;
-}
 
-::-webkit-scrollbar-track {
-    background: #20232a; /* Цвет трека (фона) скролла под цвет сайта */
-}
+    /* Стилизация скроллбара */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
 
-::-webkit-scrollbar-thumb {
-    background-color: #343a40; /* Цвет ползунка (скролла), совпадает с цветом фона страницы */
-    border-radius: 6px;
-    border: 3px solid #20232a; /* Цвет границы ползунка (трек) */
-}
+    ::-webkit-scrollbar-track {
+      background: var(--background);
+    }
 
-/* Стилизация скроллбара для Firefox */
-html {
-    scrollbar-width: thin;
-    scrollbar-color: #343a40 #20232a;
-}    
+    ::-webkit-scrollbar-thumb {
+      background-color: var(--primary-light);
+      border-radius: 6px;
+      border: 3px solid var(--background);
+    }
+
+    html {
+      scrollbar-width: thin;
+      scrollbar-color: var(--primary-light) var(--background);
+    }
+    
     /* Логотип */
     #logo {
       width: 60px;
@@ -81,12 +95,12 @@ html {
     }
     .nav-links li a {
       text-decoration: none;
-      color: #fff;
+      color: var(--white);
       font-weight: 600;
       font-size: 1rem;
     }
     .nav-links li a:hover {
-      color: #ddd;
+      color: var(--text-light);
     }
     /* Языки (справа) */
     .lang-switch {
@@ -96,7 +110,7 @@ html {
     .lang-btn {
       background: none;
       border: none;
-      color: #fff;
+      color: var(--white);
       font-weight: 600;
       cursor: pointer;
       font-size: 1rem;
@@ -143,8 +157,8 @@ html {
 
     /* Футер */
     footer {
-      background: #20232a;
-      color: #fff;
+      background: var(--primary);
+      color: var(--white);
       text-align: center;
       padding: 1rem;
       margin-top: 40px;
@@ -161,7 +175,7 @@ html {
       gap: 2rem;
     }
     .bottom-nav-links a {
-      color: #fff;
+      color: var(--white);
       text-decoration: none;
       font-size: 1rem;
     }
