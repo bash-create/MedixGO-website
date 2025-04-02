@@ -323,6 +323,62 @@
     .bottom-nav-links a:hover {
       text-decoration: underline;
     }
+
+    /* Стили для секций страницы */
+    .page-section {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .page-section.active {
+      display: block;
+      opacity: 1;
+    }
+
+    /* Стили для блоков целей */
+    .goals-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .goal-block {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .goal-block:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .goal-block::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 4px;
+      background: linear-gradient(to bottom, var(--primary), var(--secondary));
+      border-radius: 4px 0 0 4px;
+    }
+
+    .goal-block h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .goal-block p {
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
   </style>
 </head>
 <body>
@@ -350,25 +406,37 @@
   <!-- Контент -->
   <main>
     <!-- Главная -->
-    <section id="home">
+    <section id="home" class="page-section">
       <!-- Заголовок "Главная" -->
       <h2 id="mainTitle"></h2>
           <!-- Основной параграф -->
-      <p id="mainParagraph"></p>
+      <p id="mainText"></p>
 
       <!-- Заголовок "Цели проекта" (центрированный) -->
       <h2 id="projectGoalsTitle" style="margin-top: 2rem;"></h2>
 
-      <ul style="display: inline-block; text-align: left; margin-top: 1rem;">
-        <li id="goal1"></li>
-        <li id="goal2"></li>
-        <li id="goal3"></li>
-        <li id="goal4"></li>
-      </ul>
+      <div class="goals-grid">
+        <div class="goal-block">
+          <h3 id="goal1"></h3>
+          <p id="goal1-desc"></p>
+        </div>
+        <div class="goal-block">
+          <h3 id="goal2"></h3>
+          <p id="goal2-desc"></p>
+        </div>
+        <div class="goal-block">
+          <h3 id="goal3"></h3>
+          <p id="goal3-desc"></p>
+        </div>
+        <div class="goal-block">
+          <h3 id="goal4"></h3>
+          <p id="goal4-desc"></p>
+        </div>
+      </div>
     </section>
 
     <!-- Видео -->
-    <section id="video" class="py-5">
+    <section id="video" class="page-section py-5">
       <h2 style="font-size: 2.2rem; text-align:center; margin-bottom: 1.5rem;" id="videoTitle"></h2>
       <div class="video-container" style="max-width: 800px; margin: 0 auto;">
         <iframe
@@ -477,79 +545,115 @@
         // Шапка
         navHome: "Главная",
         navVideo: "Видео",
-        // Главная секция
-        mainTitle: "Главная",
-        mainParagraph: `MedixGO – это мобильное приложение, предназначенное для соединения пациентов,
+        // Главная
+        mainTitle: "О проекте MedixGO",
+        mainText: `MedixGO - это инновационное мобильное приложение, разработанное для помощи людям, 
 нуждающихся в медицинской помощи на дому (уколы, перевязки, базовые медицинские 
 процедуры), с квалифицированным медперсоналом. Приложение предлагает удобную 
 платформу для поиска, бронирования и оплаты услуг медицинского персонала,
 а также предоставляет возможность специалистам зарабатывать, работая в удобное время.`,
         projectGoalsTitle: "Цели проекта",
-        goal1: "Обеспечить доступность квалифицированной медицинской помощи на дому.",
-        goal2: "Создать возможность для медицинского персонала получать дополнительный доход.",
-        goal3: "Упростить процесс поиска и оплаты услуг.",
-        goal4: "Повысить качество медицинских услуг за счет системы отзывов.",
+        goal1: "Доступность медицинской помощи",
+        "goal1-desc": "Обеспечить простой и быстрый доступ к квалифицированной медицинской помощи на дому | Сделать медицинские услуги доступными для всех слоев населения",
+        goal2: "Удобство для пациентов",
+        "goal2-desc": "Предоставить удобный интерфейс для поиска и заказа медицинских услуг | Обеспечить прозрачность цен и рейтинговую систему специалистов",
+        goal3: "Возможности для медперсонала",
+        "goal3-desc": "Создать платформу для дополнительного заработка медицинских работников | Предоставить гибкий график работы для специалистов",
+        goal4: "Качество обслуживания",
+        "goal4-desc": "Внедрить систему контроля качества медицинских услуг | Обеспечить безопасность и конфиденциальность для всех пользователей",
         // Видео
-        videoTitle: "Подробнее о приложении",
-        videoSrc: "https://www.youtube.com/embed/dyO8YV84Izw",
-        // Заголовок "Связаться с нами"
-        contactTitle: "Связаться с нами",
+        videoTitle: "Демонстрация приложения",
         // Футер
-        footerAddress: `ТОО «MedixGO»
-Казахстан, Карагандинская область, г. Караганда,
-ул. Московская, дом 11, кв.4, индекс M02A1X4`,
+        footerAddress: "ул. Московская 11, кв.4, индекс M02A1X4",
         footerPolicy: "Политика конфиденциальности",
         footerLicense: "Лицензионное соглашение",
-        footerCopy: "© 2025 MedixGO",
+        footerCopy: " 2025 MedixGO"
       },
       kz: {
         navHome: "Басты бет",
         navVideo: "Бейне",
-        mainTitle: "Басты бет",
-        mainParagraph: `MedixGO – бұл үйде медициналық көмекке мұқтаж науқастарды (егулер, таңулар, негізгі 
-медициналық процедуралар) білікті медицина мамандарымен байланыстыруға арналған 
-мобильді қосымша. Қосымша медициналық персоналды іздеу, брондау және қызметтерді 
-төлеу үшін ыңғайлы платформаны ұсынады, сондай-ақ мамандарға қолайлы уақытта 
-жұмыс істеп, табыс табуға мүмкіндік береді.`,
+        mainTitle: "О проекте MedixGO",
+        mainText: `MedixGO - бұл инновационды мобильді қосымша, адамдарға медициналық көмекке мұқтаж (егулер, таңулар, негізгі медициналық процедуралар) білікті медицина мамандарымен көмектесу үшін жасалған. Қосымша медициналық персоналды іздеу, брондау және қызметтерді төлеу үшін ыңғайлы платформаны ұсынады, сондай-ақ мамандарға қолайлы уақытта жұмыс істеу мүмкіндігін береді.`,
         projectGoalsTitle: "Жобаның мақсаттары",
-        goal1: "Үйде білікті медициналық көмектің қолжетімділігін қамтамасыз ету.",
-        goal2: "Медицина мамандарына қосымша табыс табу мүмкіндігін жасау.",
-        goal3: "Қызметтерді іздеу мен төлеу үдерісін оңайлату.",
-        goal4: "Пікірлер жүйесі арқылы медициналық қызметтердің сапасын арттыру.",
-        videoTitle: "Қосымша туралы толығырақ",
-        videoSrc: "https://www.youtube.com/embed/m74WTJ7pifA",
-        contactTitle: "Бізбен байланысу",
+        goal1: "Медициналық көмектің қолжетімділігі",
+        "goal1-desc": "Қолжетімді және жылдам медициналық көмекті ұсыну | Медициналық қызметтерді барлық халыққа қолжетімді ету",
+        goal2: "Пациенттерге қолайлылық",
+        "goal2-desc": "Медициналық қызметтерді іздеу және тапсыру үшін ыңғайлы интерфейсті ұсыну | Мамандардың бағалары мен рейтинг жүйесін қамтамасыз ету",
+        goal3: "Медициналық персоналға мүмкіндіктер",
+        "goal3-desc": "Медициналық қызметкерлерге қосымша табыс табу үшін платформаны құру | Мамандарға жұмыс уақытын таңдау мүмкіндігін беру",
+        goal4: "Қызметтердің сапасы",
+        "goal4-desc": "Медициналық қызметтердің сапасын бақылау жүйесін енгізу | Барлық пайдаланушыларға қауіпсіздік пен құпиялылықты қамтамасыз ету",
+        videoTitle: "Қосымшаның демонстрациясы",
         footerAddress: `"MedixGO" ЖШС
 Қазақстан, Қарағанды облысы, Қарағанды қ.,
 Мәскеу көшесі, 11-үй, 4-пәтер, M02A1X4`,
         footerPolicy: "Құпиялық саясаты",
         footerLicense: "Лицензиялық келісім",
-        footerCopy: "© 2025 MedixGO",
+        footerCopy: " 2025 MedixGO"
       },
       en: {
         navHome: "Home",
         navVideo: "Video",
-        mainTitle: "Home",
-        mainParagraph: `MedixGO is a mobile application designed to connect patients who need home medical care
+        mainTitle: "About MedixGO",
+        mainText: `MedixGO is a mobile application designed to connect patients who need home medical care
 (injections, dressings, basic medical procedures) with qualified medical personnel. 
 The application offers a convenient platform to search, book, and pay for medical services, 
 and also provides an opportunity for specialists to earn by working at a convenient time.`,
         projectGoalsTitle: "Project Goals",
-        goal1: "Provide access to qualified home healthcare.",
-        goal2: "Enable medical staff to earn additional income.",
-        goal3: "Simplify the process of searching and paying for services.",
-        goal4: "Improve the quality of medical services through a feedback system.",
-        videoTitle: "More about the application",
-        videoSrc: "https://www.youtube.com/embed/dyO8YV84Izw",
-        contactTitle: "Contact us",
+        goal1: "Accessibility of Medical Care",
+        "goal1-desc": "Provide easy and fast access to qualified medical care at home | Make medical services accessible to all segments of the population",
+        goal2: "Convenience for Patients",
+        "goal2-desc": "Provide a convenient interface for searching and ordering medical services | Ensure transparency of prices and a rating system for specialists",
+        goal3: "Opportunities for Medical Staff",
+        "goal3-desc": "Create a platform for additional income for medical workers | Provide a flexible work schedule for specialists",
+        goal4: "Quality of Service",
+        "goal4-desc": "Implement a system for monitoring the quality of medical services | Ensure safety and confidentiality for all users",
+        videoTitle: "Application Demo",
         footerAddress: `MedixGO LLP
 Kazakhstan, Karaganda Region, Karaganda,
 Moskovskaya St. 11, apt.4, index M02A1X4`,
         footerPolicy: "Privacy Policy",
         footerLicense: "License Agreement",
-        footerCopy: "© 2025 MedixGO",
+        footerCopy: " 2025 MedixGO"
       }
     };
+
+    // Функция для переключения секций
+    function showSection(sectionId) {
+      // Скрываем все секции
+      document.querySelectorAll('.page-section').forEach(section => {
+        section.classList.remove('active');
+      });
+      
+      // Показываем нужную секцию
+      const targetSection = document.getElementById(sectionId);
+      if (targetSection) {
+        targetSection.classList.add('active');
+      }
+    }
+
+    // Обработчики для навигации
+    document.addEventListener('DOMContentLoaded', () => {
+      // Показываем главную страницу по умолчанию
+      showSection('home');
+
+      // Добавляем обработчики для навигации
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const sectionId = this.getAttribute('href').slice(1);
+          showSection(sectionId);
+        });
+      });
+
+      // Проверяем сохранённый язык
+      const savedLang = localStorage.getItem('preferredLang');
+      if (savedLang) {
+        changeLang(savedLang);
+      } else {
+        changeLang('ru');
+      }
+    });
 
     function changeLang(lang) {
       // Сохраняем выбранный язык в localStorage
@@ -570,19 +674,20 @@ Moskovskaya St. 11, apt.4, index M02A1X4`,
 
       // Главная
       document.getElementById("mainTitle").textContent = t.mainTitle;
-      document.getElementById("mainParagraph").textContent = t.mainParagraph;
+      document.getElementById("mainText").textContent = t.mainText;
       document.getElementById("projectGoalsTitle").textContent = t.projectGoalsTitle;
       document.getElementById("goal1").textContent = t.goal1;
+      document.getElementById("goal1-desc").textContent = t["goal1-desc"];
       document.getElementById("goal2").textContent = t.goal2;
+      document.getElementById("goal2-desc").textContent = t["goal2-desc"];
       document.getElementById("goal3").textContent = t.goal3;
+      document.getElementById("goal3-desc").textContent = t["goal3-desc"];
       document.getElementById("goal4").textContent = t.goal4;
+      document.getElementById("goal4-desc").textContent = t["goal4-desc"];
 
       // Видео
       document.getElementById("videoTitle").textContent = t.videoTitle;
       document.getElementById("videoFrame").src = t.videoSrc;
-
-      // Контакты
-      document.getElementById("contactTitle").textContent = t.contactTitle;
 
       // Футер
       document.getElementById("footerAddress").textContent = t.footerAddress;
@@ -592,16 +697,6 @@ Moskovskaya St. 11, apt.4, index M02A1X4`,
 
       console.log(`Язык переключён на ${lang}`);
     }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      // Проверяем, сохранён ли язык в localStorage
-      const savedLang = localStorage.getItem('preferredLang');
-      if (savedLang) {
-        changeLang(savedLang);
-      } else {
-        changeLang('ru');
-      }
-    });
   </script>
 </body>
 </html>
