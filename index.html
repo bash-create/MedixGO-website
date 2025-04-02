@@ -120,6 +120,47 @@
       text-decoration: underline;
     }
 
+    /* Кнопки регистрации */
+    .auth-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-left: 2rem;
+    }
+
+    .register-btn {
+      background: var(--accent);
+      color: var(--white);
+      padding: 8px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: 2px solid var(--accent);
+    }
+
+    .register-btn:hover {
+      background: transparent;
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .login-btn {
+      background: transparent;
+      color: var(--white);
+      padding: 8px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: 2px solid var(--white);
+    }
+
+    .login-btn:hover {
+      background: var(--white);
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
     /* Основной контейнер */
     main {
       padding: 80px 20px; /* отступ под фикс.шапку */
@@ -293,6 +334,10 @@
         <li><a href="#home" id="navHome"></a></li>
         <li><a href="#video" id="navVideo"></a></li>
       </ul>
+      <div class="auth-buttons">
+        <a href="#" class="register-btn">Регистрация</a>
+        <a href="#" class="login-btn">Вход</a>
+      </div>
     </div>
     <!-- Языки справа в шапке -->
     <div class="lang-switch">
