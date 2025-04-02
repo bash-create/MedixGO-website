@@ -44,20 +44,21 @@
     }
     
     body {
-      background-color: var(--background);
+      background: linear-gradient(135deg, var(--background) 0%, #E8F3FF 100%);
       color: var(--text-dark);
+      min-height: 100vh;
     }
     
     header {
       position: sticky;
       top: 0;
       z-index: 999;
-      background: var(--primary);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      padding: 15px 30px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 10px 20px;
     }
 
     /* Стилизация скроллбара */
@@ -127,19 +128,126 @@
       text-align: center;
     }
     section {
-      margin-bottom: 60px;
-    }
-    section h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      font-weight: 600;
-    }
-    section p,
-    section ul {
-      font-size: 1.1rem;
-      line-height: 1.6;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      margin-bottom: 40px;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease;
+      animation: fadeInUp 0.6s ease forwards;
     }
 
+    section:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Стилизация заголовков */
+    h1, h2, h3 {
+      background: linear-gradient(120deg, var(--primary), var(--secondary));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Улучшенные кнопки */
+    .btn-primary {
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      border: none;
+      border-radius: 10px;
+      padding: 12px 25px;
+      color: var(--white);
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Улучшенные карточки */
+    .card {
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Улучшенный footer */
+    footer {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: var(--white);
+      padding: 2rem 0;
+      margin-top: 60px;
+    }
+
+    /* Анимированные социальные кнопки */
+    .contact-btn {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: none;
+      color: var(--primary);
+      background: var(--white);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .contact-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .contact-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(44, 110, 171, 0.2);
+      color: var(--white);
+    }
+    
+    .contact-btn:hover::before {
+      opacity: 1;
+    }
+    
+    .contact-btn i {
+      font-size: 1.2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Добавляем плавное появление элементов */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
     /* Видео (уменьшенное, центрированное) */
     .video-container {
       position: relative;
@@ -156,14 +264,6 @@
     }
 
     /* Футер */
-    footer {
-      background: var(--primary);
-      color: var(--white);
-      text-align: center;
-      padding: 1rem;
-      margin-top: 40px;
-    }
-    /* Нижняя часть футера */
     .bottom-nav {
       display: flex;
       flex-direction: column;
@@ -181,31 +281,6 @@
     }
     .bottom-nav-links a:hover {
       text-decoration: underline;
-    }
-
-    /* Кнопки контактов (иконки) */
-    .contact-btn {
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      border: 2px solid var(--primary);
-      color: var(--primary);
-      background: var(--white);
-      transition: all 0.3s ease;
-    }
-    
-    .contact-btn:hover {
-      background: var(--primary);
-      color: var(--white);
-      transform: translateY(-3px);
-      box-shadow: 0 4px 12px rgba(44, 110, 171, 0.2);
-    }
-    
-    .contact-btn i {
-      font-size: 1.2rem;
     }
   </style>
 </head>
