@@ -379,6 +379,144 @@
       color: var(--text-dark);
       line-height: 1.6;
     }
+
+    /* Стили для главной секции */
+    .hero-section {
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+      padding: 4rem 0;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero-image {
+      flex: 0 0 400px;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero-content {
+      flex: 1;
+    }
+
+    .hero-content h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .hero-content p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: var(--text-dark);
+      margin-bottom: 2rem;
+    }
+
+    .hero-button {
+      display: inline-block;
+      padding: 12px 30px;
+      background: var(--accent);
+      color: var(--white);
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .hero-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+    }
+
+    /* Стили для секции услуг */
+    .services-section {
+      padding: 4rem 0;
+      background: var(--background);
+    }
+
+    .services-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .service-icon {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .service-card p {
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* Медиа-запросы для адаптивности */
+    @media (max-width: 992px) {
+      .hero-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1rem;
+      }
+
+      .hero-image {
+        flex: 0 0 300px;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+      }
+
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+
+      .hero-section {
+        gap: 2rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -406,33 +544,75 @@
   <!-- Контент -->
   <main>
     <!-- Главная -->
-    <section id="home" class="page-section">
-      <!-- Заголовок "Главная" -->
-      <h2 id="mainTitle"></h2>
-          <!-- Основной параграф -->
-      <p id="mainText"></p>
-
-      <!-- Заголовок "Цели проекта" (центрированный) -->
-      <h2 id="projectGoalsTitle" style="margin-top: 2rem;"></h2>
-
-      <div class="goals-grid">
-        <div class="goal-block">
-          <h3 id="goal1"></h3>
-          <p id="goal1-desc"></p>
+    <section id="home" class="page-section active">
+      <div class="hero-section">
+        <div class="hero-image">
+          <img src="Logotip.png" alt="MedixGO специалист">
         </div>
-        <div class="goal-block">
-          <h3 id="goal2"></h3>
-          <p id="goal2-desc"></p>
-        </div>
-        <div class="goal-block">
-          <h3 id="goal3"></h3>
-          <p id="goal3-desc"></p>
-        </div>
-        <div class="goal-block">
-          <h3 id="goal4"></h3>
-          <p id="goal4-desc"></p>
+        <div class="hero-content">
+          <h1>Специалист по админподдержке</h1>
+          <p>Это текст. Нажмите один раз и выберите «Редактировать текст» или просто нажмите дважды, чтобы добавить свой текст и настроить шрифт.</p>
+          <a href="#" class="hero-button">Подробнее</a>
         </div>
       </div>
+
+      <!-- Мои услуги -->
+      <section class="services-section">
+        <div class="services-title">
+          <h2>Мои услуги</h2>
+          <p>Это текст. Нажмите здесь, чтобы изменить его. Расскажите о себе.</p>
+        </div>
+        
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-cog"></i>
+            </div>
+            <h3>Админподдержка</h3>
+            <p>Это текст. Нажмите один раз и выберите «Редактировать текст» или просто нажмите дважды, чтобы добавить свой текст и настроить шрифт.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <h3>Поддержка клиентов</h3>
+            <p>Это текст. Нажмите один раз и выберите «Редактировать текст» или просто нажмите дважды, чтобы добавить свой текст и настроить шрифт.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-tasks"></i>
+            </div>
+            <h3>Управление проектами</h3>
+            <p>Это текст. Нажмите один раз и выберите «Редактировать текст» или просто нажмите дважды, чтобы добавить свой текст и настроить шрифт.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-globe"></i>
+            </div>
+            <h3>Менеджмент соц. сетей</h3>
+            <p>Это текст. Нажмите один раз и выберите «Редактировать текст» или просто нажмите дважды, чтобы добавить свой текст и настроить шрифт.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-search"></i>
+            </div>
+            <h3>Поиск информации</h3>
+            <p>Это текст. Нажмите один раз и выберите «Редактировать текст» или просто нажмите дважды, чтобы добавить свой текст и настроить шрифт.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-user"></i>
+            </div>
+            <h3>Личный помощник</h3>
+            <p>Это текст. Нажмите один раз и выберите «Редактировать текст» или просто нажмите дважды, чтобы добавить свой текст и настроить шрифт.</p>
+          </div>
+        </div>
+      </section>
     </section>
 
     <!-- Видео -->
@@ -440,87 +620,15 @@
       <h2 style="font-size: 2.2rem; text-align:center; margin-bottom: 1.5rem;" id="videoTitle"></h2>
       <div class="video-container" style="max-width: 800px; margin: 0 auto;">
         <iframe
-          id="videoFrame"
           width="100%"
-          height="450"
-          src=""
-          title="YouTube video"
+          height="100%"
+          src="https://www.youtube.com/embed/your-video-id"
           frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
-        </iframe>
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
       </div>
     </section>
-
-    <!-- Заголовок "Связаться с нами" (или другие переводы) -->
-    <h2 id="contactTitle" style="margin-top: 2rem;"></h2>
-
-    <!-- Блок с иконками контактов (Email, WhatsApp, Telegram, Telegram Bot, Instagram) -->
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-8">
-        <div class="d-flex flex-column flex-sm-row flex-wrap justify-content-center gap-3">
-          <!-- Email -->
-          <div class="d-flex flex-column align-items-center">
-            <a
-              href="mailto:support@medixgo.kz"
-              class="btn btn-outline-light contact-btn"
-              target="_blank"
-            >
-              <i class="fa-solid fa-envelope"></i>
-            </a>
-            <span class="mt-1" style="font-size: 0.9rem;">Email</span>
-          </div>
-
-          <!-- WhatsApp -->
-          <div class="d-flex flex-column align-items-center">
-            <a
-              href="https://wa.me/77716430037"
-              class="btn btn-outline-light contact-btn"
-              target="_blank"
-            >
-              <i class="fa-brands fa-whatsapp"></i>
-            </a>
-            <span class="mt-1" style="font-size: 0.9rem;">WhatsApp</span>
-          </div>
-
-          <!-- Telegram -->
-          <div class="d-flex flex-column align-items-center">
-            <a
-              href="https://t.me/+77716430037"
-              class="btn btn-outline-light contact-btn"
-              target="_blank"
-            >
-              <i class="fa-brands fa-telegram"></i>
-            </a>
-            <span class="mt-1" style="font-size: 0.9rem;">Telegram</span>
-          </div>
-
-          <!-- Telegram Bot (отделяем подписью "Telegram Bot") -->
-          <div class="d-flex flex-column align-items-center">
-            <a
-              href="https://t.me/MedixGO_bot"
-              class="btn btn-outline-light contact-btn"
-              target="_blank"
-            >
-              <i class="fa-brands fa-telegram"></i>
-            </a>
-            <span class="mt-1" style="font-size: 0.9rem;">Telegram Bot</span>
-          </div>
-
-          <!-- Instagram -->
-          <div class="d-flex flex-column align-items-center">
-            <a
-              href="https://instagram.com/medixgo.kz"
-              class="btn btn-outline-light contact-btn"
-              target="_blank"
-            >
-              <i class="fa-brands fa-instagram"></i>
-            </a>
-            <span class="mt-1" style="font-size: 0.9rem;">Instagram</span>
-          </div>
-        </div>
-      </div>
-    </div>
   </main>
 
   <!-- Футер -->
