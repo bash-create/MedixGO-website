@@ -10,164 +10,332 @@
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
   />
-  <!-- Google Font: Poppins -->
+  <!-- Google Font: Nunito + Montserrat -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Montserrat:wght@500;700&display=swap"
     rel="stylesheet"
+  />
+  <!-- Font Awesome для иконок -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
   />
 
   <style>
+    :root {
+      --primary: #2471CC;
+      --primary-light: #5B9AE8;
+      --primary-dark: #1A5195;
+      --secondary: #38BEC9;
+      --accent: #56B870;
+      --accent-light: #8EEDB0;
+      --background: #F8FAFD;
+      --card-bg: #FFFFFF;
+      --text-dark: #272E3A;
+      --text-medium: #556175;
+      --text-light: #7E8A9C;
+      --white: #FFFFFF;
+      --shadow: 0 8px 24px rgba(36, 113, 204, 0.1);
+    }
+    
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
     }
+    
     body {
-      background-color: #343a40;
-      color: #ffffff;
-    }
-    header {
-      position: sticky;
-      top: 0; 
-      z-index: 999;
-      background: #20232a;
-      display: flex; 
-      align-items: center; 
-      justify-content: space-between;
-      padding: 10px 20px;
-    }
-    #logo {
-      width: 60px; 
-      height: auto;
-    }
-    .nav-links {
-      display: flex; 
-      gap: 1rem;
-      list-style: none; 
-      margin: 0; 
-      padding: 0;
-    }
-    .nav-links li a {
-      text-decoration: none; 
-      color: #fff; 
-      font-weight: 600; 
-      font-size: 1rem;
-    }
-    .nav-links li a:hover {
-      color: #ddd;
-    }
-    .lang-switch {
-      display: flex; 
-      gap: 0.5rem;
-    }
-    .lang-btn {
-      background: none; 
-      border: none; 
-      color: #fff;
-      font-weight: 600; 
-      cursor: pointer; 
-      font-size: 1rem;
-    }
-    .lang-btn.active {
-      text-decoration: underline;
+      background-color: var(--background);
+      color: var(--text-dark);
+      font-family: 'Nunito', sans-serif;
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
     }
 
+    /* Декоративные элементы */
+    .bg-shape {
+      position: absolute;
+      z-index: -1;
+    }
+
+    .bg-shape-1 {
+      top: -100px;
+      right: -80px;
+      width: 300px;
+      height: 300px;
+      background: linear-gradient(135deg, var(--primary-light), var(--primary));
+      border-radius: 60% 40% 70% 30% / 60% 30% 70% 40%;
+      opacity: 0.3;
+    }
+
+    .bg-shape-2 {
+      bottom: 20%;
+      left: -150px;
+      width: 400px;
+      height: 400px;
+      background: linear-gradient(135deg, var(--accent-light), var(--accent));
+      border-radius: 30% 70% 50% 50% / 30% 30% 70% 70%;
+      opacity: 0.2;
+    }
+    
+    .bg-dots {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(var(--text-light) 1px, transparent 1px);
+      background-size: 30px 30px;
+      opacity: 0.1;
+      z-index: -2;
+    }
+
+    /* Шапка */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 5%;
+      transition: all 0.3s ease;
+    }
+
+    /* Логотип */
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    #logo {
+      width: 130px;
+      height: auto;
+      transition: transform 0.3s;
+    }
+
+    .logo-container:hover #logo {
+      transform: scale(1.05);
+    }
+
+    /* Языковые переключатели */
+    .lang-switch {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .lang-btn {
+      background: none;
+      border: none;
+      color: var(--text-medium);
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.9rem;
+      padding: 5px 10px;
+      border-radius: 5px;
+      transition: all 0.3s;
+    }
+
+    .lang-btn:hover {
+      color: var(--primary);
+      background: rgba(36, 113, 204, 0.1);
+    }
+
+    .lang-btn.active {
+      color: var(--primary);
+      background: rgba(36, 113, 204, 0.15);
+    }
+
+    .lang-separator {
+      color: var(--text-light);
+      font-weight: 600;
+    }
+
+    /* Основной контент */
     main {
-      padding: 80px 20px;
-      max-width: 1200px; 
+      padding-top: 100px;
+      max-width: 1000px;
       margin: auto;
+      padding-left: 20px;
+      padding-right: 20px;
+      position: relative;
     }
-    h2 {
-      text-align: center;
-      margin-bottom: 1.5rem;
-      font-size: 2rem;
+
+    .license-container {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: var(--shadow);
+      margin-bottom: 40px;
     }
-    .content-text {
-      text-align: left;
-      font-size: 1.1rem;
-      line-height: 1.6;
+
+    .license-container h1 {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--primary);
+      margin-bottom: 30px;
+      font-size: 2.2rem;
+    }
+
+    .license-container p {
+      color: var(--text-medium);
+      margin-bottom: 15px;
+      line-height: 1.8;
       white-space: pre-wrap;
-      margin: 0 auto;
-      max-width: 900px;
+    }
+
+    .license-container h2 {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--text-dark);
+      margin: 30px 0 15px;
+      font-size: 1.5rem;
+    }
+
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 25px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      margin-bottom: 1em;
+      margin-top: 1em;
+    }
+
+    .back-button:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      color: white;
+    }
+
+    .back-button i {
+      font-size: 1.1rem;
     }
 
     /* Футер */
     footer {
-      background: #20232a; 
-      color: #fff;
-      text-align: center; 
-      padding: 1rem; 
-      margin-top: 40px;
+      background: var(--primary-dark);
+      color: var(--white);
+      padding: 40px 20px 20px;
+      text-align: center;
     }
-    .bottom-nav {
-      display: flex; 
-      flex-direction: column;
-      align-items: center; 
-      gap: 0.7rem;
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
     }
-    .bottom-nav-links {
-      display: flex; 
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .footer-logo img {
+      width: 40px;
+      height: auto;
+    }
+
+    .footer-logo h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5rem;
+      color: white;
+      margin: 0;
+    }
+
+    .footer-logo h3 span {
+      color: #56B870;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
       gap: 2rem;
+      margin-bottom: 20px;
     }
-    .bottom-nav-links a {
-      color: #fff; 
-      text-decoration: none; 
-      font-size: 1rem;
+    
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: color 0.3s ease;
     }
-    .bottom-nav-links a:hover {
+    
+    .footer-links a:hover {
+      color: white;
       text-decoration: underline;
+    }
+
+    .footer-bottom {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-bottom p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .license-container {
+        padding: 30px 20px;
+      }
+
+      .license-container h1 {
+        font-size: 1.8rem;
+      }
+
+      .license-container h2 {
+        font-size: 1.3rem;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Декоративные элементы фона -->
+  <div class="bg-dots"></div>
+  <div class="bg-shape bg-shape-1"></div>
+  <div class="bg-shape bg-shape-2"></div>
+
   <!-- Шапка -->
-  <header>
-    <div class="d-flex align-items-center gap-3">
+  <header id="site-header">
+    <a href="updated-medixgo-website.html">
       <img src="Logo.png" alt="MedixGO Logo" id="logo" />
-      <ul class="nav-links">
-        <!-- Делаем текст ссылки динамическим через JS -->
-        <li><a href="index.html" id="navHome"></a></li>
-      </ul>
-    </div>
-    <!-- Языки -->
+    </a>
     <div class="lang-switch">
-      <button class="lang-btn active" onclick="changeLang('ru')">RUS</button> |
-      <button class="lang-btn" onclick="changeLang('kz')">KAZ</button> |
+      <button class="lang-btn active" onclick="changeLang('ru')">RUS</button>
+      <span class="lang-separator">|</span>
+      <button class="lang-btn" onclick="changeLang('kz')">KAZ</button>
+      <span class="lang-separator">|</span>
       <button class="lang-btn" onclick="changeLang('en')">ENG</button>
     </div>
   </header>
 
   <!-- Основной контент -->
   <main>
-    <!-- Заголовок (меняем через JS) -->
-    <h2 id="licenseTitle"></h2>
-    <!-- Текст соглашения (меняем через JS) -->
-    <div class="content-text" id="licenseBody"></div>
-  </main>
+    <a href="updated-medixgo-website.html" class="back-button" id="backButton">
+      <i class="fas fa-arrow-left"></i>
+      <span id="backButtonText">Назад на главную</span>
+    </a>
 
-  <!-- Футер -->
-  <footer>
-    <div class="bottom-nav">
-      <p id="footerAddress"></p>
-      <div class="bottom-nav-links">
-        <a href="politika.html" id="footerPolicy" style="margin-right:2rem;"></a>
-        <a href="licenziya.html" id="footerLicense"></a>
-      </div>
-      <p id="footerCopy"></p>
-    </div>
-  </footer>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script>
-    // Объект переводов
-    const translations = {
-      ru: {
-        navHome: "Главная",
-        licenseTitle: "Лицензионное соглашение",
-        licenseBody: `Лицензионное соглашение на использование мобильного приложения «MedixGO»
+    <div class="license-container">
+      <h1 id="licenseTitle">Лицензионное соглашение</h1>
+      
+      <p id="lastUpdated">Последнее обновление: 1 марта 2024 г.</p>
+      <div id="licenseContent">
+        <p id="licenseBody">Лицензионное соглашение на использование мобильного приложения «MedixGO»
 Перед использованием приложения, пожалуйста, ознакомьтесь с условиями настоящего 
 лицензионного соглашения (далее — «Лицензия»). 
 Любое использование приложения означает полное и безоговорочное принятие Вами условий 
@@ -242,17 +410,120 @@
 урегулирования путем переговоров. 
 8.3. Если какое-либо из положений Лицензии будет признано недействительным, это не влияет на 
 действительность остальных положений.
-`,
-        footerAddress: `ТОО «MedixGO»
-Казахстан, Карагандинская область, г. Караганда,
-ул. Московская, дом 11, кв.4, индекс M02A1X4`,
+</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Футер -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h3>Medix<span>GO</span></h3>
+      </div>
+      <div class="footer-links">
+        <a href="politika.html" id="footerPolicy">Политика конфиденциальности</a>
+        <a href="licenziya.html" id="footerLicense">Лицензионное соглашение</a>
+      </div>
+      <div class="footer-bottom">
+        <p id="footerCopyright">© 2025 MedixGO. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Объект переводов
+    const translations = {
+      ru: {
+        backButtonText: "Назад на главную",
+        licenseTitle: "Лицензионное соглашение",
+        lastUpdated: "Последнее обновление: 1 марта 2024 г.",
+        licenseBody: `Лицензионное соглашение на использование мобильного приложения «MedixGO»
+Перед использованием приложения, пожалуйста, ознакомьтесь с условиями настоящего 
+лицензионного соглашения (далее — «Лицензия»). 
+Любое использование приложения означает полное и безоговорочное принятие Вами условий 
+данной Лицензии. Если Вы не принимаете условия в полном объёме, Вы не имеете права 
+использовать приложение в каких-либо целях.
+
+1. Общие положения
+
+1.1. Настоящее Лицензионное соглашение регулирует условия использования приложения 
+«MedixGO» (далее — «Приложение») и заключено между любым лицом, использующим 
+Приложение (далее — «Пользователь»), и правообладателем приложения (далее — 
+«Правообладатель»). 
+1.2. Устанавливая или используя Приложение, Пользователь выражает полное согласие с 
+условиями Лицензии. 
+1.3. Приложение предоставляется для личного некоммерческого использования. Для иных целей 
+необходимо отдельное письменное согласие Правообладателя. 
+1.4. Правообладатель может изменять условия настоящей Лицензии. Обновленная версия 
+Лицензии публикуется в разделе «О приложении».
+
+2. Права на Приложение
+
+2.1. Исключительное право на Приложение принадлежит Правообладателю. 
+2.2. Правообладатель предоставляет Пользователю неисключительное право использовать 
+Приложение в пределах его функциональных возможностей.
+
+3. Лицензия
+
+3.1. Пользователь имеет право:
+- Устанавливать Приложение на свои устройства.
+- Использовать функционал Приложения для вызова медицинского персонала на дом и других 
+  предоставляемых услуг.
+
+3.2. Пользователь не имеет права:
+- Изменять, декомпилировать или иным образом вмешиваться в работу Приложения.
+- Использовать Приложение в коммерческих целях без письменного согласия Правообладателя.
+
+4. Функции Приложения
+
+4.1. Приложение предоставляет следующие функции:
+- Регистрация и авторизация через номер телефона.
+- Заказ услуг, таких как внутривенные и внутримышечные инъекции, общий уход, обработка ран и 
+  другие услуги.
+- Уведомления о статусе заказов.
+- Возможность управления профилем, адресами и способами оплаты.
+4.2. Для работы некоторых функций требуется доступ к сети Интернет. Пользователь 
+самостоятельно обеспечивает и оплачивает доступ к сети.
+
+5. Ответственность
+
+5.1. Приложение предоставляется на условиях «как есть» (as is). Правообладатель не гарантирует 
+бесперебойную и безошибочную работу Приложения. 
+5.2. Правообладатель не несет ответственности за убытки, возникшие в результате использования 
+или невозможности использования Приложения. 
+5.3. Вопросы и претензии, связанные с работой Приложения, направляются через службу 
+поддержки.
+
+6. Обновления
+
+6.1. Настоящая Лицензия распространяется на все обновления Приложения. Установка 
+обновлений означает принятие Пользователем новых условий.
+
+7. Персональные данные
+
+7.1. Используя Приложение, Пользователь соглашается на обработку своих персональных данных 
+в рамках функционала Приложения. Персональные данные обрабатываются в соответствии с 
+Политикой конфиденциальности, размещенной в разделе «О приложении».
+
+8. Заключительные положения
+
+8.1. Настоящая Лицензия регулируется законодательством Республики Казахстан. 
+8.2. В случае возникновения споров, стороны обязуются предпринять все возможные меры для их 
+урегулирования путем переговоров. 
+8.3. Если какое-либо из положений Лицензии будет признано недействительным, это не влияет на 
+действительность остальных положений.`,
         footerPolicy: "Политика конфиденциальности",
         footerLicense: "Лицензионное соглашение",
-        footerCopy: "© 2025 MedixGO",
+        footerCopyright: "© 2025 MedixGO. Все права защищены."
       },
       kz: {
-        navHome: "Басты бет",
-        licenseTitle: "«MedixGO» лицензиялық келісімі",
+        backButtonText: "Басты бетке оралу",
+        licenseTitle: "Лицензиялық келісім",
+        lastUpdated: "Соңғы жаңарту: 1 наурыз 2024 ж.",
         licenseBody: `«MedixGO» мобильді қосымшасын пайдалану бойынша лицензиялық келісім
 Қосымшаны пайдаланбас бұрын, осы лицензиялық келісімнің (бұдан әрі — «Лицензия») 
 шарттарымен танысып шығыңыз.
@@ -293,7 +564,7 @@
 4. Қосымшаның функциялары
 
 4.1. Қосымша келесі функцияларды ұсынады:
-- Телефон нөмірі арқылы тіркелу және авторизация;
+- Телефон нөірі арқылы тіркелу және авторизация;
 - Көрсетілетін қызметтерге тапсырыс беру (тамыр ішіне, бұлшықетке егу, жалпы күтім, жараларды өңдеу және т.б.);
 - Тапсырыстардың мәртебесі туралы хабарламалар;
 - Профиль, мекенжайлар және төлем тәсілдерін басқару мүмкіндігі.
@@ -325,141 +596,112 @@
 8.2. Даулар туындаған жағдайда, тараптар оларды келіссөздер арқылы шешу үшін барлық 
 мүмкін шараларды қабылдауға міндеттенеді.
 8.3. Лицензияның қандай да бір ережесі жарамсыз деп танылса, бұл басқа ережелердің 
-жарамдылығына әсер етпейді.
-`,
-        footerAddress: `"MedixGO" ЖШС
-Қазақстан, Қарағанды облысы, Қарағанды қаласы,
-Мәскеу көшесі, 11-үй, 4-пәтер, M02A1X4`,
+жарамдылығына әсер етпейді.`,
         footerPolicy: "Құпиялық саясаты",
         footerLicense: "Лицензиялық келісім",
-        footerCopy: "© 2025 MedixGO",
+        footerCopyright: "© 2025 MedixGO. Барлық құқықтар қорғалған."
       },
       en: {
-        navHome: "Home",
+        backButtonText: "Back to Home",
         licenseTitle: "License Agreement",
-        licenseBody: `License Agreement for the use of the “MedixGO” mobile application
-Before using the application, please read the terms of this license agreement (“License”).
+        lastUpdated: "Last updated: March 1, 2024",
+        licenseBody: `License Agreement for the use of the "MedixGO" mobile application
+Before using the application, please read the terms of this license agreement ("License").
 Any use of the application signifies your full and unconditional acceptance of the terms 
 of this License. If you do not accept these terms in full, you do not have the right to 
 use the application for any purpose.
 
 1. General Provisions
 
-1.1. This License Agreement governs the conditions for using the “MedixGO” application 
-(“Application”) and is concluded between any person using the Application (“User”) and the 
-owner of the application rights (“Right Holder”).
-1.2. By installing or using the Application, the User fully agrees to the terms of this License.
-1.3. The Application is provided for personal, non-commercial use. For other purposes, a 
-separate written consent of the Right Holder is required.
-1.4. The Right Holder may change the terms of this License. The updated version of the License 
-is published in the “About the Application” section.
+1.1. This License Agreement governs the terms of use of the "MedixGO" application 
+(hereinafter referred to as the "Application") and is concluded between any person using 
+the Application (hereinafter referred to as the "User") and the copyright holder of the 
+application (hereinafter referred to as the "Copyright Holder").
+1.2. By installing or using the Application, the User expresses full agreement with the 
+terms of the License.
+1.3. The Application is provided for personal non-commercial use. For other purposes, 
+separate written consent of the Copyright Holder is required.
+1.4. The Copyright Holder may modify the terms of this License. The updated version of 
+the License is published in the "About the Application" section.
 
 2. Rights to the Application
 
-2.1. The exclusive right to the Application belongs to the Right Holder.
-2.2. The Right Holder grants the User a non-exclusive right to use the Application within its 
-functional capabilities.
+2.1. The exclusive right to the Application belongs to the Copyright Holder.
+2.2. The Copyright Holder grants the User a non-exclusive right to use the Application 
+within its functional capabilities.
 
 3. License
 
 3.1. The User has the right to:
 - Install the Application on their devices.
-- Use the functionality of the Application to call medical personnel at home and other 
+- Use the Application's functionality to call medical personnel to their home and other 
   provided services.
 
 3.2. The User does not have the right to:
 - Modify, decompile, or otherwise interfere with the operation of the Application.
-- Use the Application for commercial purposes without the written consent of the Right Holder.
+- Use the Application for commercial purposes without written consent from the Copyright Holder.
 
 4. Application Functions
 
-4.1. The Application provides the following features:
+4.1. The Application provides the following functions:
 - Registration and authorization via phone number.
 - Ordering services such as intravenous and intramuscular injections, general care, wound 
-  treatment, and others.
-- Notifications about the status of orders.
-- The ability to manage the profile, addresses, and payment methods.
-4.2. Some features require Internet access. The User is responsible for obtaining and paying 
-for Internet access.
+  treatment, and other services.
+- Notifications about order status.
+- Ability to manage profile, addresses, and payment methods.
+4.2. Some functions require Internet access. The User independently provides and pays for 
+network access.
 
 5. Liability
 
-5.1. The Application is provided “as is.” The Right Holder does not guarantee uninterrupted or 
-error-free operation of the Application.
-5.2. The Right Holder is not liable for any damages arising from the use or inability to use the 
-Application.
-5.3. Questions and claims related to the Application’s operation should be sent to the 
-support service.
+5.1. The Application is provided "as is". The Copyright Holder does not guarantee 
+uninterrupted and error-free operation of the Application.
+5.2. The Copyright Holder is not liable for losses arising from the use or inability to 
+use the Application.
+5.3. Questions and claims related to the operation of the Application are sent through 
+the support service.
 
 6. Updates
 
-6.1. This License applies to all updates of the Application. Installing updates indicates the 
-User’s acceptance of the new terms.
+6.1. This License applies to all updates of the Application. Installing updates means 
+the User accepts the new terms.
 
 7. Personal Data
 
-7.1. By using the Application, the User agrees to the processing of their personal data within 
-the functionality of the Application. Personal data is processed in accordance with the 
-Privacy Policy posted in the “About the Application” section.
+7.1. By using the Application, the User agrees to the processing of their personal data 
+within the Application's functionality. Personal data is processed in accordance with the 
+Privacy Policy posted in the "About the Application" section.
 
 8. Final Provisions
 
-8.1. This License is governed by the legislation of the Republic of Kazakhstan.
-8.2. In the event of disputes, the parties undertake to take all possible measures to resolve 
+8.1. This License is governed by the laws of the Republic of Kazakhstan.
+8.2. In case of disputes, the parties undertake to take all possible measures to resolve 
 them through negotiations.
-8.3. If any provision of the License is declared invalid, it does not affect the validity of the 
-remaining provisions.
-`,
-        footerAddress: `MedixGO LLP
-Kazakhstan, Karaganda Region, Karaganda,
-Moskovskaya St. 11, apt.4, M02A1X4`,
+8.3. If any provision of the License is found to be invalid, this does not affect the 
+validity of the remaining provisions.`,
         footerPolicy: "Privacy Policy",
         footerLicense: "License Agreement",
-        footerCopy: "© 2025 MedixGO",
+        footerCopyright: "© 2025 MedixGO. All rights reserved."
       }
     };
 
+    // Функция для смены языка
     function changeLang(lang) {
-      // Сохраняем выбранный язык в localStorage
-      localStorage.setItem('preferredLang', lang);
+      // Обновляем активную кнопку
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
 
-      // Удаляем класс active со всех кнопок
-      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-      // Активируем кнопку выбранного языка
-      const btn = document.querySelector(`.lang-btn[onclick="changeLang('${lang}')"]`);
-      if(btn) btn.classList.add('active');
-
-      // Получаем объект с переводами для выбранного языка
-      const t = translations[lang];
-
-      // Меняем текст ссылки "Главная"
-      document.getElementById("navHome").textContent = t.navHome;
-
-      // Заголовок и тело лицензионного соглашения
-      document.getElementById("licenseTitle").textContent = t.licenseTitle;
-      document.getElementById("licenseBody").textContent = t.licenseBody;
-
-      // Футер
-      document.getElementById("footerAddress").textContent = t.footerAddress;
-      document.getElementById("footerPolicy").textContent = t.footerPolicy;
-      document.getElementById("footerLicense").textContent = t.footerLicense;
-      document.getElementById("footerCopy").textContent = t.footerCopy;
-
-      console.log(`Язык переключён на ${lang}`);
+      // Обновляем тексты
+      document.getElementById('backButtonText').textContent = translations[lang].backButtonText;
+      document.getElementById('licenseTitle').textContent = translations[lang].licenseTitle;
+      document.getElementById('lastUpdated').textContent = translations[lang].lastUpdated;
+      document.getElementById('licenseBody').textContent = translations[lang].licenseBody;
+      document.getElementById('footerPolicy').textContent = translations[lang].footerPolicy;
+      document.getElementById('footerLicense').textContent = translations[lang].footerLicense;
+      document.getElementById('footerCopyright').textContent = translations[lang].footerCopyright;
     }
-
-    // При загрузке страницы
-    document.addEventListener('DOMContentLoaded', () => {
-      // Смотрим, есть ли сохранённый язык в localStorage
-      const savedLang = localStorage.getItem('preferredLang');
-      if (savedLang) {
-        // Если язык найден, применяем его
-        changeLang(savedLang);
-      } else {
-        // Иначе по умолчанию русский
-        changeLang('ru');
-      }
-    });
   </script>
 </body>
 </html>

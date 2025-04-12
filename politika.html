@@ -10,145 +10,412 @@
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
   />
-  <!-- Google Font: Poppins -->
+  <!-- Google Font: Nunito + Montserrat -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Montserrat:wght@500;700&display=swap"
     rel="stylesheet"
+  />
+  <!-- Font Awesome для иконок -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
   />
 
   <style>
+    :root {
+      --primary: #2471CC;
+      --primary-light: #5B9AE8;
+      --primary-dark: #1A5195;
+      --secondary: #38BEC9;
+      --accent: #56B870;
+      --accent-light: #8EEDB0;
+      --background: #F8FAFD;
+      --card-bg: #FFFFFF;
+      --text-dark: #272E3A;
+      --text-medium: #556175;
+      --text-light: #7E8A9C;
+      --white: #FFFFFF;
+      --shadow: 0 8px 24px rgba(36, 113, 204, 0.1);
+    }
+    
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
     }
+    
     body {
-      background-color: #343a40;
-      color: #ffffff;
+      background-color: var(--background);
+      color: var(--text-dark);
+      font-family: 'Nunito', sans-serif;
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
     }
+
+    /* Декоративные элементы */
+    .bg-shape {
+      position: absolute;
+      z-index: -1;
+    }
+
+    .bg-shape-1 {
+      top: -100px;
+      right: -80px;
+      width: 300px;
+      height: 300px;
+      background: linear-gradient(135deg, var(--primary-light), var(--primary));
+      border-radius: 60% 40% 70% 30% / 60% 30% 70% 40%;
+      opacity: 0.3;
+    }
+
+    .bg-shape-2 {
+      bottom: 20%;
+      left: -150px;
+      width: 400px;
+      height: 400px;
+      background: linear-gradient(135deg, var(--accent-light), var(--accent));
+      border-radius: 30% 70% 50% 50% / 30% 30% 70% 70%;
+      opacity: 0.2;
+    }
+    
+    .bg-dots {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(var(--text-light) 1px, transparent 1px);
+      background-size: 30px 30px;
+      opacity: 0.1;
+      z-index: -2;
+    }
+
+    /* Шапка */
     header {
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 999;
-      background: #20232a;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+      backdrop-filter: blur(10px);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 10px 20px;
-    }
-    #logo {
-      width: 60px;
-      height: auto;
-    }
-    .nav-links {
-      display: flex;
-      gap: 1rem;
-      list-style: none;
-      margin: 0; padding: 0;
-    }
-    .nav-links li a {
-      text-decoration: none;
-      color: #fff;
-      font-weight: 600;
-      font-size: 1rem;
-    }
-    .nav-links li a:hover {
-      color: #ddd;
-    }
-    .lang-switch {
-      display: flex; gap: 0.5rem;
-    }
-    .lang-btn {
-      background: none; border: none; color: #fff;
-      font-weight: 600; cursor: pointer; font-size: 1rem;
-    }
-    .lang-btn.active {
-      text-decoration: underline;
+      padding: 15px 5%;
+      transition: all 0.3s ease;
     }
 
+    /* Логотип */
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    #logo {
+      width: 130px;
+      height: auto;
+      transition: transform 0.3s;
+    }
+
+    .logo-container:hover #logo {
+      transform: scale(1.05);
+    }
+
+    /* Языковые переключатели */
+    .lang-switch {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .lang-btn {
+      background: none;
+      border: none;
+      color: var(--text-medium);
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.9rem;
+      padding: 5px 10px;
+      border-radius: 5px;
+      transition: all 0.3s;
+    }
+
+    .lang-btn:hover {
+      color: var(--primary);
+      background: rgba(36, 113, 204, 0.1);
+    }
+
+    .lang-btn.active {
+      color: var(--primary);
+      background: rgba(36, 113, 204, 0.15);
+    }
+
+    .lang-separator {
+      color: var(--text-light);
+      font-weight: 600;
+    }
+
+    /* Основной контент */
     main {
-      padding: 80px 20px;
-      max-width: 1200px;
+      padding-top: 100px;
+      max-width: 1000px;
       margin: auto;
+      padding-left: 20px;
+      padding-right: 20px;
+      position: relative;
     }
-    h2 {
-      text-align: center;
-      margin-bottom: 1.5rem;
-      font-size: 2rem;
+
+    .policy-container {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: var(--shadow);
+      margin-bottom: 40px;
     }
-    .content-text {
-      text-align: left;
+
+    .policy-container h1 {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--primary);
+      margin-bottom: 30px;
+      font-size: 2.2rem;
+    }
+/* 
+    .policy-container h5 {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--text-medium);
+      margin: 30px 0 15px;
+      font-size: 1.5rem;
+    } */
+
+    .policy-container p {
+      color: var(--text-medium);
+      margin-bottom: 15px;
+      line-height: 1.8;
+    }
+
+    .policy-container ul {
+      list-style-type: none;
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    .policy-container ul li {
+      position: relative;
+      padding-left: 25px;
+      margin-bottom: 10px;
+      color: var(--text-medium);
+    }
+
+    .policy-container ul li:before {
+      content: '•';
+      color: var(--primary);
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 25px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      margin-bottom: 1em;
+      margin-top: 1em;
+    }
+
+    .back-button:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      color: white;
+    }
+
+    .back-button i {
       font-size: 1.1rem;
-      line-height: 1.6;
-      white-space: pre-wrap;
-      margin: 0 auto;
-      max-width: 900px;
     }
 
     /* Футер */
     footer {
-      background: #20232a;
-      color: #fff;
+      background: var(--primary-dark);
+      color: var(--white);
+      padding: 40px 20px 20px;
       text-align: center;
-      padding: 1rem;
-      margin-top: 40px;
     }
-    .bottom-nav {
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
       display: flex;
-      flex-direction: column;
       align-items: center;
-      gap: 0.7rem;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
     }
-    .bottom-nav-links {
+
+    .footer-logo img {
+      width: 40px;
+      height: auto;
+    }
+
+    .footer-logo h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5rem;
+      color: white;
+      margin: 0;
+    }
+
+    .footer-logo h3 span {
+      color: #56B870;
+    }
+    .footer-links {
       display: flex;
+      justify-content: center;
       gap: 2rem;
+      margin-bottom: 20px;
     }
-    .bottom-nav-links a {
-      color: #fff;
+    
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.8);
       text-decoration: none;
-      font-size: 1rem;
+      transition: color 0.3s ease;
     }
-    .bottom-nav-links a:hover {
+    
+    .footer-links a:hover {
+      color: white;
       text-decoration: underline;
+    }
+    .footer-bottom {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-bottom p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .policy-container {
+        padding: 30px 20px;
+      }
+
+      .policy-container h1 {
+        font-size: 1.8rem;
+      }
+/* 
+      .policy-container h5 {
+        font-size: 1.3rem;
+      } */
     }
   </style>
 </head>
 <body>
+  <!-- Декоративные элементы фона -->
+  <div class="bg-dots"></div>
+  <div class="bg-shape bg-shape-1"></div>
+  <div class="bg-shape bg-shape-2"></div>
+
   <!-- Шапка -->
-  <header>
-    <div class="d-flex align-items-center gap-3">
-      <img src="Logo.png" alt="MedixGO Logo" id="logo" />
-      <ul class="nav-links">
-        <!-- Меняем текст ссылки динамически -->
-        <li><a href="index.html" id="navHome"></a></li>
-      </ul>
+  <header id="site-header">
+    <div class="logo-container">
+      <a href="updated-medixgo-website.html">
+        <img src="Logo.png" alt="MedixGO Logo" id="logo" />
+      </a>
     </div>
-    <!-- Языки -->
     <div class="lang-switch">
-      <button class="lang-btn active" onclick="changeLang('ru')">RUS</button> |
-      <button class="lang-btn" onclick="changeLang('kz')">KAZ</button> |
+      <button class="lang-btn active" onclick="changeLang('ru')">RUS</button>
+      <span class="lang-separator">|</span>
+      <button class="lang-btn" onclick="changeLang('kz')">KAZ</button>
+      <span class="lang-separator">|</span>
       <button class="lang-btn" onclick="changeLang('en')">ENG</button>
     </div>
   </header>
 
   <!-- Основной контент -->
   <main>
-    <!-- Заголовок (динамический) -->
-    <h2 id="policyTitle"></h2>
-    <!-- Текст политики (динамический) -->
-    <div class="content-text" id="policyBody"></div>
+    <a href="updated-medixgo-website.html" class="back-button" id="backButton">
+      <i class="fas fa-arrow-left"></i>
+      <span id="backButtonText">Назад на главную</span>
+    </a>
+
+    <div class="policy-container">
+      <h1 id="policyTitle">Политика конфиденциальности</h1>
+      
+      <p id="lastUpdated">Последнее обновление: 1 марта 2024 г.</p>
+
+      <p id="introTitle">1. Введение</p>
+      <p id="introText">MedixGO уважает вашу конфиденциальность и стремится защитить ваши персональные данные. Эта политика конфиденциальности объясняет, как мы собираем, используем и защищаем вашу информацию.</p>
+
+      <p id="dataCollectionTitle">2. Сбор информации</p>
+      <p id="dataCollectionIntro">Мы собираем следующие типы информации:</p>
+      <ul id="dataCollectionList">
+        <li>Персональные данные (имя, контактная информация)</li>
+        <li>Медицинская информация, необходимая для оказания услуг</li>
+        <li>Информация об устройстве и использовании приложения</li>
+      </ul>
+
+      <p id="dataUsageTitle">3. Использование информации</p>
+      <p id="dataUsageIntro">Мы используем собранную информацию для:</p>
+      <ul id="dataUsageList">
+        <li>Предоставления медицинских услуг</li>
+        <li>Улучшения работы приложения</li>
+        <li>Связи с вами по вопросам обслуживания</li>
+        <li>Обеспечения безопасности</li>
+      </ul>
+
+      <p id="dataProtectionTitle">4. Защита данных</p>
+      <p id="dataProtectionIntro">Мы применяем современные методы защиты для сохранения ваших данных в безопасности, включая:</p>
+      <ul id="dataProtectionList">
+        <li>Шифрование данных</li>
+        <li>Регулярное обновление систем безопасности</li>
+        <li>Ограниченный доступ к персональным данным</li>
+      </ul>
+
+      <p id="userRightsTitle">5. Права пользователей</p>
+      <p id="userRightsIntro">Вы имеете право:</p>
+      <ul id="userRightsList">
+        <li>Получить доступ к своим данным</li>
+        <li>Исправить неточные данные</li>
+        <li>Удалить свои данные</li>
+        <li>Отозвать согласие на обработку данных</li>
+      </ul>
+
+      <p id="contactsTitle">6. Контакты</p>
+      <p id="contactsIntro">По вопросам конфиденциальности обращайтесь:</p>
+      <ul id="contactsList">
+        <li>Email: support@medixgo.kz</li>
+        <li>Телефон: +7 771 643 00 37</li>
+      </ul>
+    </div>
   </main>
 
   <!-- Футер -->
-  <footer>
-    <div class="bottom-nav">
-      <p id="footerAddress"></p>
-      <div class="bottom-nav-links">
-        <a href="politika.html" id="footerPolicy" style="margin-right:2rem;"></a>
-        <a href="licenziya.html" id="footerLicense"></a>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h3>Medix<span>GO</span></h3>
+        </div>
+        <div class="footer-links">
+          <a href="politika.html" id="footerPolicy">Политика конфиденциальности</a>
+          <a href="licenziya.html" id="footerLicense">Лицензионное соглашение</a>
+        </div>
+        <div class="footer-copyright">
+          <p id="footerCopyright">© 2025 MedixGO. Все права защищены.</p>
+        </div>
       </div>
-      <p id="footerCopy"></p>
     </div>
   </footer>
 
@@ -156,302 +423,200 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    // Объект переводов
     const translations = {
       ru: {
-        navHome: "Главная",
+        backButtonText: "Назад на главную",
         policyTitle: "Политика конфиденциальности",
-        policyBody: `Политика конфиденциальности для мобильного приложения "MedixGO"
-
-1. Общие положения
-
-1.1. Настоящая Политика конфиденциальности (далее — Политика) регулирует обработку 
-персональной информации (далее — Персональная информация), которая собирается и 
-используется при использовании мобильного приложения "MedixGO" (далее — Приложение) и его 
-функционала.
-1.2. Персональная информация обрабатывается в строгом соответствии с законодательством 
-Республики Казахстан о защите данных.
-1.3. Настоящая Политика является неотъемлемой частью условий использования Приложения и 
-может обновляться в одностороннем порядке для обеспечения соответствия законодательным 
-требованиям или улучшения предоставляемых услуг.
-
-2. Цели обработки персональной информации
-
-2.1. Персональная информация собирается и обрабатывается для следующих целей:
-- Авторизация и регистрация пользователей.
-- Предоставление услуг через функционал Приложения (например, вызов медицинского 
-  персонала).
-- Улучшение качества предоставляемых услуг.
-- Обеспечение безопасности данных.
-- Информирование пользователей о статусе их заказов и других аспектах использования 
-  Приложения.
-
-3. Состав собираемой информации
-
-3.1. Приложение может собирать следующую Персональную информацию:
-- ФИО, номер телефона, адрес электронной почты, адрес проживания.
-- Информация о заказах, выбранных услугах и предпочтениях пользователя.
-- Данные геолокации (с согласия пользователя).
-- Техническая информация: IP-адрес, тип устройства, версия операционной системы, данные о 
-  браузере.
-3.2. Персональная информация предоставляется Пользователем добровольно в процессе 
-регистрации и использования Приложения.
-
-4. Хранение и защита данных
-
-4.1. Все Персональные данные хранятся на серверах, соответствующих требованиям безопасности 
-данных.
-4.2. Правообладатель Приложения принимает все необходимые меры для защиты Персональной 
-информации от несанкционированного доступа, изменения, раскрытия или уничтожения.
-
-5. Передача данных третьим лицам
-
-5.1. Персональная информация может быть передана третьим лицам только в следующих случаях:
-- Для выполнения заказа (например, передача данных медицинскому персоналу).
-- На основании требований законодательства.
-- С согласия Пользователя.
-5.2. Передача данных осуществляется в минимально необходимом объеме и в соответствии с 
-положениями данной Политики.
-
-6. Права пользователей
-
-6.1. Пользователь имеет право:
-- Запрашивать доступ к своей Персональной информации.
-- Требовать исправления неточных или устаревших данных.
-- Требовать удаления данных, если они более не нужны для целей обработки.
-- Отозвать согласие на обработку своих данных.
-6.2. Для реализации своих прав Пользователь может обратиться в службу поддержки по адресу: 
-support@medixgo.kz.
-
-7. Использование файлов cookie
-
-7.1. Приложение может использовать файлы cookie для улучшения пользовательского опыта, 
-хранения предпочтений и статистического анализа.
-7.2. Пользователь может отключить использование файлов cookie через настройки своего 
-устройства или приложения.
-
-8. Обновление Политики
-
-8.1. Настоящая Политика может быть изменена. Обновленная версия Политики будет 
-опубликована в разделе «О приложении».
-8.2. Пользователи будут уведомлены о существенных изменениях до их вступления в силу через 
-уведомления в Приложении.
-
-9. Контакты
-
-Для вопросов, связанных с обработкой персональной информации, пожалуйста, свяжитесь с нами:
-Адрес: г. Караганда, Республика Казахстан.
-Электронная почта: support@medixgo.kz`,
-        footerAddress: `ТОО «MedixGO»
-Казахстан, Карагандинская область, г. Караганда,
-ул. Московская, дом 11, кв.4, индекс M02A1X4`,
+        lastUpdated: "Последнее обновление: 1 марта 2024 г.",
+        introTitle: "1. Введение",
+        introText: "MedixGO уважает вашу конфиденциальность и стремится защитить ваши персональные данные. Эта политика конфиденциальности объясняет, как мы собираем, используем и защищаем вашу информацию.",
+        dataCollectionTitle: "2. Сбор информации",
+        dataCollectionIntro: "Мы собираем следующие типы информации:",
+        dataCollectionList: [
+          "Персональные данные (имя, контактная информация)",
+          "Медицинская информация, необходимая для оказания услуг",
+          "Информация об устройстве и использовании приложения"
+        ],
+        dataUsageTitle: "3. Использование информации",
+        dataUsageIntro: "Мы используем собранную информацию для:",
+        dataUsageList: [
+          "Предоставления медицинских услуг",
+          "Улучшения работы приложения",
+          "Связи с вами по вопросам обслуживания",
+          "Обеспечения безопасности"
+        ],
+        dataProtectionTitle: "4. Защита данных",
+        dataProtectionIntro: "Мы применяем современные методы защиты для сохранения ваших данных в безопасности, включая:",
+        dataProtectionList: [
+          "Шифрование данных",
+          "Регулярное обновление систем безопасности",
+          "Ограниченный доступ к персональным данным"
+        ],
+        userRightsTitle: "5. Права пользователей",
+        userRightsIntro: "Вы имеете право:",
+        userRightsList: [
+          "Получить доступ к своим данным",
+          "Исправить неточные данные",
+          "Удалить свои данные",
+          "Отозвать согласие на обработку данных"
+        ],
+        contactsTitle: "6. Контакты",
+        contactsIntro: "По вопросам конфиденциальности обращайтесь:",
+        contactsList: [
+          "Email: support@medixgo.kz",
+          "Телефон: +7 771 643 00 37"
+        ],
+        footerCopyright: "© 2025 MedixGO. Все права защищены.",
         footerPolicy: "Политика конфиденциальности",
-        footerLicense: "Лицензионное соглашение",
-        footerCopy: "© 2025 MedixGO",
+        footerLicense: "Лицензионное соглашение"
       },
       kz: {
-        navHome: "Басты бет",
-        policyTitle: "Құпиялық саясаты",
-        policyBody: `«MedixGO» мобильді қосымшасына арналған құпиялық саясаты
-
-1. Жалпы ережелер
-
-1.1. Осы Құпиялық саясаты (бұдан әрі — «Саясат») «MedixGO» мобильді қосымшасын (бұдан әрі — «Қосымша») пайдалану кезінде жиналатын және қолданылатын жеке ақпаратты (бұдан әрі — «Жеке ақпарат») өңдеуді реттейді.
-1.2. Жеке ақпарат Қазақстан Республикасының деректерді қорғау заңнамасына сәйкес қатаң сақталады.
-1.3. Осы Саясат Қосымшаны пайдалану шарттарының ажырамас бөлігі болып табылады және заңнамалық талаптарға сәйкестікті немесе көрсетілетін қызметтерді жақсартуды қамтамасыз ету үшін біржақты тәртіпте жаңартылуы мүмкін.
-
-2. Жеке ақпаратты өңдеудің мақсаттары
-
-2.1. Жеке ақпарат келесі мақсаттар үшін жиналады және өңделеді:
-- Пайдаланушыларды авторизациялау және тіркеу.
-- Қосымша функционалы арқылы қызметтерді (мысалы, медициналық персоналды шақыру) ұсыну.
-- Көрсетілетін қызметтердің сапасын жақсарту.
-- Деректердің қауіпсіздігін қамтамасыз ету.
-- Пайдаланушыларды олардың тапсырыстарының мәртебесі және Қосымшаны пайдаланудың басқа аспектілері туралы хабардар ету.
-
-3. Жиналатын ақпараттың құрамы
-
-3.1. Қосымша келесі Жеке ақпаратты жинауы мүмкін:
-- Т.А.Ә., телефон нөмірі, электрондық пошта мекенжайы, тұрғылықты мекенжайы.
-- Тапсырыстар, таңдалған қызметтер және пайдаланушының қалаулары туралы ақпарат.
-- Геолокация деректері (пайдаланушының келісімімен).
-- Техникалық ақпарат: IP-мекенжай, құрылғы түрі, операциялық жүйе нұсқасы, браузер деректері.
-3.2. Жеке ақпарат Пайдаланушы тарапынан Қосымшаны тіркеу және пайдалану барысында ерікті түрде беріледі.
-
-4. Деректерді сақтау және қорғау
-
-4.1. Барлық Жеке деректер деректердің қауіпсіздік талаптарына сәйкес келетін серверлерде сақталады.
-4.2. Қосымшаның Құқық иеленушісі Жеке ақпаратты рұқсат етілмеген қолжетімділіктен, өзгертуден, ашудан немесе жоюдан қорғау үшін барлық қажетті шараларды қабылдайды.
-
-5. Деректерді үшінші тұлғаларға беру
-
-5.1. Жеке ақпарат үшінші тұлғаларға тек келесі жағдайларда берілуі мүмкін:
-- Тапсырысты орындау үшін (мысалы, медициналық персоналға деректерді беру).
-- Заңнама талаптарына сәйкес.
-- Пайдаланушының келісімімен.
-5.2. Деректер ең қажетті көлемде және осы Саясаттың ережелеріне сәйкес беріледі.
-
-6. Пайдаланушылардың құқықтары
-
-6.1. Пайдаланушы құқылы:
-- Өзінің Жеке ақпаратына қолжетімділікті сұрауға.
-- Дұрыс емес немесе ескірген деректерді түзетуді талап етуге.
-- Егер олар өңдеу мақсаттары үшін қажет болмаса, деректерді жоюды талап етуге.
-- Өз деректерін өңдеуге берген келісімін кері қайтарып алуға.
-6.2. Өз құқықтарын іске асыру үшін Пайдаланушы support@medixgo.kz мекенжайы бойынша қолдау қызметіне жүгіне алады.
-
-7. Cookie файлдарын пайдалану
-
-7.1. Қосымша пайдаланушының тәжірибесін жақсарту, параметрлерді сақтау және статистикалық талдау үшін cookie файлдарын пайдалануы мүмкін.
-7.2. Пайдаланушы өз құрылғысының немесе қосымшаның параметрлері арқылы cookie файлдарын өшіре алады.
-
-8. Саясатты жаңарту
-
-8.1. Осы Саясат өзгертілуі мүмкін. Жаңартылған нұсқасы «Қосымша туралы» бөлімінде жарияланады.
-8.2. Пайдаланушылар маңызды өзгерістер туралы күшіне енгенге дейін Қосымшадағы хабарландырулар арқылы хабардар етіледі.
-
-9. Байланыстар
-
-Жеке ақпаратты өңдеуге қатысты сұрақтар бойынша бізге хабарласыңыз:
-Мекенжай: Қарағанды қ., Қазақстан Республикасы.
-Электрондық пошта: support@medixgo.kz`,
-        footerAddress: `"MedixGO" ЖШС
-Қазақстан, Қарағанды облысы, Қарағанды,
-Мәскеу көшесі, 11-үй, 4-пәтер, M02A1X4`,
-        footerPolicy: "Құпиялық саясаты",
-        footerLicense: "Лицензиялық келісім",
-        footerCopy: "© 2025 MedixGO",
+        backButtonText: "Басты бетке оралу",
+        policyTitle: "Құпиялылық саясаты",
+        lastUpdated: "Соңғы жаңарту: 1 наурыз 2024 ж.",
+        introTitle: "1. Кіріспе",
+        introText: "MedixGO сіздің құпиялылығыңызды құрметтейді және жеке деректеріңізді қорғауға ұмтылады. Бұл құпиялылық саясаты біз сіздің ақпаратыңызды қалай жинайтынымыз, қолданатынымыз және қорғайтынымызды түсіндіреді.",
+        dataCollectionTitle: "2. Ақпарат жинау",
+        dataCollectionIntro: "Біз келесі түрдегі ақпаратты жинаймыз:",
+        dataCollectionList: [
+          "Жеке деректер (аты-жөні, байланыс ақпараты)",
+          "Қызмет көрсету үшін қажетті медициналық ақпарат",
+          "Құрылғы және қосымшаны пайдалану туралы ақпарат"
+        ],
+        dataUsageTitle: "3. Ақпаратты қолдану",
+        dataUsageIntro: "Біз жиналған ақпаратты келесі мақсаттарда қолданамыз:",
+        dataUsageList: [
+          "Медициналық қызметтерді көрсету",
+          "Қосымшаның жұмысын жақсарту",
+          "Қызмет көрсету мәселелері бойынша сізбен байланысу",
+          "Қауіпсіздікті қамтамасыз ету"
+        ],
+        dataProtectionTitle: "4. Деректерді қорғау",
+        dataProtectionIntro: "Біз деректеріңізді қауіпсіз сақтау үшін заманауи қорғау әдістерін қолданамыз, оларға мыналар жатады:",
+        dataProtectionList: [
+          "Деректерді шифрлау",
+          "Қауіпсіздік жүйелерін үнемі жаңарту",
+          "Жеке деректерге шектеулі қол жетімділік"
+        ],
+        userRightsTitle: "5. Пайдаланушы құқықтары",
+        userRightsIntro: "Сізде келесі құқықтар бар:",
+        userRightsList: [
+          "Өз деректеріңізге қол жетімділік алу",
+          "Дұрыс емес деректерді түзету",
+          "Деректерді жою",
+          "Деректерді өңдеуге келісімін кері қайтару"
+        ],
+        contactsTitle: "6. Байланыстар",
+        contactsIntro: "Құпиялылық мәселелері бойынша кері байланыс:",
+        contactsList: [
+          "Email: support@medixgo.kz",
+          "Телефон: +7 771 643 00 37"
+        ],
+        footerCopyright: "© 2025 MedixGO. Барлық құқықтар қорғалған.",
+        footerPolicy: "Құпиялылық саясаты",
+        footerLicense: "Лицензиялық келісім"
       },
       en: {
-        navHome: "Home",
+        backButtonText: "Back to Home",
         policyTitle: "Privacy Policy",
-        policyBody: `Privacy Policy for the “MedixGO” mobile application
-
-1. General Provisions
-
-1.1. This Privacy Policy (hereinafter referred to as the “Policy”) governs the processing of 
-personal information (hereinafter referred to as “Personal Information”) that is collected and 
-used when using the “MedixGO” mobile application (hereinafter referred to as the “Application”) and its 
-functionality.
-1.2. Personal Information is processed in strict accordance with the legislation 
-of the Republic of Kazakhstan on data protection.
-1.3. This Policy is an integral part of the terms of use of the Application and 
-may be updated unilaterally to ensure compliance with legislative 
-requirements or to improve the services provided.
-
-2. Purposes of Processing Personal Information
-
-2.1. Personal Information is collected and processed for the following purposes:
-- Authorization and registration of users.
-- Provision of services through the functionality of the Application (for example, calling medical 
-  staff).
-- Improvement of the quality of provided services.
-- Ensuring data security.
-- Informing users about the status of their orders and other aspects of using 
-  the Application.
-
-3. Scope of Collected Information
-
-3.1. The Application may collect the following Personal Information:
-- Full name, phone number, email address, place of residence.
-- Information about orders, selected services, and user preferences.
-- Geolocation data (with the user’s consent).
-- Technical information: IP address, device type, operating system version, browser data.
-3.2. Personal Information is provided by the User voluntarily in the process of 
-registering and using the Application.
-
-4. Storage and Protection of Data
-
-4.1. All Personal Data is stored on servers that meet data security requirements.
-4.2. The Right Holder of the Application takes all necessary measures to protect Personal 
-Information from unauthorized access, modification, disclosure, or destruction.
-
-5. Transfer of Data to Third Parties
-
-5.1. Personal Information may be transferred to third parties only in the following cases:
-- To fulfill an order (for example, transferring data to medical personnel).
-- Based on the requirements of the legislation.
-- With the User’s consent.
-5.2. Data is transferred in the minimally necessary volume and in accordance with 
-the provisions of this Policy.
-
-6. User Rights
-
-6.1. The User has the right to:
-- Request access to their Personal Information.
-- Require correction of inaccurate or outdated data.
-- Require deletion of data if it is no longer needed for processing purposes.
-- Withdraw consent to the processing of their data.
-6.2. To exercise their rights, the User may contact the support service at:
-support@medixgo.kz.
-
-7. Use of Cookies
-
-7.1. The Application may use cookies to improve the user experience, 
-store preferences, and perform statistical analysis.
-7.2. The User can disable the use of cookies through their device or application settings.
-
-8. Updating the Policy
-
-8.1. This Policy may be changed. The updated version of the Policy will be 
-published in the “About the Application” section.
-8.2. Users will be notified of significant changes before they take effect through 
-notifications in the Application.
-
-9. Contacts
-
-For questions related to the processing of personal information, please contact us:
-Address: Karaganda, Republic of Kazakhstan.
-Email: support@medixgo.kz`,
-        footerAddress: `MedixGO LLP
-Kazakhstan, Karaganda Region, Karaganda,
-Moskovskaya St. 11, apt.4, M02A1X4`,
+        lastUpdated: "Last updated: March 1, 2024",
+        introTitle: "1. Introduction",
+        introText: "MedixGO respects your privacy and is committed to protecting your personal data. This privacy policy explains how we collect, use, and protect your information.",
+        dataCollectionTitle: "2. Information Collection",
+        dataCollectionIntro: "We collect the following types of information:",
+        dataCollectionList: [
+          "Personal data (name, contact information)",
+          "Medical information necessary for service provision",
+          "Device and app usage information"
+        ],
+        dataUsageTitle: "3. Information Usage",
+        dataUsageIntro: "We use the collected information for:",
+        dataUsageList: [
+          "Providing medical services",
+          "Improving app functionality",
+          "Communicating with you about services",
+          "Ensuring security"
+        ],
+        dataProtectionTitle: "4. Data Protection",
+        dataProtectionIntro: "We employ modern protection methods to keep your data secure, including:",
+        dataProtectionList: [
+          "Data encryption",
+          "Regular security system updates",
+          "Limited access to personal data"
+        ],
+        userRightsTitle: "5. User Rights",
+        userRightsIntro: "You have the right to:",
+        userRightsList: [
+          "Access your data",
+          "Correct inaccurate data",
+          "Delete your data",
+          "Withdraw consent for data processing"
+        ],
+        contactsTitle: "6. Contacts",
+        contactsIntro: "For privacy inquiries, please contact:",
+        contactsList: [
+          "Email: support@medixgo.kz",
+          "Phone: +7 771 643 00 37"
+        ],
+        footerCopyright: "© 2025 MedixGO. All rights reserved.",
         footerPolicy: "Privacy Policy",
-        footerLicense: "License Agreement",
-        footerCopy: "© 2025 MedixGO",
+        footerLicense: "License Agreement"
       }
     };
 
-    function changeLang(lang) {
-      // Сохраняем выбранный язык в localStorage
-      localStorage.setItem('preferredLang', lang);
-
-      // Снимаем класс active со всех кнопок
-      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-      // Активируем кнопку выбранного языка
-      const btn = document.querySelector(`.lang-btn[onclick="changeLang('${lang}')"]`);
-      if(btn) btn.classList.add('active');
-
-      // Достаём объект для выбранного языка
+    function updateContent(lang) {
       const t = translations[lang];
+      
+      // Update all translatable elements
+      document.getElementById('backButtonText').textContent = t.backButtonText;
+      document.getElementById('policyTitle').textContent = t.policyTitle;
+      document.getElementById('lastUpdated').textContent = t.lastUpdated;
+      document.getElementById('introTitle').textContent = t.introTitle;
+      document.getElementById('introText').textContent = t.introText;
+      document.getElementById('dataCollectionTitle').textContent = t.dataCollectionTitle;
+      document.getElementById('dataCollectionIntro').textContent = t.dataCollectionIntro;
+      document.getElementById('dataUsageTitle').textContent = t.dataUsageTitle;
+      document.getElementById('dataUsageIntro').textContent = t.dataUsageIntro;
+      document.getElementById('dataProtectionTitle').textContent = t.dataProtectionTitle;
+      document.getElementById('dataProtectionIntro').textContent = t.dataProtectionIntro;
+      document.getElementById('userRightsTitle').textContent = t.userRightsTitle;
+      document.getElementById('userRightsIntro').textContent = t.userRightsIntro;
+      document.getElementById('contactsTitle').textContent = t.contactsTitle;
+      document.getElementById('contactsIntro').textContent = t.contactsIntro;
+      document.getElementById('footerCopyright').textContent = t.footerCopyright;
+      document.getElementById('footerPolicy').textContent = t.footerPolicy;
+      document.getElementById('footerLicense').textContent = t.footerLicense;
 
-      // Меняем шапку
-      document.getElementById("navHome").textContent = t.navHome;
-
-      // Заголовок и текст политики
-      document.getElementById("policyTitle").textContent = t.policyTitle;
-      document.getElementById("policyBody").textContent = t.policyBody;
-
-      // Футер
-      document.getElementById("footerAddress").textContent = t.footerAddress;
-      document.getElementById("footerPolicy").textContent = t.footerPolicy;
-      document.getElementById("footerLicense").textContent = t.footerLicense;
-      document.getElementById("footerCopy").textContent = t.footerCopy;
-
-      console.log(`Язык переключён на ${lang}`);
+      // Update lists
+      updateList('dataCollectionList', t.dataCollectionList);
+      updateList('dataUsageList', t.dataUsageList);
+      updateList('dataProtectionList', t.dataProtectionList);
+      updateList('userRightsList', t.userRightsList);
+      updateList('contactsList', t.contactsList);
     }
 
-    // При загрузке страницы
+    // Helper function to update lists
+    function updateList(listId, items) {
+      const list = document.getElementById(listId);
+      list.innerHTML = items.map(item => `<li>${item}</li>`).join('');
+    }
+
+    function changeLang(lang) {
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('data-lang') === lang) {
+          btn.classList.add('active');
+        }
+      });
+      
+      localStorage.setItem('selectedLanguage', lang);
+      updateContent(lang);
+    }
+
+    // Initialize with saved language or default to Russian
     document.addEventListener('DOMContentLoaded', () => {
-      // Проверяем, сохранён ли язык в localStorage
-      const savedLang = localStorage.getItem('preferredLang');
-      if (savedLang) {
-        // Если есть — применяем
-        changeLang(savedLang);
-      } else {
-        // Иначе по умолчанию русский
-        changeLang('ru');
-      }
+      const savedLang = localStorage.getItem('selectedLanguage') || 'ru';
+      changeLang(savedLang);
     });
   </script>
 </body>
