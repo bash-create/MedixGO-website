@@ -124,11 +124,108 @@
       transform: scale(1.05);
     }
 
+    /* Навигация */
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .nav-links li a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s;
+      position: relative;
+      padding: 5px 0;
+    }
+    
+    .nav-links li a:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--primary);
+      transition: width 0.3s;
+    }
+    
+    .nav-links li a:hover {
+      color: var(--primary);
+    }
+    
+    .nav-links li a:hover:after {
+      width: 100%;
+    }
+
+    /* Мобильное меню */
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--primary);
+      transition: transform 0.3s ease;
+    }
+
+    .menu-toggle.active {
+      transform: rotate(90deg);
+    }
+
+    /* Application Button in Nav */
+    .nav-application-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 16px !important;
+      background: var(--primary) !important;
+      color: white !important;
+      border-radius: 50px !important;
+      font-weight: 600;
+      transition: all 0.3s ease !important;
+      box-shadow: 0 4px 15px rgba(36, 113, 204, 0.2);
+    }
+
+    .nav-application-btn i {
+      margin-right: 8px;
+      font-size: 1rem;
+    }
+
+    .nav-application-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(36, 113, 204, 0.3);
+      background: var(--primary-dark) !important;
+    }
+
+    .nav-application-btn:after {
+      display: none !important;
+    }
+
+    /* Navigation Icons */
+    .nav-links li a i {
+      margin-right: 8px;
+      font-size: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-links li a:hover i {
+      transform: translateY(-2px);
+    }
+
     /* Языковые переключатели */
     .lang-switch {
       display: flex;
       align-items: center;
       gap: 5px;
+      margin-left: auto;
     }
 
     .lang-btn {
@@ -141,6 +238,7 @@
       padding: 5px 10px;
       border-radius: 5px;
       transition: all 0.3s;
+      white-space: nowrap;
     }
 
     .lang-btn:hover {
@@ -156,6 +254,165 @@
     .lang-separator {
       color: var(--text-light);
       font-weight: 600;
+    }
+
+    /* Медиа-запросы для адаптивности */
+    @media (max-width: 1200px) {
+      .policy-container {
+        max-width: 900px;
+        padding: 35px;
+      }
+
+      .policy-container h1 {
+        font-size: 2rem;
+      }
+
+      .policy-container p {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .policy-container {
+        max-width: 800px;
+        padding: 30px;
+      }
+
+      .policy-container h1 {
+        font-size: 1.8rem;
+      }
+
+      .policy-container p {
+        font-size: 0.95rem;
+      }
+
+      .back-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 15px 20px;
+      }
+
+      .logo-container {
+        flex: 1;
+      }
+
+      #logo {
+        width: 100px;
+      }
+
+      .lang-switch {
+        margin-left: 15px;
+      }
+
+      .lang-btn {
+        padding: 4px 8px;
+        font-size: 0.8rem;
+      }
+
+      .policy-container {
+        max-width: 100%;
+        padding: 25px 20px;
+        margin: 0 15px 30px;
+      }
+
+      .policy-container h1 {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+      }
+
+      .policy-container p {
+        font-size: 0.9rem;
+        margin-bottom: 12px;
+      }
+
+      .policy-container ul li {
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+      }
+
+      .back-button {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+      }
+
+      main {
+        padding-top: 80px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 12px 15px;
+      }
+
+      #logo {
+        width: 80px;
+      }
+
+      .lang-switch {
+        gap: 3px;
+      }
+
+      .lang-btn {
+        padding: 3px 6px;
+        font-size: 0.75rem;
+      }
+
+      .lang-separator {
+        font-size: 0.8rem;
+      }
+
+      .policy-container {
+        padding: 20px 15px;
+        margin: 0 10px 25px;
+        border-radius: 15px;
+      }
+
+      .policy-container h1 {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+      }
+
+      .policy-container p {
+        font-size: 0.85rem;
+        margin-bottom: 10px;
+      }
+
+      .policy-container ul li {
+        font-size: 0.85rem;
+        margin-bottom: 6px;
+        padding-left: 20px;
+      }
+
+      .back-button {
+        padding: 6px 14px;
+        font-size: 0.8rem;
+      }
+
+      main {
+        padding-top: 70px;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      .footer-content {
+        padding: 0 10px;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
     }
 
     /* Основной контент */
@@ -248,11 +505,13 @@
       color: var(--white);
       padding: 40px 20px 20px;
       text-align: center;
+      width: 100%;
     }
 
     .footer-content {
       max-width: 1200px;
       margin: 0 auto;
+      width: 100%;
     }
 
     .footer-logo {
@@ -335,11 +594,11 @@
       </a>
     </div>
     <div class="lang-switch">
-      <button class="lang-btn active" onclick="changeLang('ru')">RUS</button>
+      <button class="lang-btn active" onclick="changeLang('ru')" data-lang="ru">RUS</button>
       <span class="lang-separator">|</span>
-      <button class="lang-btn" onclick="changeLang('kz')">KAZ</button>
+      <button class="lang-btn" onclick="changeLang('kz')" data-lang="kz">KAZ</button>
       <span class="lang-separator">|</span>
-      <button class="lang-btn" onclick="changeLang('en')">ENG</button>
+      <button class="lang-btn" onclick="changeLang('en')" data-lang="en">ENG</button>
     </div>
   </header>
 
@@ -353,7 +612,6 @@
     <div class="policy-container">
       <h1 id="policyTitle">Политика конфиденциальности</h1>
       
-      <p id="lastUpdated">Последнее обновление: 1 марта 2024 г.</p>
 
       <p id="introTitle">1. Введение</p>
       <p id="introText">MedixGO уважает вашу конфиденциальность и стремится защитить ваши персональные данные. Эта политика конфиденциальности объясняет, как мы собираем, используем и защищаем вашу информацию.</p>
@@ -427,7 +685,6 @@
       ru: {
         backButtonText: "Назад на главную",
         policyTitle: "Политика конфиденциальности",
-        lastUpdated: "Последнее обновление: 1 марта 2024 г.",
         introTitle: "1. Введение",
         introText: "MedixGO уважает вашу конфиденциальность и стремится защитить ваши персональные данные. Эта политика конфиденциальности объясняет, как мы собираем, используем и защищаем вашу информацию.",
         dataCollectionTitle: "2. Сбор информации",
@@ -473,7 +730,6 @@
       kz: {
         backButtonText: "Басты бетке оралу",
         policyTitle: "Құпиялылық саясаты",
-        lastUpdated: "Соңғы жаңарту: 1 наурыз 2024 ж.",
         introTitle: "1. Кіріспе",
         introText: "MedixGO сіздің құпиялылығыңызды құрметтейді және жеке деректеріңізді қорғауға ұмтылады. Бұл құпиялылық саясаты біз сіздің ақпаратыңызды қалай жинайтынымыз, қолданатынымыз және қорғайтынымызды түсіндіреді.",
         dataCollectionTitle: "2. Ақпарат жинау",
@@ -519,7 +775,6 @@
       en: {
         backButtonText: "Back to Home",
         policyTitle: "Privacy Policy",
-        lastUpdated: "Last updated: March 1, 2024",
         introTitle: "1. Introduction",
         introText: "MedixGO respects your privacy and is committed to protecting your personal data. This privacy policy explains how we collect, use, and protect your information.",
         dataCollectionTitle: "2. Information Collection",
@@ -570,7 +825,6 @@
       // Update all translatable elements
       document.getElementById('backButtonText').textContent = t.backButtonText;
       document.getElementById('policyTitle').textContent = t.policyTitle;
-      document.getElementById('lastUpdated').textContent = t.lastUpdated;
       document.getElementById('introTitle').textContent = t.introTitle;
       document.getElementById('introText').textContent = t.introText;
       document.getElementById('dataCollectionTitle').textContent = t.dataCollectionTitle;
@@ -601,7 +855,25 @@
       list.innerHTML = items.map(item => `<li>${item}</li>`).join('');
     }
 
+    // Initialize with saved language or default to Russian
+    document.addEventListener('DOMContentLoaded', () => {
+      // Get the language from localStorage, which is set by index.html
+      const savedLang = localStorage.getItem('preferredLang') || 'ru';
+      
+      // Update the active button state
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('data-lang') === savedLang) {
+          btn.classList.add('active');
+        }
+      });
+      
+      // Update the content with the saved language
+      updateContent(savedLang);
+    });
+
     function changeLang(lang) {
+      // Update the active button state
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.remove('active');
         if (btn.getAttribute('data-lang') === lang) {
@@ -609,14 +881,41 @@
         }
       });
       
-      localStorage.setItem('selectedLanguage', lang);
+      // Save the language preference to localStorage
+      localStorage.setItem('preferredLang', lang);
+      
+      // Update the content
       updateContent(lang);
     }
 
-    // Initialize with saved language or default to Russian
+    // Mobile menu functionality
     document.addEventListener('DOMContentLoaded', () => {
-      const savedLang = localStorage.getItem('selectedLanguage') || 'ru';
-      changeLang(savedLang);
+      const menuToggle = document.getElementById('menu-toggle');
+      const mainNav = document.getElementById('main-nav');
+      const navLinks = document.querySelectorAll('.nav-links li a');
+
+      if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', () => {
+          mainNav.classList.toggle('active');
+          menuToggle.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a nav link
+        navLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            mainNav.classList.remove('active');
+            menuToggle.classList.remove('active');
+          });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+          if (!mainNav.contains(e.target) && !menuToggle.contains(e.target)) {
+            mainNav.classList.remove('active');
+            menuToggle.classList.remove('active');
+          }
+        });
+      }
     });
   </script>
 </body>

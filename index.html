@@ -6,8 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="format-detection" content="telephone=no">
   <meta name="HandheldFriendly" content="true">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <!-- Bootstrap CSS -->
   <link
@@ -62,20 +60,17 @@
       position: relative;
       overflow-x: hidden;
       width: 100%;
-      max-width: 100%;
+      max-width: 100vw;
       -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
       -moz-text-size-adjust: 100%;
       text-size-adjust: 100%;
-      -webkit-overflow-scrolling: touch;
-      -webkit-tap-highlight-color: transparent;
     }
 
     /* Декоративные элементы */
     .bg-shape {
       position: absolute;
       z-index: -1;
-      overflow: hidden;
     }
 
     .bg-shape-1 {
@@ -106,7 +101,6 @@
       background-size: 30px 30px;
       opacity: 0.1;
       z-index: -2;
-      overflow: hidden;
     }
     
     /* Стилизация скроллбара */
@@ -144,9 +138,6 @@
       justify-content: space-between;
       padding: 15px 5%;
       transition: all 0.3s ease;
-      width: 100%;
-      max-width: 100%;
-      overflow-x: hidden;
     }
 
     header.scrolled {
@@ -263,7 +254,7 @@
     main {
       padding-top: 100px;
       width: 100%;
-      max-width: 1200px;
+      max-width: 100%;
       margin: 0 auto;
       padding-left: 20px;
       padding-right: 20px;
@@ -281,7 +272,7 @@
       margin-bottom: 80px;
       position: relative;
       width: 100%;
-      margin: 0 0 120px 0;
+      margin: 80px 0 120px 0;
       padding: 0;
     }
     
@@ -299,7 +290,6 @@
       justify-content: center;
       position: relative;
       width: 100%;
-      margin: 0;
       padding: 0;
     }
     
@@ -784,7 +774,7 @@
       }
 
       .video-player {
-        max-width: 90%;
+        max-width: 100%;
       }
     }
 
@@ -798,7 +788,7 @@
     .contact-section {
       text-align: center;
       padding: 20px 0 60px;
-      width: 90%;
+      width: 100%;
       margin: 0;
       padding: 20px 15px;
       margin-bottom: 80px;  /* Add space between contact section and footer */
@@ -1190,126 +1180,74 @@
       body {
         overflow-x: hidden;
         width: 100%;
-        position: relative;
-        -webkit-overflow-scrolling: touch;
-        -webkit-tap-highlight-color: transparent;
       }
 
       main {
-        padding-top: 60px;
+        padding-top: 0;
         padding-left: 15px;
         padding-right: 15px;
         width: 100%;
         max-width: 100%;
-        overflow-x: hidden;
-        -webkit-overflow-scrolling: touch;
       }
 
       .hero {
         width: 100%;
-        max-width: 100%;
-        margin: 0;
+        margin: 80px 0 120px 0;
         padding: 0;
-        overflow-x: hidden;
-        -webkit-overflow-scrolling: touch;
       }
 
       .hero-content {
         width: 100%;
-        max-width: 100%;
         padding: 0;
-        overflow-x: hidden;
-        -webkit-overflow-scrolling: touch;
+        margin-top: 40px;
       }
 
       .hero-image {
         width: 100%;
-        max-width: 100%;
         margin: 0;
-        padding: 0;
-        overflow-x: hidden;
-        -webkit-overflow-scrolling: touch;
+        padding: 0 20px;
       }
 
       .goals-container {
         width: 100%;
-        max-width: 100%;
         margin: 0;
         padding: 0;
-        overflow-x: hidden;
-        -webkit-overflow-scrolling: touch;
       }
 
       .video-section {
         width: 100%;
-        max-width: 100%;
         margin: 0;
         padding: 40px 15px;
-        overflow-x: hidden;
-        -webkit-overflow-scrolling: touch;
       }
 
       .video-container {
         width: 100%;
-        max-width: 100%;
         margin: 0;
         padding: 0;
-        overflow-x: hidden;
-        -webkit-overflow-scrolling: touch;
-      }
-
-      .video-player {
-        width: 100%;
-        max-width: 100%;
-        overflow-x: hidden;
       }
 
       .survey-section {
         width: 100%;
-        max-width: 100%;
         margin: 0;
         padding: 40px 15px;
-        overflow-x: hidden;
-        -webkit-overflow-scrolling: touch;
       }
 
       .contact-section {
         width: 100%;
-        max-width: 100%;
         margin: 0;
         padding: 20px 15px;
-        overflow-x: hidden;
-        -webkit-overflow-scrolling: touch;
       }
 
       footer {
         width: 100%;
-        max-width: 100%;
         margin: 0;
         padding: 40px 15px;
-        overflow-x: hidden;
-        -webkit-overflow-scrolling: touch;
       }
 
       .footer-content {
         width: 100%;
-        max-width: 100%;
         margin: 0;
         padding: 0;
-        overflow-x: hidden;
-        -webkit-overflow-scrolling: touch;
-      }
-
-      .bg-shape-1 {
-        right: -50px;
-        width: 250px;
-        height: 250px;
-      }
-
-      .bg-shape-2 {
-        left: -100px;
-        width: 300px;
-        height: 300px;
       }
     }
 
@@ -1794,6 +1732,11 @@
       .nav-links li a i {
         margin-right: 10px;
       }
+    }
+
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
     }
   </style>
 </head>
