@@ -129,6 +129,7 @@
       display: flex;
       align-items: center;
       gap: 5px;
+      margin-left: auto;
     }
 
     .lang-btn {
@@ -141,6 +142,7 @@
       padding: 5px 10px;
       border-radius: 5px;
       transition: all 0.3s;
+      white-space: nowrap;
     }
 
     .lang-btn:hover {
@@ -150,7 +152,8 @@
 
     .lang-btn.active {
       color: var(--primary);
-      background: rgba(36, 113, 204, 0.15);
+      background: rgba(36, 113, 204, 0.2);
+      pointer-events: none;
     }
 
     .lang-separator {
@@ -840,48 +843,50 @@ validity of the remaining provisions.`,
       }
     };
 
-    // Функция для смены языка
-    function changeLang(lang) {
-      // Обновляем активную кнопку
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      event.target.classList.add('active');
-
-      // Обновляем тексты
-      document.getElementById('backButtonText').textContent = translations[lang].backButtonText;
-      document.getElementById('licenseTitle').textContent = translations[lang].licenseTitle;
-      document.getElementById('licenseBody').textContent = translations[lang].licenseBody;
-      document.getElementById('footerPolicy').textContent = translations[lang].footerPolicy;
-      document.getElementById('footerLicense').textContent = translations[lang].footerLicense;
-      document.getElementById('footerCopyright').textContent = translations[lang].footerCopyright;
-
-      // Сохраняем выбранный язык
-      localStorage.setItem('preferredLang', lang);
+    function updateContent(lang) {
+      const t = translations[lang];
+      
+      // Update all translatable elements
+      document.getElementById('backButtonText').textContent = t.backButtonText;
+      document.getElementById('licenseTitle').textContent = t.licenseTitle;
+      document.getElementById('licenseBody').textContent = t.licenseBody;
+      document.getElementById('footerPolicy').textContent = t.footerPolicy;
+      document.getElementById('footerLicense').textContent = t.footerLicense;
+      document.getElementById('footerCopyright').textContent = t.footerCopyright;
     }
 
-    // Инициализация при загрузке страницы
+    // Initialize with saved language or default to Russian
     document.addEventListener('DOMContentLoaded', () => {
-      // Проверяем сохраненный язык
-      const savedLang = localStorage.getItem('preferredLang');
-      if (savedLang) {
-        // Устанавливаем активную кнопку языка
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-          btn.classList.remove('active');
-          if (btn.getAttribute('data-lang') === savedLang) {
-            btn.classList.add('active');
-          }
-        });
-        
-        // Применяем переводы
-        document.getElementById('backButtonText').textContent = translations[savedLang].backButtonText;
-        document.getElementById('licenseTitle').textContent = translations[savedLang].licenseTitle;
-        document.getElementById('licenseBody').textContent = translations[savedLang].licenseBody;
-        document.getElementById('footerPolicy').textContent = translations[savedLang].footerPolicy;
-        document.getElementById('footerLicense').textContent = translations[savedLang].footerLicense;
-        document.getElementById('footerCopyright').textContent = translations[savedLang].footerCopyright;
-      }
+      // Get the language from localStorage, which is set by index.html
+      const savedLang = localStorage.getItem('preferredLang') || 'ru';
+      
+      // Update the active button state
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('data-lang') === savedLang) {
+          btn.classList.add('active');
+        }
+      });
+      
+      // Update the content with the saved language
+      updateContent(savedLang);
     });
+
+    function changeLang(lang) {
+      // Update the active button state
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('data-lang') === lang) {
+          btn.classList.add('active');
+        }
+      });
+      
+      // Save the language preference to localStorage
+      localStorage.setItem('preferredLang', lang);
+      
+      // Update the content
+      updateContent(lang);
+    }
   </script>
 </body>
 </html>
