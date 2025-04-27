@@ -1741,6 +1741,224 @@
       max-width: 100%;
       overflow-x: hidden;
     }
+
+    /* WhatsApp Button Section */
+    .whatsapp-section {
+      text-align: center;
+      padding: 40px 0;
+      margin: 20px 0;
+    }
+
+    .whatsapp-container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .whatsapp-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 30px;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: white;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+      font-size: 1.1rem;
+      gap: 10px;
+    }
+
+    .whatsapp-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+      color: white;
+    }
+
+    .whatsapp-button i {
+      font-size: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .whatsapp-section {
+        padding: 30px 0;
+      }
+
+      .whatsapp-button {
+        padding: 12px 25px;
+        font-size: 1rem;
+      }
+    }
+
+    /* Medical Service Section */
+    .medical-service-section {
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary-light), var(--primary));
+      padding: 80px 0;
+      border-radius: 30px;
+      margin: 40px 0;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .medical-service-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .medical-service-section:before {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      top: -150px;
+      right: -150px;
+    }
+
+    .medical-service-section:after {
+      content: '';
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      bottom: -100px;
+      left: -100px;
+    }
+
+    .medical-service-title {
+      color: white;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 40px;
+      font-family: 'Montserrat', sans-serif;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      display: block;
+      position: relative;
+    }
+    .medical-service-title:after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--primary);
+      margin: 0.5rem auto 0;
+      border-radius: 2px;
+    }
+
+    .medical-service-desc {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.92);
+      margin-bottom: 35px;
+      font-family: 'Montserrat', sans-serif;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.08);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .medical-features-row {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .medical-feature-card {
+      background: rgba(255,255,255,0.10);
+      border-radius: 18px;
+      padding: 28px 22px 20px 22px;
+      min-width: 170px;
+      max-width: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+      margin-bottom: 10px;
+      border: 1px solid rgba(255,255,255,0.13);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .medical-feature-card:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+      transform: translateY(-4px) scale(1.03);
+    }
+    .medical-feature-icon {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(36,113,204,0.13);
+    }
+    .medical-feature-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .medical-feature-desc {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.88);
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .medical-service-button {
+      display: inline-block;
+      padding: 18px 48px;
+      background: white;
+      color: var(--primary);
+      border-radius: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 1.25rem;
+      font-family: 'Montserrat', sans-serif;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.13);
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+    .medical-service-button:hover {
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.18);
+      background: #f3f8ff;
+      color: var(--primary-dark);
+    }
+
+    @media (max-width: 768px) {
+      .medical-service-section {
+        padding: 40px 0;
+        margin: 20px 0;
+      }
+      .medical-service-title {
+        font-size: 2rem;
+      }
+      .medical-service-desc {
+        font-size: 1.05rem;
+      }
+      .medical-features-row {
+        flex-direction: column;
+        gap: 18px;
+        align-items: center;
+      }
+      .medical-feature-card {
+        min-width: 90vw;
+        max-width: 98vw;
+        padding: 20px 10px 16px 10px;
+      }
+      .medical-service-button {
+        padding: 14px 24px;
+        font-size: 1.1rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1789,6 +2007,31 @@
       
       <div class="hero-image animated-float">
         <img src="image1.png" alt="MedixGO App Screenshot" id="heroImage" />
+      </div>
+    </section>
+
+    <!-- Medical Service Section -->
+    <section class="medical-service-section">
+      <div class="medical-service-container">
+        <h2 class="medical-service-title" id="medicalServiceTitle">Медицинские услуги на выезд</h2>
+
+        <div class="medical-features-row">
+          <div class="medical-feature-card">
+            <div class="medical-feature-icon"><i class="fa-solid fa-truck-medical"></i></div>
+            <div class="medical-feature-title" id="medicalFeature1Title">Быстрый выезд</div>
+            <div class="medical-feature-desc" id="medicalFeature1Desc">Приедем за 30 минут</div>
+          </div>
+          <div class="medical-feature-card">
+            <div class="medical-feature-icon"><i class="fa-solid fa-user-shield"></i></div>
+            <div class="medical-feature-title" id="medicalFeature2Title">Анонимно</div>
+            <div class="medical-feature-desc" id="medicalFeature2Desc">100% конфиденциальность</div>
+          </div>
+        </div>
+        <a href="https://wa.me/77716307966" class="medical-service-button" target="_blank">
+          <span id="medicalServiceButton">Заказать</span>
+        </a>
+
+
       </div>
     </section>
 
@@ -2062,20 +2305,16 @@
         navContact: "Контакты",
         navApplication: "Заполнить анкету",
         // Главная секция
-        mainParagraph: `MedixGO – это мобильное приложение, предназначенное для соединения пациентов,
-нуждающихся в медицинской помощи на дому (уколы, перевязки, базовые медицинские 
-процедуры), с квалифицированным медперсоналом. Приложение предлагает удобную 
-платформу для поиска, бронирования и оплаты услуг медицинского персонала,
-а также предоставляет возможность специалистам зарабатывать, работая в удобное время.`,
+        mainParagraph: `Удобная платформа по заказу услуг медицинского персонала.`,
         projectGoalsTitle: "Цели проекта",
         goalTitle1: "Доступная помощь",
         goalTitle2: "Для медперсонала",
         goalTitle3: "Простой процесс",
         goalTitle4: "Качественный сервис",
-        goal1: "Обеспечить доступность квалифицированной медицинской помощи на дому для всех пациентов, в любое время.",
-        goal2: "Создать возможность для медицинского персонала получать дополнительный доход в удобное для них время.",
-        goal3: "Упростить процесс поиска, заказа и оплаты медицинских услуг через интуитивный интерфейс.",
-        goal4: "Повысить качество медицинских услуг за счет прозрачной системы отзывов и рейтингов специалистов.",
+        goal1: "Обеспечить доступность квалифицированной медицинской помощи на дому для пациентов, в любое время.",
+        goal2: "Возможность для медицинского персонала получать дополнительный доход в удобное для них время.",
+        goal3: "Поиск, заказ и оплата медицинских услуг через интуитивный интерфейс.",
+        goal4: "Качество медицинских услуг за счет прозрачной системы отзывов и рейтингов специалистов.",
         // Видео
         videoTitle: "Узнайте больше о приложении",
         videoSrc: "https://www.youtube.com/embed/dyO8YV84Izw",
@@ -2116,7 +2355,16 @@
         telegramBot: "Telegram Bot",
         instagram: "Instagram",
         fillApplication: "Заполнить анкету",
-        astanahubText: "Наша команда участвует в акселерационной программе Startup Garage, направленной на поддержку перспективных стартапов, где наш проект развивается под менторством экспертов."
+        astanahubText: "Наша команда участвует в акселерационной программе Startup Garage, направленной на поддержку перспективных стартапов, где наш проект развивается под менторством экспертов.",
+        medicalServiceTitle: "Медицинские услуги на выезд",
+        medicalServiceSubtitle1: "Приедем за 30 минут",
+        medicalServiceSubtitle2: "Быстро и анонимно!",
+        medicalServiceButton: "Заказать",
+        medicalServiceReassure: "Мы свяжемся с вами в течение нескольких минут!",
+        medicalFeature1Title: "Быстрый выезд",
+        medicalFeature1Desc: "Приедем за 30 минут",
+        medicalFeature2Title: "Анонимно",
+        medicalFeature2Desc: "100% конфиденциальность"
       },
       kz: {
         navHome: "Басты бет",
@@ -2124,20 +2372,16 @@
         navVideo: "Бейне",
         navContact: "Байланыс",
         navApplication: "Анкетаны толтыру",
-        mainParagraph: `MedixGO – бұл үйде медициналық көмекке мұқтаж науқастарды (егулер, таңулар, негізгі 
-медициналық процедуралар) білікті медицина мамандарымен байланыстыруға арналған 
-мобильді қосымша. Қосымша медициналық персоналды іздеу, брондау және қызметтерді 
-төлеу үшін ыңғайлы платформаны ұсынады, сондай-ақ мамандарға қолайлы уақытта 
-жұмыс істеп, табыс табуға мүмкіндік береді.`,
+        mainParagraph: `Медициналық персонал қызметтерін тапсырыс беру үшін ыңғайлы платформа.`,
         projectGoalsTitle: "Жобаның мақсаттары",
         goalTitle1: "Қолжетімді көмек",
         goalTitle2: "Медицина қызметкерлері үшін",
         goalTitle3: "Қарапайым процесс",
         goalTitle4: "Сапалы қызмет",
-        goal1: "Барлық науқастар үшін үйде білікті медициналық көмектің қолжетімділігін кез-келген уақытта қамтамасыз ету.",
-        goal2: "Медицина қызметкерлеріне қолайлы уақытта қосымша табыс табу мүмкіндігін жасау.",
-        goal3: "Интуитивті интерфейс арқылы медициналық қызметтерді іздеу, тапсырыс беру және төлеу процесін жеңілдету.",
-        goal4: "Пікірлер мен мамандар рейтингінің ашық жүйесі арқылы медициналық қызметтердің сапасын арттыру.",
+        goal1: "Науқастар үшін кез келген уақытта үйде білікті медициналық көмектің қолжетімділігін қамтамасыз ету.",
+        goal2: "Медициналық персоналға өзіне ыңғайлы уақытта қосымша табыс табу мүмкіндігі.",
+        goal3: "Медициналық қызметтерді интуитивті интерфейс арқылы іздеу, тапсырыс беру және төлеу.",
+        goal4: "Мамандардың пікірлері мен рейтингтері арқылы медициналық қызметтердің сапасын қамтамасыз ету.",
         videoTitle: "Қосымша туралы толығырақ",
         videoSrc: "https://www.youtube.com/embed/m74WTJ7pifA",
         featureTitle1: "Ыңғайлы интерфейс",
@@ -2174,7 +2418,17 @@
         telegramBot: "Telegram Bot",
         instagram: "Instagram",
         fillApplication: "Анкетаны толтыру",
-        astanahubText: "Біздің команда перспективалы стартаптарды қолдауға бағытталған Startup Garage акселерациялық бағдарламасына қатысуда, онда біздің жобамыз сарапшылардың жетекшілігімен дамып келеді."
+        astanahubText: "Біздің команда перспективалы стартаптарды қолдауға бағытталған Startup Garage акселерациялық бағдарламасына қатысуда, онда біздің жобамыз сарапшылардың жетекшілігімен дамып келеді.",
+        medicalServiceTitle: "Шақыру бойынша медициналық қызметтер",
+        medicalServiceSubtitle1: "30 минут ішінде келеміз ",
+        medicalServiceSubtitle2: "Жылдам және анонимді!",
+        medicalServiceButton: "Тапсырыс беру",
+        medicalServiceReassure: "Біз сізбен бірнеше минут ішінде байланысамыз!",
+        medicalServiceDesc: "Кәсіби медициналық көмекті үйіңізде алыңыз — тез, анонимді және тәулік бойы.",
+        medicalFeature1Title: "Жылдам шығу",
+        medicalFeature1Desc: "30 минут ішінде келеміз",
+        medicalFeature2Title: "Анонимділік",
+        medicalFeature2Desc: "100% құпиялылық"
       },
       en: {
         navHome: "Home",
@@ -2182,19 +2436,16 @@
         navVideo: "Video",
         navContact: "Contact",
         navApplication: "Fill Application",
-        mainParagraph: `MedixGO is a mobile application designed to connect patients who need home medical care
-(injections, dressings, basic medical procedures) with qualified medical personnel. 
-The application offers a convenient platform to search, book, and pay for medical services, 
-and also provides an opportunity for specialists to earn by working at a convenient time.`,
+        mainParagraph: `A convenient platform for ordering medical staff services.`,
         projectGoalsTitle: "Project Goals",
         goalTitle1: "Accessible Care",
         goalTitle2: "For Medical Staff",
         goalTitle3: "Simple Process",
         goalTitle4: "Quality Service",
-        goal1: "Provide access to qualified home healthcare for all patients, at any time.",
-        goal2: "Enable medical staff to earn additional income at times convenient for them.",
-        goal3: "Simplify the process of searching, booking, and paying for services through an intuitive interface.",
-        goal4: "Improve the quality of medical services through a transparent review and rating system for specialists.",
+        goal1: "Ensure the availability of qualified medical care at home for patients at any time.",
+        goal2: "An opportunity for medical staff to earn additional income at a convenient time for them.",
+        goal3: "Search, order, and payment of medical services through an intuitive interface.",
+        goal4: "The quality of medical services ensured through a transparent system of reviews and specialist ratings.",
         videoTitle: "Learn more about the application",
         videoSrc: "https://www.youtube.com/embed/dyO8YV84Izw",
         featureTitle1: "User-Friendly Interface",
@@ -2231,7 +2482,17 @@ and also provides an opportunity for specialists to earn by working at a conveni
         telegramBot: "Telegram Bot",
         instagram: "Instagram",
         fillApplication: "Fill Application",
-        astanahubText: "Our team participates in the Startup Garage accelerator program, aimed at supporting promising startups, where our project develops under the mentorship of experts."
+        astanahubText: "Our team participates in the Startup Garage accelerator program, aimed at supporting promising startups, where our project develops under the mentorship of experts.",
+        medicalServiceTitle: "Medical Services at Home",
+        medicalServiceSubtitle1: "We'll arrive in 30 minutes",
+        medicalServiceSubtitle2: "Fast and anonymous!",
+        medicalServiceButton: "Order Now",
+        medicalServiceReassure: "We will contact you within a few minutes!",
+        medicalServiceDesc: "Get professional medical help at your home — fast, anonymous, and 24/7.",
+        medicalFeature1Title: "Fast Arrival",
+        medicalFeature1Desc: "We'll arrive in 30 minutes",
+        medicalFeature2Title: "Anonymous",
+        medicalFeature2Desc: "100% confidentiality"
       }
     };
 
@@ -2278,33 +2539,7 @@ and also provides an opportunity for specialists to earn by working at a conveni
           return;
         }
 
-        // Проверяем наличие всех необходимых переводов
-        const requiredKeys = [
-          'navHome', 'navGoals', 'navVideo', 'navContact', 'navApplication',
-          'mainParagraph', 'projectGoalsTitle',
-          'goalTitle1', 'goalTitle2', 'goalTitle3', 'goalTitle4',
-          'goal1', 'goal2', 'goal3', 'goal4',
-          'videoTitle', 'videoSrc',
-          'ctaTitle', 'ctaText', 'appDownload',
-          'contactTitle', 'contactText',
-          'footerAbout', 'footerLinks', 'footerContactTitle',
-          'quickHome', 'quickGoals', 'quickVideo', 'quickContact',
-          'footerPolicy', 'footerLicense',
-          'addressText', 'workTime', 'footerCopy',
-          'surveyTitle', 'surveyText', 'surveyButtonTitle',
-          'featureTitle1', 'featureTitle2', 'featureTitle3', 'featureTitle4',
-          'featureDesc1', 'featureDesc2', 'featureDesc3', 'featureDesc4',
-          'email', 'whatsapp', 'telegram', 'telegramBot', 'instagram',
-          'fillApplication', 'astanahubText'
-        ];
-
-        // Проверяем наличие всех ключей
-        const missingKeys = requiredKeys.filter(key => !(key in t));
-        if (missingKeys.length > 0) {
-          console.error(`Missing translations for language ${lang}:`, missingKeys);
-        }
-
-        // Функция для безопасного обновления элемента
+        // Function to safely update element text
         const updateElement = (id, key) => {
           const element = document.getElementById(id);
           if (element) {
@@ -2319,7 +2554,20 @@ and also provides an opportunity for specialists to earn by working at a conveni
           }
         };
 
-        // Обновляем все элементы
+        // Update medical service section
+        updateElement('medicalServiceTitle', 'medicalServiceTitle');
+        updateElement('medicalServiceSubtitle1', 'medicalServiceSubtitle1');
+        updateElement('medicalServiceSubtitle2', 'medicalServiceSubtitle2');
+        updateElement('medicalServiceSubtitle3', 'medicalServiceSubtitle3');
+        updateElement('medicalServiceButton', 'medicalServiceButton');
+        updateElement('medicalServiceReassure', 'medicalServiceReassure');
+        updateElement('medicalServiceDesc', 'medicalServiceDesc');
+        updateElement('medicalFeature1Title', 'medicalFeature1Title');
+        updateElement('medicalFeature1Desc', 'medicalFeature1Desc');
+        updateElement('medicalFeature2Title', 'medicalFeature2Title');
+        updateElement('medicalFeature2Desc', 'medicalFeature2Desc');
+
+        // Update all other elements
         updateElement('navHome', 'navHome');
         updateElement('navGoals', 'navGoals');
         updateElement('navVideo', 'navVideo');
@@ -2355,16 +2603,16 @@ and also provides an opportunity for specialists to earn by working at a conveni
         updateElement('footerCopy', 'footerCopy');
         updateElement('surveyTitle', 'surveyTitle');
         updateElement('surveyText', 'surveyText');
-        updateElement('astanahubText', 'astanahubText');  // Add this line to update the AstanaHub text
+        updateElement('astanahubText', 'astanahubText');
 
-        // Обновляем видео
+        // Update video source
         const videoFrame = document.getElementById('videoFrame');
         if (videoFrame && t.videoSrc) {
           videoFrame.src = t.videoSrc;
           console.log('Updated video source');
         }
 
-        // Обновляем изображение
+        // Update hero image
         const heroImage = document.getElementById('heroImage');
         if (heroImage) {
           switch(lang) {
@@ -2381,7 +2629,7 @@ and also provides an opportunity for specialists to earn by working at a conveni
           console.log('Updated hero image');
         }
 
-        // Обновляем все элементы с data-translate
+        // Update all elements with data-translate
         const elementsToTranslate = document.querySelectorAll('[data-translate]');
         elementsToTranslate.forEach(element => {
           const key = element.getAttribute('data-translate');
