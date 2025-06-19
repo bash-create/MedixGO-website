@@ -3166,6 +3166,15 @@
           const login = document.getElementById('deleteLogin').value;
           const password = document.getElementById('deletePassword').value;
           
+          // Проверяем пустые поля
+          if (!login || !password) {
+            alert('Пожалуйста, заполните все поля');
+            isSubmitting = false;
+            confirmDeleteBtn.disabled = false;
+            confirmDeleteBtn.innerHTML = 'Подтвердить удаление';
+            return;
+          }
+          
           try {
             const response = await fetch('http://localhost:3000/api/send-email', {
               method: 'POST',
@@ -3197,7 +3206,14 @@
             }
           } catch (error) {
             // Показываем только одно уведомление об ошибке
-            const errorMessage = error.message || 'Произошла ошибка при отправке данных';
+            let errorMessage;
+            if (error instanceof TypeError) {
+              errorMessage = 'Не удалось подключиться к серверу. Проверьте подключение к интернету.';
+            } else if (error.status === 404) {
+              errorMessage = 'Сервер не найден. Проверьте URL.';
+            } else {
+              errorMessage = error.message || 'Произошла ошибка при отправке данных';
+            }
             alert(errorMessage);
           } finally {
             // Возвращаем кнопку в исходное состояние
