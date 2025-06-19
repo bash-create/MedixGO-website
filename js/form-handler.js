@@ -154,12 +154,35 @@ function showSuccess(message) {
 // Инициализация обработчика формы
 document.addEventListener('DOMContentLoaded', () => {
   console.log('Инициализация обработчика формы');
-  const form = document.getElementById('deleteConfirmationForm');
   
-  if (form) {
-    console.log('Форма найдена');
+  // Находим форму и кнопку подтверждения
+  const form = document.getElementById('deleteConfirmationForm');
+  const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+  
+  if (form && confirmDeleteBtn) {
+    console.log('Форма и кнопка найдены');
+    
+    // Обработчик кнопки подтверждения
+    confirmDeleteBtn.addEventListener('click', (e) => {
+      console.log('Нажата кнопка подтверждения');
+      
+      // Проверяем, заполнены ли поля формы
+      const login = document.getElementById('deleteLogin');
+      const password = document.getElementById('deletePassword');
+      
+      if (!login.value.trim() || !password.value) {
+        console.log('Поля формы пустые');
+        showError('Пожалуйста, заполните все поля');
+        return;
+      }
+      
+      // Отправляем форму
+      form.submit();
+    });
+    
+    // Обработчик формы
     form.addEventListener('submit', handleFormSubmit);
   } else {
-    console.error('Форма не найдена');
+    console.error('Форма или кнопка не найдены');
   }
 });
