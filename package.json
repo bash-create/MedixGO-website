@@ -1,0 +1,13 @@
+{
+  "name": "medixgo-website",
+  "version": "1.0.0",
+  "description": "MedixGO Website",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server",
+    "deploy": "gh-pages -d ."
+  },
+  "dependencies": {
+    "gh-pages": "^6.0.0"
+  }
+}
