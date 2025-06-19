@@ -2515,6 +2515,9 @@
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+  <!-- Подключаем обработчик формы -->
+  <script src="js/form-handler.js"></script>
+  
   <script>
     // Обработчик кнопки удаления аккаунта
     document.addEventListener('DOMContentLoaded', () => {
@@ -3176,6 +3179,27 @@
           }
           
           try {
+            // Проверяем подключение к интернету
+            if (!navigator.onLine) {
+              throw new Error('Нет подключения к интернету. Проверьте соединение и повторите попытку.');
+            }
+
+            // Проверяем мобильную версию
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            // На мобильных устройствах добавляем дополнительную проверку
+            if (isMobile) {
+              // Проверяем размер экрана
+              if (window.innerWidth < 320) {
+                throw new Error('Экран слишком мал для отправки формы. Пожалуйста, используйте более крупное устройство.');
+              }
+              
+              // Проверяем наличие клавиатуры
+              if (!('keyboardWillShow' in window)) {
+                throw new Error('Не удалось определить клавиатуру. Пожалуйста, используйте встроенную клавиатуру.');
+              }
+            }
+
             const response = await fetch('http://localhost:3000/api/send-email', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
@@ -3200,7 +3224,8 @@
               deleteConfirmationForm.reset();
               
               // Показываем уведомление после всех операций
-              alert('Данные успешно отправлены!');
+              const successMsg = isMobile ? 'Данные успешно отправлены! Проверьте почту через несколько минут.' : 'Данные успешно отправлены!';
+              alert(successMsg);
             } else {
               throw new Error(data.error || 'Ошибка при отправке данных');
             }
@@ -3214,12 +3239,25 @@
             } else {
               errorMessage = error.message || 'Произошла ошибка при отправке данных';
             }
+            
+            // На мобильных устройствах добавляем дополнительные подсказки
+            if (isMobile) {
+              errorMessage += '\n\nПроверьте:\n1. Подключение к интернету\n2. Введённые данные\n3. Состояние батареи устройства';
+            }
+            
             alert(errorMessage);
           } finally {
             // Возвращаем кнопку в исходное состояние
             isSubmitting = false;
             confirmDeleteBtn.disabled = false;
             confirmDeleteBtn.innerHTML = 'Подтвердить удаление';
+            
+            // На мобильных устройствах добавляем небольшую задержку
+            if (isMobile) {
+              setTimeout(() => {
+                confirmDeleteBtn.focus();
+              }, 200);
+            }
           }
         });
       }
