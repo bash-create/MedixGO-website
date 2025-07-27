@@ -136,7 +136,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     /* Шапка */
     header {
-      position: fixed;
+      position: relative;
       top: 0;
       left: 0;
       right: 0;
@@ -147,12 +147,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 15px 5%;
+      padding: 0px 5%;
       transition: all 0.3s ease;
     }
 
     header.scrolled {
-      padding: 10px 5%;
+      padding: 0px 5%;
     }
     
     /* Логотип */
@@ -359,7 +359,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
     .hero-content {
       flex: 1;
-      text-align: left;
+      text-align: center;
       width: 100%;
       padding: 0;
       margin-right: 40px;
@@ -375,7 +375,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     
     .hero-image img {
-      max-width: 100%;
+      max-width: 60%;
       height: auto;
       border-radius: 20px;
       box-shadow: var(--shadow);
@@ -1199,7 +1199,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     @media (max-width: 768px) {
       header {
-        padding: 15px 20px;
+        padding: 0px 20px;
       }
       
       .menu-toggle {
@@ -2004,11 +2004,32 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       margin-top: 10px;
       margin-bottom: 0;
     }
+    .medical-service-button-2 {
+      display: inline-block;
+      padding: 18px 48px;
+      background: var(--primary);
+      color: white;
+      border-radius: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 1.25rem;
+      font-family: 'Montserrat', sans-serif;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.13);
+      margin: 0 auto;
+      text-align: center;
+    }
     .medical-service-button:hover {
       transform: translateY(-3px) scale(1.04);
       box-shadow: 0 8px 28px rgba(0,0,0,0.18);
       background: #f3f8ff;
       color: var(--primary-dark);
+    }
+    .medical-service-button-2:hover {
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.18);
+      color: #f3f8ff;
+      background: var(--primary-dark);
     }
 
     @media (max-width: 768px) {
@@ -2104,8 +2125,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- Hero секция -->
     <section id="home" class="hero">
       <div class="hero-content">
-        <h1>Medix<span>GO</span></h1>
-        <p id="mainParagraph"></p>
+        <!-- <h1>Medix<span>GO</span></h1> -->
+        <a href="https://wa.me/77716307966" class="medical-service-button-2" target="_blank">
+          <span id="medicalServiceButton">Вызвать медсестру</span>
+        </a>
+        <!-- <p id="mainParagraph"></p> -->
       </div>
       
       <div class="hero-image animated-float">
@@ -2131,7 +2155,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
         <a href="https://wa.me/77716307966" class="medical-service-button" target="_blank">
-          <span id="medicalServiceButton">Заказать</span>
+          <span id="medicalServiceButton">Вызвать медсестеру</span>
         </a>
 
 
@@ -2140,7 +2164,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- Цели проекта -->
     <section id="goals">
-      <h2 id="projectGoalsTitle"></h2>
+      <!-- <h2 id="projectGoalsTitle"></h2> -->
       
       <div class="goals-container">
         <!-- Цель 1 -->
@@ -2174,7 +2198,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </section>
 
     <!-- Carousel Section -->
-    <section id="presentation" class="presentation-section">
+    <!-- <section id="presentation" class="presentation-section">
       <div class="carousel-container">
         <div class="carousel-slide active">
           <img src="ruSlide1.JPG" alt="Как пользователи взаимодействуют с продуктом" class="slide-image" data-ru="ruSlide1.JPG" data-kz="kazSlide.JPG" data-en="engSlide.jpg">
@@ -2197,10 +2221,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <div class="carousel-dots"></div>
       </div>
-    </section>
+    </section> -->
 
     <!-- Видео секция -->
-    <section id="video" class="video-section">
+    <!-- <section id="video" class="video-section">
       <h2 id="videoTitle"></h2>
       
       <div class="video-container">
@@ -2242,7 +2266,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- Опрос -->
     <section id="survey" class="survey-section">
@@ -2257,7 +2281,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </section>
     
     <!-- AstanaHub Section -->
-    <section id="astanahub" class="astanahub-section">
+    <!-- <section id="astanahub" class="astanahub-section">
       <div class="astanahub-container">
         <p class="astanahub-text" id="astanahubText"></p>
         <div class="astanahub-images">
@@ -2269,7 +2293,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </a>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- Контакты -->
     <section id="contact" class="contact-section">
@@ -2701,7 +2725,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         medicalServiceTitle: "Медицинские услуги на выезд",
         medicalServiceSubtitle1: "Приедем за 30 минут",
         medicalServiceSubtitle2: "Быстро и анонимно!",
-        medicalServiceButton: "Заказать",
+        medicalServiceButton: "Вызвать медсестеру",
         medicalServiceReassure: "Мы свяжемся с вами в течение нескольких минут!",
         medicalFeature1Title: "Быстрый выезд",
         medicalFeature1Desc: "Приедем за 30 минут",
@@ -2764,7 +2788,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         medicalServiceTitle: "Шақыру бойынша медициналық қызметтер",
         medicalServiceSubtitle1: "30 минут ішінде келеміз ",
         medicalServiceSubtitle2: "Жылдам және анонимді!",
-        medicalServiceButton: "Тапсырыс беру",
+        medicalServiceButton: "Медбике шақырыңыз",
         medicalServiceReassure: "Біз сізбен бірнеше минут ішінде байланысамыз!",
         medicalServiceDesc: "Кәсіби медициналық көмекті үйіңізде алыңыз — тез, анонимді және тәулік бойы.",
         medicalFeature1Title: "Жылдам шығу",
@@ -2828,7 +2852,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         medicalServiceTitle: "Medical Services at Home",
         medicalServiceSubtitle1: "We'll arrive in 30 minutes",
         medicalServiceSubtitle2: "Fast and anonymous!",
-        medicalServiceButton: "Order Now",
+        medicalServiceButton: "Call a nurse",
         medicalServiceReassure: "We will contact you within a few minutes!",
         medicalServiceDesc: "Get professional medical help at your home — fast, anonymous, and 24/7.",
         medicalFeature1Title: "Fast Arrival",
